@@ -1,0 +1,49 @@
+body{
+    background-color: rgb(255, 255, 255);
+}
+.form-heading{
+    text-align:center;
+    position:fixed;
+    top:100px;
+    left:550px;
+
+}
+.form-info{
+    text-align:center;
+    position:fixed;
+    top:300px;
+    left:550px;
+}
+
+.ts-footer{
+    position:absolute;
+    left:450px;
+    top:500px;
+    width: 400px; 
+    height: 30px;
+  }
+  .ts-left{
+      float:left;
+      width: 229px; 
+  }
+  .ts-right{
+      float:right;
+  }
+  .block1{
+      position: absolute;
+      top:0px;
+  }
+  .block2{
+     position: absolute;
+     top:50px;
+  }
+  .block3{
+     position: absolute;
+     top:100px;
+  }
+  .submit-box{
+     position: absolute;
+     top:140px;
+     left:55px;
+  }
+

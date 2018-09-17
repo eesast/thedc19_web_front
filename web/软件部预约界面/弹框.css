@@ -1,0 +1,100 @@
+
+    /* 此段用于模拟提示框内容 */
+    .showinfor
+    {
+        display:none;
+        position: fixed;  
+        width: 30%;
+        height:30%;
+        margin:0 auto;
+        border: 3px solid; 
+        border-Radius: 15px;
+        top:200px;
+        left:35%;
+        background-color: white;
+        color:rgba(0, 140, 255, 0.479);
+        z-index:999;
+        /* background-color: aqua; */
+
+    }
+    .stop
+    {
+        text-align: left;
+        position: fixed;  
+        width: 30%;
+        height:60px;
+        margin:0 auto;
+        border: 3px solid; 
+        border-top-left-radius:15px;
+        border-top-right-radius:15px;
+        border-bottom-right-radius:0;
+        border-bottom-left-radius:0;
+        top:200px;
+        left:35%;
+        color:rgba(0, 140, 255, 0.479);
+        /* z-index:999; */
+        background-color:rgb(209, 209, 209);
+    }
+    /* 设置图像用 */
+    img
+    {
+        position:relative;
+        float:left;
+        top:14px;
+        left:20px;
+    }
+    .context
+    {
+        text-align: left;
+        position: fixed;  
+        width: 30%;
+        height:100px;
+        top:260px;
+        /* margin:0 auto; */
+        /* border: 1px solid;  */
+        background-color:rgb(230, 230, 230);
+    
+    }
+    .setinput
+    {
+        text-align: left;
+        position: fixed;  
+        width: 20%;
+        height:30px;
+        top:320px;
+        left:36.5%;
+        background-color:rgb(167, 158, 172);
+    }
+    .ok,.no
+    {
+        display:inline;
+        background-color: rgb(131, 131, 131);
+        width:100px;
+        height:40px;
+        position: fixed;
+        top:370px;
+        
+    }
+    .ok
+    {
+        background-color: rgb(136, 199, 250);
+        
+        left:39%;
+    }
+    .no
+    {
+        left:55%;
+    }
+    .dark
+    {
+        display:none;
+        position:fixed;
+        top:0px;
+        width:100%;
+        height:200%;
+        z-index:500;
+        background-color: black;
+        opacity:0.8;
+        /* 设置此div在主要部分之上 透明度0.8 模拟变暗 */
+    }
+

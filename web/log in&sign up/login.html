@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="login.css" media="screen" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="弹框.css">
+    <link rel="stylesheet" type="text/css" href="side-bar.css">
+</head>
+
+<body>
+    <section id="login-form">
+        <div class="container">
+            <article class="form-head">
+                <h1 class=form-title>登录</h1>
+                <hr>
+                <a href="signup.html" style="margin-bottom: 50px">还没注册？点击注册</a>
+            </article>
+        </div>
+    </section>
+    <section id="check-box">
+        <div class="name">
+            <div class="wrap1">
+                <input id="text1" type="text" placeholder="输入用户名" />
+                <button id="btn_username">OK</button>
+            </div>
+        </div>
+        <div class="password">
+            <div class="wrap2">
+                <input id="text2" type="password" placeholder="输入密码" />
+                <button id="btn_password">OK</button>
+            </div>
+        </div>
+    </section>
+        <div class="ts-footer">
+            <div class="col-md-12">
+                <p class="ts-left">
+                    <small>© 2018
+                    <a href="https://www.eesast.com">EESAST</a> All Rights Reserved.</small>
+                </p>
+                <p class="ts-right">
+                    <small class="ts-right">第十九届电子设计大赛</small>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!--以下是附加的弹窗控件-->
+
+    <!-- 用于使屏幕变暗 -->
+    <div class="dark"></div>
+    <!-- (通用警示提示框) -->
+    <div class="showinfor">
+        <!-- 分割用线 -->
+        <div class="stop">
+            <img src="2.png" alt="logo" width="40" height="40"></img>
+            <h2>&nbsp;&nbsp;&nbsp;&nbsp;温馨提示</h2>
+        </div>
+        <!-- 提示内容 -->
+        <div class="context">
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;这个用于弹出消息</div>
+        <!-- 下面是确认建和取消键    -->
+        <button class="ok" value="确定" style="color:white">确认</button>
+        <button class="no" value="取消" style="color:white">取消</button>
+    </div>
+    <nav class="main-menu">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="nav-text">
+                        &nbsp;&nbsp;&nbsp;&nbsp;首页
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="signup.html">
+                    <span class="nav-text">
+                        &nbsp;&nbsp;&nbsp;&nbsp;注册
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="nav-text" id='now'>
+                        &nbsp;&nbsp;&nbsp;&nbsp;登录
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="../newpage/main.html">
+                    <span class="nav-text">
+                        &nbsp;&nbsp;&nbsp;&nbsp;组队
+                    </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="../软件部预约界面/预约.html">
+                    <span class="nav-text">
+                        &nbsp;&nbsp;&nbsp;&nbsp;预约
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="nav-text">
+                        &nbsp;&nbsp;&nbsp;&nbsp;更多
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="nav-text">
+                        &nbsp;&nbsp;&nbsp;&nbsp;......
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</body>
+<script src="弹框.js"></script>
+<script src="login.js"></script>
+</html>
+

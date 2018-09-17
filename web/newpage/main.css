@@ -1,0 +1,166 @@
+
+    body,html
+    {
+        position: absolute;
+        width:100%;
+        height:100%;
+        margin:0;
+        padding:0;
+        background: #cfe7fa;
+        background: -moz-radial-gradient(center, ellipse cover,  #cfe7fa 0%, #86858d 100%);
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cfe7fa), color-stop(100%,#86858d));
+        background: -webkit-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+        background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+        background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+        background: radial-gradient(ellipse at center,  #cfe7fa 0%,#86858d 100%);
+        /* border: 3px solid; */
+    }
+    /* .maindiv
+    {
+        margin:0 auto;
+        width:100%;
+        height:40%;
+        border:3px solid;
+    } */
+    .mainlogo
+    {
+        position:fixed;
+        margin:0 auto;
+        display:block;
+        left:46.5%;
+        text-align: center;
+        top:100px; 
+        /* border:3px solid; */
+    }
+    .maintitle
+    {
+        width:40%;
+        color:rgb(78, 78, 78);
+        position:relative;
+        margin:0 auto;
+        text-shadow: 3px 3px 3px rgb(145, 145, 145);
+        text-align: center;
+        top:200px;
+        font-weight: 100;
+        /* border:3px solid; */
+    }
+    .a,.b
+    {
+        /* display:none; */
+        position: relative;
+        display:inline;
+        margin:0 auto;
+        top:10%;
+        border-radius: 300px;
+        box-shadow: 0;
+        /* background-color: aqua; */
+        font-size: 14;
+        font-weight: bold;
+        background-color: rgb(136, 199, 250);
+    }
+    .c,.d
+    {
+        position: relative;
+        display:none;
+        /* display:inline; */
+        margin:0 auto;
+        top:10%;
+        border-radius: 300px;
+        box-shadow: 0;
+        font-size: 14;
+        font-weight: bold;
+        background-color: rgb(136, 199, 250);
+        /* //background-color: rgb(38, 65, 138); */
+    }
+    .a,.c
+    {
+        left:-5%;
+    }
+    .b,.d
+    {
+        right:-5%;
+    }
+    .mainbox
+    {
+        position: relative;
+        overflow: hidden;
+        z-index: 0;  
+        background: #fff;
+        border-radius: 300px;
+        height:80%;
+        top:10%;
+        box-shadow: -1px -1px 1px rgba(0,0,0,.4),
+                    1px 1px 1px rgba(255,255,255,.4);
+    }
+    .mainbox:after,.mainbox:before
+    {
+        content: '鼠标移动显示按钮';
+        display: block;
+        position: absolute;
+        top: 0;left: 0;
+        overflow: hidden;
+        line-height: 30px;
+        color:rgba(255,255,255,.3);
+        font-size: 20px;
+        width: 100%;height: 50%;
+        background: #000;
+        z-index: 1;
+        box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
+        transition:.3s all;
+        -webkit-transition:.3s all;
+        -webkit-transform:translate3d(0,0,0);
+        transform:translate3d(0,0,0);
+    }
+    .mainbox:before{
+        top: auto;
+        bottom: 0;
+        line-height: 0px;
+      }
+      .mainbox:hover:after{
+        top: -50%;
+      }
+      .mainbox:hover:before{
+        bottom: -50%;
+      }
+      .mainbox:hover
+      {
+          background-color: rgb(230, 230, 230);
+      }
+    .main
+    {
+        position: absolute;;
+        text-align: center;
+        margin: 0 auto;
+        width:20%;
+        height:5%;
+        left:39%;
+        border:3px solid;
+        padding:10px;
+        margin-top:200px;
+        border-radius: 600px;
+        background:#8dc63f; 
+        box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
+ 
+    }
+
+
+    /* 统一尾部 */
+    .ts-footer{
+    position:absolute;
+    left:38%;
+    top:500px;
+    width: 400px; 
+    height: 30px;
+    }
+    .ts-left{
+        float:left;
+        width: 229px; 
+    }
+    .ts-right{
+        float:right;
+    }
+
+
+
+
+ 
