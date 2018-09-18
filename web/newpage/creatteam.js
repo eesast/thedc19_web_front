@@ -74,17 +74,27 @@ fetch('http://58.87.111.176/api/auth',
         {
             var getname=document.getElementsByClassName("d")[0].value;
             console.log(getname);
+            if(getname=='')
+            {
+                //showbox("名称不能为空!");
+                return false;
+            }
             for(var i=0;i<mybody.length;i++)
             {
                 if(mybody[i]["name"]==getname)
                 {
-                    alert("错误!队伍名称相同!");
+                    //showbox("错误!队伍名称相同!");
                     return false;//重名
                 }
             }
+            var getinfor=document.getElementsByClassName("b")[2].value;
+            console.log(getinfor);
+            if(getinfor=='')return false;
+
+
+
+            //如果返回为真，则post队伍信息
             return true;
-            //else
-            //return false;
         }
 
 
@@ -103,58 +113,105 @@ fetch('http://58.87.111.176/api/auth',
                     此处需要补充内容********************
                     */
                 
-                
-
-                    //生成邀请码
-                    var idx;
-                    var ids="";
-                    for(var i=1;i<=26;i++)
+                    fetch('http://58.87.111.176/api/teams',
                     {
-                        idx=Math.round(Math.random()*44);
-                        ids+=chars[idx];
-                    }
-                    showbox("创建队伍成功!");
-                    
-                    var change=document.getElementById("id4");
-                    change.innerHTML="您的邀请码是:";
-
-                    change=document.getElementsByTagName("div")[1];
-                    
-                    var newbtn='<br></br><button id=6>复&nbsp制</button>'; //追加复制按钮
-                    change.innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;'+ids+newbtn; 
-                    change.style.left='6%';
-                    change.style.height='4%';
-                    change.style.width='30%';
-                    
-                    change=document.getElementById(6);
-                    
-                    change.style.left='0px';
-                    change.style.fontWeight='700';
-                    change.style.color='rgb(37, 37, 37)';
-                    change.style.borderRadius='20px'
-                    change.style.width='20%';
-                    change.style.height='100%';
-                    change.style.borderColor='aqua';
-                    change.style.backgroundColor= 'rgb(181, 221, 233)';
-
-                    //change.style.backgroundColor='rgb(205, 247, 247)';
-                    //设置按钮
-                    change.addEventListener("click",function()
-                    {
-                        //复制到剪切板
-                        //alert(3);
-                        const input = document.createElement('input');
-                        document.body.appendChild(input);
-                        input.setAttribute('value', ids);
-                        input.select();
-                            if (document.execCommand('copy')) {
-                            document.execCommand('copy');
-                            console.log('复制成功');
+                        method:'POST',
+                        headers:
+                        {
+                            'Content-Type':'application/json',
+                            'x-access-token':token.toString()
+                        },
+                        body:
+                        {
+                            'id':(mybody.length+1).toString(),
+                            'name':document.getElementsByClassName("d")[0].value.toString(),
+                            'description':document.getElementsByClassName("b")[2].value.toString(),
+                            'members':['42'],
+                            'captain':'42'
                         }
-                        document.body.removeChild(input);
+                    }).then(response=>
+                    {
+                        if(response.ok)
+                        {
+                            //返回邀请码
+                            return response.json();
+                        }
+                    },error=>
+                    {
+                        alert("网页错误");
+                    }).then(res=>
+                    {
+                        var ids=res["inviteCode"];
+                         showbox("创建队伍成功!");
+                            
+                            var change=document.getElementById("id4");
+                            change.innerHTML="您的邀请码是:";
 
-                        showbox("成功复制到剪切板!");
+                            change=document.getElementsByTagName("div")[1];
+                            
+                            var newbtn='<br></br><button id=6>复&nbsp制</button>'; //追加复制按钮
+                            change.innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;'+ids+newbtn; 
+                            change.style.left='6%';
+                            change.style.height='4%';
+                            change.style.width='30%';
+                            
+                            change=document.getElementById(6);
+                            
+                            change.style.left='0px';
+                            change.style.fontWeight='700';
+                            change.style.color='rgb(37, 37, 37)';
+                            change.style.borderRadius='20px'
+                            change.style.width='20%';
+                            change.style.height='100%';
+                            change.style.borderColor='aqua';
+                            change.style.backgroundColor= 'rgb(181, 221, 233)';
+
+                            //change.style.backgroundColor='rgb(205, 247, 247)';
+                            //设置按钮
+                            change.addEventListener("click",function()
+                            {
+                                //复制到剪切板
+                                //alert(3);
+                                const input = document.createElement('input');
+                                document.body.appendChild(input);
+                                input.setAttribute('value', ids);
+                                input.select();
+                                    if (document.execCommand('copy')) {
+                                    document.execCommand('copy');
+                                    console.log('复制成功');
+                                }
+                                document.body.removeChild(input);
+
+                                showbox("成功复制到剪切板!");
+                            })
+
+
                     })
+                
+                    //貌似不用生成邀请码
+                    //生成邀请码
+                    // var idx;
+                    // var ids="";
+                    // for(var i=1;i<=26;i++)
+                    // {
+                    //     idx=Math.round(Math.random()*44);
+                    //     ids+=chars[idx];
+                    // }
+
+
+
+
+                    //post消息
+                    console.log(token);
+
+
+
+
+
+
+
+
+                    
                     
                 
                 
