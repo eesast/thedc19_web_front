@@ -1,5 +1,65 @@
+var token=''
+fetch('http://58.87.111.176/api/auth',
+{
+    method:'POST',
+    mode:'cors',
+    headers:
+    {
+        // 'Origin':'http://58.87.111.176',
+        'Access-Control-Allow-Origin':'*',
+        'Content-Type':'application/x-www-form-urlencoded'
+    },
+    body:
+    {
+        'username':'admin',
+        'password':'eesast-software'
+    }
+}).then(response=>
+{
+    if(response.ok)
+    {
+        token=response.json().parse();
+        return token;
+    }
+},error=>
+{
+    alert("no big")
+}).then(res=>
+{
+    alert(token+'1')
+})
 
 
+// var url='http://58.87.111.176/api/teams'
+// var mybody=''
+// fetch(url,
+// {
+//     method:'GET',
+//     mode:'cors',
+//     headers:
+//     {
+//         'Access-Control-Allow-Origin':'*',
+//         'Content-Type':'application/x-www-form-urlencoded',
+//         'x-access-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwiaWF0IjoxNTM3MTg1Njc5LCJleHAiOjE1MzcxODkyNzl9.G6bKuNHQO5LVxko9YjVPqjjy8BBSgL2oDA4L3RPyauA'    
+//     },
+// }).then(response=>
+// {
+//     if(response.ok)
+//     {
+//         mybody=response.body;
+//         alert(mybody);
+//     }
+//     else{
+//         console.log(response.status);
+//     }
+// },error=>
+// {
+//     //alert(response);
+//     alert("网页错误");
+// }).then(res=>
+// {
+
+// })
 function init()//初始化，从服务器读取已有队伍信息并显示
     {
         var input;
@@ -55,6 +115,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             change.style.color='green';
             change.addEventListener("click",function()
             {
+                // showbox("22222222222222222222222222222222222222222222222222222222222")
                 showbox('队伍名称:'+data[i].name+'&nbsp;'+'队伍简介:'+data[i].description);
             })
         }
