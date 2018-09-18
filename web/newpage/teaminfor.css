@@ -21,7 +21,7 @@
         position: relative;
         left:17%;
         font-size:50;
-        font-family: 'KaiTi';
+        font-family: 'SimHei';
         color:rgb(4, 71, 4);
         text-shadow: 5px 5px 5px gray;
     }
@@ -52,7 +52,7 @@
     {
         position: relative;
         left:10%;
-        font-family: 'KaiTi';
+        font-family: 'SimHei';
         font-size:30;
         
         /* z-index: 50; */

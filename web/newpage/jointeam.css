@@ -24,7 +24,7 @@ html,body
         font-weight:900;
         text-shadow: 3px 3px 3px rgb(115, 142, 177);
         color:rgb(63, 38, 110);
-        font-family:'KaiTi';
+        font-family:'SimHei';
 
         font-size:80px;
         font-family: 'KaiTi';
@@ -39,7 +39,7 @@ html,body
     }
     .e
     {
-        font-family: 'KaiTi';
+        font-family: 'SimHei';
         font-size:30;
     }
     .a
@@ -65,8 +65,8 @@ html,body
     }
     .d >h2
     {
-        font-family:'KaiTi';
-        color:rgb(33, 189, 46);
+        font-family:'SimHei';
+        color:rgb(0, 0, 0);
         text-shadow: 5px 5px 5px rgb(207, 207, 207);
     }
     .c
@@ -77,7 +77,7 @@ html,body
         text-align: center;
         width:50%;
         /* height:20%; */
-        font-family: 'KaiTi';
+        font-family: 'SimHei';
         font-weight: 700;
         /* color:rgb(121, 167, 54); */
         border:3px solid rgb(109, 109, 160);

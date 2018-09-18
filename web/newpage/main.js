@@ -5,7 +5,7 @@
         *******************待完善
         ************************
         */
-         return false;
+        //  return false;
         return true;
     }
     function init()

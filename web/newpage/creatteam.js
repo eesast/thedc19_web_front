@@ -61,12 +61,18 @@
             change.style.left='6%';
             change.style.height='4%';
             change.style.width='30%';
-
+            
             change=document.getElementById(6);
             
             change.style.left='0px';
             change.style.fontWeight='700';
             change.style.color='rgb(37, 37, 37)';
+            change.style.borderRadius='20px'
+            change.style.width='20%';
+            change.style.height='100%';
+            change.style.borderColor='aqua';
+            change.style.backgroundColor= 'rgb(181, 221, 233)';
+
             //change.style.backgroundColor='rgb(205, 247, 247)';
             //设置按钮
             change.addEventListener("click",function()
