@@ -88,7 +88,7 @@ html,body
 .ts-footer{
     position:absolute;
     left:450px;
-    top:500px;
+    bottom:20px;
     width: 400px; 
     height: 30px;
     }

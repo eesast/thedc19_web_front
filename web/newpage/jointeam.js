@@ -1,100 +1,109 @@
 var token=''
+var mobody;
 fetch('http://58.87.111.176/api/auth',
 {
     method:'POST',
-    mode:'cors',
+    credentials: 'include',
     headers:
     {
-        // 'Origin':'http://58.87.111.176',
-        'Access-Control-Allow-Origin':'*',
-        'Content-Type':'application/x-www-form-urlencoded'
+        'Content-Type':'application/json'
     },
-    body:
-    {
+    body:JSON.stringify({
         'username':'admin',
         'password':'eesast-software'
-    }
+    })
+    
 }).then(response=>
 {
     if(response.ok)
     {
-        token=response.json().parse();
-        return token;
+        return response.json();
     }
 },error=>
 {
     alert("no big")
 }).then(res=>
 {
-    alert(token+'1')
+
+    console.log(res);
+    token=res['token'];
+    console.log(token);
+    //alert(token);
+    fetch('http://58.87.111.176/api/teams',
+    {
+        method:'GET',
+        headers:
+        {
+            'Content-Type':'application/json',
+            'x-access-token':token.toString()},
+    }).then(response=>
+    {
+        if(response.ok)
+        {
+            return response.json();
+        }
+        else{
+            console.log(response.status);
+        }
+    },error=>
+    {
+        //alert(response);
+        alert("网页错误");
+    }).then(res=>
+    {
+        console.log(res);
+        mybody=res;
+        console.log(mybody[0]);
+        console.log(mybody.length);//获取长度
+        init();
+        setjoin();
+    })
 })
 
 
-// var url='http://58.87.111.176/api/teams'
-// var mybody=''
-// fetch(url,
-// {
-//     method:'GET',
-//     mode:'cors',
-//     headers:
-//     {
-//         'Access-Control-Allow-Origin':'*',
-//         'Content-Type':'application/x-www-form-urlencoded',
-//         'x-access-token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwiaWF0IjoxNTM3MTg1Njc5LCJleHAiOjE1MzcxODkyNzl9.G6bKuNHQO5LVxko9YjVPqjjy8BBSgL2oDA4L3RPyauA'    
-//     },
-// }).then(response=>
-// {
-//     if(response.ok)
-//     {
-//         mybody=response.body;
-//         alert(mybody);
-//     }
-//     else{
-//         console.log(response.status);
-//     }
-// },error=>
-// {
-//     //alert(response);
-//     alert("网页错误");
-// }).then(res=>
-// {
-
-// })
+var data;
 function init()//初始化，从服务器读取已有队伍信息并显示
     {
         var input;
         var change=document.getElementsByTagName("div")[2];
         var line="";
-        var data=new Array(20);
+        data=new Array(mybody.length);
         
-        function team(name,description)
+        function team(name,description,id,captain,members,invitecode)
         {
             this.name=name;
             this.description=description;
+            this.id=id;
+            this.captain=captain;
+            this.members=members;
+            this.invitecode=invitecode;
         }
         var count=0;//记录队伍总数
         
-        for(var i=1;i<=10;i++)
+        for(var i=1;i<=mybody.length;i++)
         {
             /*
             *****************
             修改input从服务器读取已经有的队伍信息
             *****************
             */
-            input={name:"队伍"+i,description:"这是一个用于测试的队伍"+i};//****************************
+            input={name:" "+mybody[i-1]['name'],description:mybody[i-1]['description'],id:mybody[i-1]['id'],captain:mybody[i-1]['captain'],members:mybody[i-1]['members'].length,invitecode:mybody[i-1]['inviteCode']};//****************************
             
           
-            data[i]=new team(input.name,input.description);
+            data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
            // window.alert(data[i].name);
-            line+="队伍名称:";
-            for(var j=1;j<=50;j++)line+=("&nbsp");
-            line+=input.name+"<button>查看信息</button><button>加入队伍</button>";
+            line+='队伍ID:'+input.id;
+            line+="       队伍名称:";
+            line+=input.name;
+            line+='      队长:'+input.captain;
+            for(var j=1;j<=20;j++)line+=("&nbsp");
+            line+="<button>查看信息</button><button>加入队伍</button>";
             line+='<br></br>';
 
             count++;
         }
         
-        document.getElementsByClassName("ts-footer")[0].style.top=(300+count*70)+'px';
+        //document.getElementsByClassName("ts-footer")[0].style.top=(300+count*70)+'px';
         
         
         change.innerHTML=line;
@@ -116,7 +125,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             change.addEventListener("click",function()
             {
                 // showbox("22222222222222222222222222222222222222222222222222222222222")
-                showbox('队伍名称:'+data[i].name+'&nbsp;'+'队伍简介:'+data[i].description);
+                showbox('队伍名称:'+data[i].name+'&nbsp;&nbsp;'+'队伍人数:'+data[i].members+'&nbsp;&nbsp;队伍简介:'+data[i].description);
             })
         }
 
@@ -160,17 +169,38 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                 
             })
         }
+        
+
+
+        
     }
     
+        function check(idnum,i)//与服务器数据中的邀请码进行匹配  idnum是邀请码  i是与第几个队伍比较（为0则放弃比较）
+        {
+            if(i==0)
+            {
+                for(var j=0;j<mybody.length;j++)
+                {
+                    console.log(mybody[j]);
+                    if(idnum==mybody[j]['inviteCode'])
+                    {
+                        //发送更新消息
+                        return true;
+                        
+                    }
+                }
+            }
+            else if(idnum==data[i].invitecode)
+            {
+                //发送更新消息
+                return true;
+            }
+            
+            //else
+            return false;
+        }
 
-
-    function check(idnum,i)//与服务器数据中的邀请码进行匹配  idnum是邀请码  i是与第几个队伍比较（为0则放弃比较）
-    {
-        // if()
-        return true;
-        //else
-        return false;
-    }
+   
 
     //设置立即加入队伍（利用邀请码）
      function setjoin()
@@ -197,7 +227,8 @@ function init()//初始化，从服务器读取已有队伍信息并显示
 
          change.addEventListener("click",function()
         {
-            var idnum=0;
+            var idnum=document.getElementById("name").value;
+            console.log(idnum);
             // document.getElementById("name").focus();
             /*
             ****和服务器内存有的邀请码进行匹配，查看是否符合条件
@@ -231,5 +262,4 @@ function init()//初始化，从服务器读取已有队伍信息并显示
            // document.getElementById("name").focus();
         })
      }
-    init();
-    setjoin();
+    
