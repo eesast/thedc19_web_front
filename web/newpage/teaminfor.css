@@ -13,13 +13,13 @@
     .titlelogo
     {
         position: absolute;
-        left:5%;
+        left:10%;
         top:5%;
     }
     h1
     {
         position: relative;
-        left:12%;
+        left:17%;
         font-size:50;
         font-family: 'KaiTi';
         color:rgb(4, 71, 4);
@@ -35,7 +35,7 @@
         /* display:none; */
         /* background-color: rgb(180, 216, 198); */
         position: relative;
-        left:5%;
+        left:10%;
         border-radius: 20px;
         box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
     }
@@ -51,7 +51,7 @@
     .c
     {
         position: relative;
-        left:5%;
+        left:10%;
         font-family: 'KaiTi';
         font-size:30;
         
@@ -60,7 +60,7 @@
     .d
     {
         position: relative;
-        left:5%;
+        left:10%;
         border:3px solid rgb(231, 148, 148);
         width:35%;
         font-weight: bold;
