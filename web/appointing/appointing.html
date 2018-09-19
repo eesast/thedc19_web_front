@@ -5,13 +5,14 @@
 	<link rel="stylesheet" type="text/css" href="appointing.css">
 	<link rel="stylesheet" type="text/css" href="alertWindow.css">
 	<link rel="stylesheet" type="text/css" href="side-bar.css">
-<title>appointing</title>
+<title>预约</title>
 </head>
 <body>
 	<div class='picture'>
-		<p align="center"><img src="2.png" width="100" height="100" alt="" /></p>
+		<img src="2.png" id='img'/>
 	</div>
 	<div class="show">
+		<div id='d2' align='center'>
 		<table class='days'>
 			<tr>
 				<td class="day" id='1'>1号</td>
@@ -21,7 +22,6 @@
 				<td class="day" id='5'>5号</td>
 			</tr>
 		</table>
-		<div id='d2'>
 		<table border='1' cellspacing="0"  id='c1' class='time'>
 			<tr>
 				<td class='tal'>场地一</td>
@@ -56,9 +56,10 @@
 			</tr>
 		</table>
 		</div>
-		<div align="center" id='6'>
-			<button class="sure">预约</button>
+		<div align="center">
+				<button class="sure"  id='6'>预约</button>
 		</div>
+	</div>
 	</div>
 	<nav class="main-menu">
         <ul>
@@ -70,14 +71,14 @@
                 </a>
             </li>
             <li>
-                <a href="..\log in&sign up/login.html">
+                <a href="..\log in&sign up/signup.html">
                     <span class="nav-text">
                         &nbsp;&nbsp;&nbsp;&nbsp;注册
                     </span>
                 </a>
             </li>
             <li>
-                <a href="..\log in&sign up/signup.html">
+                <a href="..\log in&sign up/login.html">
                     <span class="nav-text">
                         &nbsp;&nbsp;&nbsp;&nbsp;登录
                     </span>
@@ -92,7 +93,7 @@
             </li>
 
             <li>
-                <a href="..\appointing/appointing.html">
+                <a href="#">
                     <span class="nav-text" id='预约'>
                         &nbsp;&nbsp;&nbsp;&nbsp;预约
                     </span>
@@ -138,5 +139,5 @@
     	<!-- <button class="no" value="取消" style="color:white">取消</button> -->
     </div>
 </html>
-<script type="text/javascript" src="appointing.js"></script>
 <script type="text/javascript" src="alertWindow.js"></script>
+<script type="text/javascript" src="appointing.js"></script>
