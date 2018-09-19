@@ -1,0 +1,104 @@
+
+    html,body
+    {
+        margin:0 auto;
+        background: #cfe7fa;
+        background: -moz-radial-gradient(center, ellipse cover,  #cfe7fa 0%, #86858d 100%);
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cfe7fa), color-stop(100%,#86858d));
+        background: -webkit-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+        background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+        background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+        background: radial-gradient(ellipse at center,  #cfe7fa 0%,#86858d 100%);
+        
+    }
+    #id4
+    {
+        position: relative;
+        left:6%;
+        font-family: "KaiTi";
+        color:rgb(37, 37, 37);
+        text-shadow:3px 3px 3px #616161;
+    }
+    .titlelogo
+    {
+        position:fixed;
+        left:4.5%;
+        top:5%;
+    }
+    h1
+    {
+        font-weight:900;
+        font-size:50;
+        text-shadow: 3px 3px 3px rgb(92, 117, 150);
+        position: relative;
+        left:10%;
+        color:rgb(47, 25, 88);
+        font-family:'KaiTi';
+    }
+    .a
+    {
+        position:relative;
+        left:10%;
+        width:80%;
+        border: 3px solid;
+        height: 60%;
+        border-radius: 20px;
+        background:#bcdb8f; 
+        box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
+      
+    }
+    textarea
+    {
+        width:60%;
+        resize:none;
+        overflow:scroll;
+        background-color: rgb(226, 226, 226);
+    }
+    .b
+    {
+        position: relative;
+        font-family: 'KaiTi';
+        left:20px;
+        font-weight: 900;
+        
+        /* overflow:scroll; */
+    }
+    .d
+    {
+        position: relative;
+        left:20px;
+        border-radius: 20px;
+        overflow:hidden;
+        background-color: rgb(226, 226, 226);
+    }
+    .c
+    {
+        position: relative;
+        left:20px;
+        font-weight: 400;
+        font-family: 'KaiTi';
+        border-radius: 20px;
+        font-size:20;
+        border-color: aqua;
+        background-color: rgb(181, 221, 233);
+        /* background: -moz-linear-gradient(left, #bdc3c7, #2c3e50); Firefox 3.6 - 15 */
+        /* background: -webkit-linear-gradient(left, #bdc3c7, #2c3e50);  */
+        
+    }
+
+    /* 统一尾部 */
+    .ts-footer{
+    position:absolute;
+    left:450px;
+    top:600px;
+    width: 400px; 
+    height: 30px;
+    }
+    .ts-left{
+        float:left;
+        width: 229px; 
+    }
+    .ts-right{
+        float:right;
+    }
+    

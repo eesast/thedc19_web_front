@@ -1,0 +1,86 @@
+    html,body
+    {
+        margin:0;
+        background: #cfe7fa;
+        background: -moz-radial-gradient(center, ellipse cover,  #cfe7fa 0%, #86858d 100%);
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cfe7fa), color-stop(100%,#86858d));
+        background: -webkit-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+        background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+        background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+        background: radial-gradient(ellipse at center,  #cfe7fa 0%,#86858d 100%);
+        
+    }
+    .titlelogo
+    {
+        position: absolute;
+        left:10%;
+        top:5%;
+    }
+    h1
+    {
+        position: relative;
+        left:17%;
+        font-size:50;
+        font-family: 'SimHei';
+        color:rgb(4, 71, 4);
+        text-shadow: 5px 5px 5px gray;
+    }
+    /* 默认显示队长 */
+    .a,.b
+    {
+        /* overflow:scroll; */
+        border:2px solid rgb(194, 152, 233);
+        width:40%;
+        height:100%;
+        /* display:none; */
+        /* background-color: rgb(180, 216, 198); */
+        position: relative;
+        left:10%;
+        border-radius: 20px;
+        box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
+    }
+    .a
+    {
+        display:block;
+        /* display:none; */
+    }
+    .b
+    {
+        display:none;
+    }
+    .c
+    {
+        position: relative;
+        left:10%;
+        font-family: 'SimHei';
+        font-size:30;
+        
+        /* z-index: 50; */
+    }
+    .d
+    {
+        position: relative;
+        left:10%;
+        border:3px solid rgb(231, 148, 148);
+        width:35%;
+        font-weight: bold;
+        border-radius: 30px;
+        box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
+    }
+   
+     /* 统一尾部 */
+    .ts-footer
+    {
+        position: relative;
+        left:450px;
+        top:400px;
+        width: 400px; 
+        height: 30px;
+    }
+    .ts-left{
+        float:left;
+        width: 229px; 
+    }
+    .ts-right{
+        float:right;
+    }

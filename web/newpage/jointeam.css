@@ -1,0 +1,101 @@
+html,body
+{
+    margin:0;
+    padding:0;
+    width:100%;
+    background: #cfe7fa;
+    background: -moz-radial-gradient(center, ellipse cover,  #cfe7fa 0%, #86858d 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cfe7fa), color-stop(100%,#86858d));
+    background: -webkit-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
+    background: radial-gradient(ellipse at center,  #cfe7fa 0%,#86858d 100%);
+    box-sizing: border-box;
+}
+
+    .titlelogo
+    {
+        position: absolute;
+        left:33%;
+        top:11%;
+    }
+    h1
+    {
+        font-weight:900;
+        text-shadow: 3px 3px 3px rgb(115, 142, 177);
+        color:rgb(63, 38, 110);
+        font-family:'SimHei';
+
+        font-size:80px;
+        font-family: 'KaiTi';
+        position: relative;
+        top:60px;
+        margin:0 auto;
+        text-align: center;
+    }
+    .e,#name,.b
+    {
+        margin:0 auto;
+    }
+    .e
+    {
+        font-family: 'SimHei';
+        font-size:30;
+    }
+    .a
+    {
+        position: relative;
+        top:100px;
+        margin:0 auto;
+        text-align:center;
+        width:50%;
+        height:10%;
+        border:3px solid rgb(87, 143, 216);
+        border-radius: 50px;
+        background-color: #cfe7fa;
+        box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
+    }
+    .d
+    {
+        text-align: center;
+        margin:0 auto;
+        position: relative;
+        top:100px;
+        font-size:40px;
+    }
+    .d >h2
+    {
+        font-family:'SimHei';
+        color:rgb(0, 0, 0);
+        text-shadow: 5px 5px 5px rgb(207, 207, 207);
+    }
+    .c
+    {
+        position: relative;
+        top:50px;
+        margin:0 auto;
+        text-align: center;
+        width:50%;
+        /* height:20%; */
+        font-family: 'SimHei';
+        font-weight: 700;
+        /* color:rgb(121, 167, 54); */
+        border:3px solid rgb(109, 109, 160);
+        box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
+    }
+  
+/* 统一尾部 */
+.ts-footer{
+    position:absolute;
+    left:450px;
+    bottom:20px;
+    width: 400px; 
+    height: 30px;
+    }
+    .ts-left{
+        float:left;
+        width: 229px; 
+    }
+    .ts-right{
+        float:right;
+    }
