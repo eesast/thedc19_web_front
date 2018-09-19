@@ -98,4 +98,13 @@
 	c.addEventListener('click',function(){change(c,'c3')});
 	d.addEventListener('click',function(){change(d,'c3')});
 	e.addEventListener('click',function(){change(e,'c3')});
-	button.addEventListener('click',function(){showbox(number)})
+	var str=""
+    for(i=0;i<5;i++)
+    {
+        for(var j=0;j<6;j++)
+        {
+            str+=number[i][j]+', ';
+        }
+    }
+    button.addEventListener('click',function(){showbox(str)})
+	// button.addEventListener('click',function(){showbox(number)})
