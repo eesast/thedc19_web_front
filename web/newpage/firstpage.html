@@ -6,9 +6,10 @@
     </head>
     <body>
             <img class="logo" src="2.png" alt="logo" ></img>
+            <img class="holdlogo" src="holdlogo.png" alt="logo" ></img>
             <img class="something" src="si.png" alt="logo" ></img>
             <img class="somethings" src="wi.png" alt="logo" ></img>
-            <img class="mainlogo" src="ai.jpg" alt="logo" ></img>
+            <img class="mainlogo" src="aai.jpg" alt="logo" ></img>
             <p>第二十届电子设计大赛</p>
             <nav class="main-menu">
                     <ul>
@@ -104,12 +105,14 @@
         position:fixed;
         margin:0 auto;
         display:block;
-        left:45%;
-        width:150px;
-        height:150px;
+        left:44%;
+        width:200px;
+        height:200px;
         z-index: 2;
         text-align: center;
-        top:20%; 
+        top:15%; 
+        opacity:0.75;
+        /* display:none; */
         /* border:3px solid; */
     }
     .something
@@ -149,7 +152,20 @@
         top:60%;
         font-weight: 700;
         font-size:40;
-        color: rgb(78, 75, 75);
+        color: rgb(235, 227, 227);
         font-family: 'Microsoft JhengHei';
+    }
+    .holdlogo
+    {
+        position:fixed;
+        margin:0 auto;
+        display:block;
+        left:80%;
+        width:200px;
+        height:50px;
+        z-index: 4;
+        text-align: center;
+        bottom:5%; 
+        /* opacity:0.75; */
     }
 </style>
