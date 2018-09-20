@@ -136,11 +136,11 @@ check browser
             document.getElementsByClassName("dark")[1].style.display="none";//屏幕半黑
             document.getElementsByClassName("showinfor")[1].style.display="none";//弹框
           
-            if(callback && typeof(callback)==="function")
-            {
-                callback();
+            // if(callback && typeof(callback)==="function")
+            // {
+            //     callback();
                
-            }
+            // }
 
           
         })

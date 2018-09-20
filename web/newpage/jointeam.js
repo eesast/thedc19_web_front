@@ -1,9 +1,10 @@
-var token=''
+var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDMwMDAxLCJleHAiOjE1Mzc0MzM2MDF9.Qta2TRHrjWhfvdbWExMoNq0ZtW0nI8pWbs9EGws0hlc"
+var username='zrtest';//登陆后传入
 var mobody;
+    console.log(token);
 fetch('http://58.87.111.176/api/auth',
 {
     method:'POST',
-    credentials: 'include',
     headers:
     {
         'Content-Type':'application/json'
@@ -12,22 +13,12 @@ fetch('http://58.87.111.176/api/auth',
         'username':'admin',
         'password':'eesast-software'
     })
-    
 }).then(response=>
 {
-    if(response.ok)
-    {
-        return response.json();
-    }
-},error=>
-{
-    alert("no big")
+    if(response.ok)return response.json();
 }).then(res=>
 {
-
-    console.log(res);
-    token=res['token'];
-    console.log(token);
+    var newtoken=res['token'];
     //alert(token);
     fetch('http://58.87.111.176/api/teams',
     {
@@ -35,7 +26,7 @@ fetch('http://58.87.111.176/api/auth',
         headers:
         {
             'Content-Type':'application/json',
-            'x-access-token':token.toString()},
+            'x-access-token':newtoken.toString()},//以管理员权限访问所有队伍信息
     }).then(response=>
     {
         if(response.ok)
@@ -48,17 +39,19 @@ fetch('http://58.87.111.176/api/auth',
     },error=>
     {
         //alert(response);
-        alert("网页错误");
+        //alert("网页错误");
     }).then(res=>
     {
         console.log(res);
-        mybody=res;
+        mybody=res;//获取所有队伍信息，包括邀请码
         console.log(mybody[0]);
         console.log(mybody.length);//获取长度
-        init();
-        setjoin();
+        init();//打印队伍信息
+        setjoin();//设置一键加入
     })
 })
+    
+
 
 
 var data;
@@ -92,11 +85,11 @@ function init()//初始化，从服务器读取已有队伍信息并显示
           
             data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
            // window.alert(data[i].name);
-            line+='队伍ID:'+input.id;
-            line+="       队伍名称:";
+            // line+='队伍ID:'+input.id;
+            line+="队伍名称:";
             line+=input.name;
-            line+='      队长:'+input.captain;
-            for(var j=1;j<=20;j++)line+=("&nbsp");
+            line+='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;队长:'+input.captain;
+            for(var j=1;j<=20;j++)line+=("&nbsp;");
             line+="<button>查看信息</button><button>加入队伍</button>";
             line+='<br></br>';
 
@@ -151,10 +144,13 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         该处更新保存数据
                         待完善
                         */
-                        showbox("加入队伍成功");
+                        showbox("加入队伍成功",function()
+                        {
+                            window.location.href='main.html';
+                        });
                         //返回初始界面
 
-                        //window.location.href='main.html';
+                        
                     }
                     else
                     {
@@ -181,10 +177,22 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             {
                 for(var j=0;j<mybody.length;j++)
                 {
-                    console.log(mybody[j]);
+                    console.log(idnum);
                     if(idnum==mybody[j]['inviteCode'])
                     {
                         //发送更新消息
+                        fetch("http://58.87.111.176/api/teams/"+mybody[j]['id']+'/members?inviteCode='+idnum,
+                        {
+                            method:'POST',
+                            headers:
+                            {
+                                'Content-Type':'application/json',
+                                'x-access-token':token.toString(),
+                            },
+                            
+                        }).then(response=>
+                        {
+                        })
                         return true;
                         
                     }
@@ -193,6 +201,19 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             else if(idnum==data[i].invitecode)
             {
                 //发送更新消息
+                fetch("http://58.87.111.176/api/teams/"+data[i]['id']+'/members?inviteCode='+idnum,
+                {
+                    method:'POST',
+                    headers:
+                    {
+                        'Content-Type':'application/json',
+                        'x-access-token':token.toString(),
+                    },
+                    
+                }).then(response=>
+                {
+                })
+
                 return true;
             }
             
@@ -244,7 +265,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                 */
                 showbox("加入队伍成功",function()
                 {
-                    location=location; 
+                    window.location.href='main.html';
                 });
                 //返回初始界面
 
