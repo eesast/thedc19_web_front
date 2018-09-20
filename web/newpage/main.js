@@ -1,5 +1,5 @@
-var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDA2Mzg1LCJleHAiOjE1Mzc0MDk5ODV9.xEqeZwbO1yqhG_Z2H1Qy7_-0bEm2e1HgP2wds0dbeDU"
-var username='admin';//登陆后传入
+var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDIyNDcyLCJleHAiOjE1Mzc0MjYwNzJ9.6HodNxIa9fst33Yh9_QJ1AlslLUP91rN36njnhNFe30"
+var username='zrtest';//登陆后传入
 var mybody='';
 var inteam=false;//是否在队伍中
     function check()//检查此用户是否已经拥有队伍(创建队伍||加入队伍)
@@ -10,7 +10,7 @@ var inteam=false;//是否在队伍中
             headers:
             {
                 'Content-Type':'application/json',
-                'x-access-token':token.toString()
+                'x-access-token':token
             }
         }).then(response=>
         {
