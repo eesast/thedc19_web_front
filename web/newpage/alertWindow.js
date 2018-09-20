@@ -235,11 +235,11 @@ check browser
             document.getElementsByClassName("dark")[2].style.display="none";//屏幕半黑
             document.getElementsByClassName("showinfor")[2].style.display="none";//弹框
           
-            if(callback && typeof(callback)==="function")
-            {
-                callback();
-                //return false;
-            }
+            // if(callback && typeof(callback)==="function")
+            // {
+            //     callback();
+            //     //return false;
+            // }
             //window.location.href='main.html';//刷新界面
         })
     }

@@ -1,4 +1,4 @@
-var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDMwMDAxLCJleHAiOjE1Mzc0MzM2MDF9.Qta2TRHrjWhfvdbWExMoNq0ZtW0nI8pWbs9EGws0hlc"
+var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDQ5MjM3LCJleHAiOjE1Mzc0NTI4Mzd9.X6j0O1EfQl-7A74KrbxVdBTjNGvByTSEEcjiiKwKCr4"
 var username='zrtest';//登陆后传入
 var mybody='';
 var inteam=false;//是否在队伍中
@@ -47,6 +47,12 @@ var myid=null;
                 }
                 
             }
+
+            //传入一系列东西
+            setCookie("inteam",inteam);//是否在队伍中
+            setCookie("iscaptain",iscaptain);//是否为队长
+            setCookie("teamid",teamid);//队伍的id是多少
+            setCookie("myid",myid);
             init();
         })
        
@@ -238,5 +244,19 @@ var myid=null;
 
 
 
-
+    function setCookie(cname,cvalue){
+        // var d = new Date();
+        // d.setTime(d.getTime()+(exdays*24*60*60*1000));
+        // var expires = "expires="+d.toGMTString();
+        document.cookie = cname+"="+cvalue;
+    }
+    function getCookie(cname){
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++) {
+            var c = ca[i].trim();
+            if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+        }
+        return "";
+    }
     

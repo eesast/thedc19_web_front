@@ -1,33 +1,12 @@
-var mybody;
-fetch('http://58.87.111.176/api/auth',
-{
-    method:'POST',
-    credentials: 'include',
-    headers:
-    {
-        'Content-Type':'application/json'
-    },
-    body:JSON.stringify({
-        'username':'admin',
-        'password':'eesast-software'
-    })
-    
-}).then(response=>
-{
-    if(response.ok)
-    {
-        return response.json();
-    }
-},error=>
-{
-    alert("no big")
-}).then(res=>
-{
-
-    console.log(res);
-    token=res['token'];
+var mybody;//队伍集合
+var myusers;//使用者集合
+var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDQ5MjM3LCJleHAiOjE1Mzc0NTI4Mzd9.X6j0O1EfQl-7A74KrbxVdBTjNGvByTSEEcjiiKwKCr4"
+var username='zrtest';//登陆后传入
+var iscaptain=getCookie("iscaptain");
+var teamid=getCookie("teamid");//获得teamid，然后用mybody[]显示
+var myid=getCookie("myid");
     console.log(token);
-
+    console.log(iscaptain);
     fetch('http://58.87.111.176/api/teams',
     {
         method:'GET',
@@ -50,302 +29,546 @@ fetch('http://58.87.111.176/api/auth',
         alert("网页错误");
     }).then(res=>
     {
-                     mybody=res;
-
-                    function check()
-                    {
-                        /*
-                        ********************待完善
-                        修改team信息
-                        */
-                        //如果是队长
-                        return true;
-                        return false;
-                    }
+        mybody=res;
+        fetch('http://58.87.111.176/api/users',
+        {
+            method:'GET',
+            headers:
+            {
+                'Content-Type':'application/json',
+                'x-access-token':token.toString()},
+        }).then(response=>
+        {
+            if(response.ok)
+            {
+                return response.json();
+            }
+            else{
+                console.log(response.status);
+            }
                     
-                    var bas=0;//bas为button偏移量
-                    var count=0;//记录队伍总数
-                    //****************************************该函数同jointeam.html，修改其中一个后基本可以直接使用
-                    function init()//初始化，从服务器读取已有队伍信息并显示
-                    {
-                        
-
-                        var input;
-                        var change=document.getElementsByTagName("div")[4];
-                        var line="<br><br><hr>";
-                        var data=new Array(mybody.length);
-                        
-                        function team(name,description,id,captain,members,invitecode)
-                        {
-                            this.name=name;
-                            this.description=description;
-                            this.id=id;
-                            this.captain=captain;
-                            this.members=members;
-                            this.invitecode=invitecode;
-                        }
-                        
-                        
-                        for(var i=1;i<=mybody.length;i++)
-                        {
-                            /*
-                            *****************
-                            修改input从服务器读取已经有的队伍信息
-                            *****************
-                            */
-                            input={name:" "+mybody[i-1]['name'],description:mybody[i-1]['description'],id:mybody[i-1]['id'],captain:mybody[i-1]['captain'],members:mybody[i-1]['members'].length,invitecode:mybody[i-1]['inviteCode']};//****************************
-            
-          
-                            data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;"+'队伍ID:'+input.id+"&nbsp;&nbsp;&nbsp;&nbsp;队伍名称:";
-                            line+=input.name;
-                            line+='&nbsp;&nbsp;&nbsp;&nbsp;队长:'+input.captain;
-                            for(var j=1;j<=20;j++)line+=("&nbsp");
-                            line+="<button>查看信息</button>";
-                            line+='<br><hr>';
-
-                            count++;
-                        }
-                        line+="<br><br>"
-                        
-                    // document.getElementsByClassName("ts-footer")[0].style.top=(400+count*70)+'px';
-                        
-                        
-                        change.innerHTML=line;
-                    
-                        //设置查看各项队伍信息
-                        
-                        for(var i=0;i<count;i++)
-                        {
-                            
-                            setclick(i);//bas为偏移量
-                        }
-
-                        function setclick(i)
-                        {
-                            var change=document.getElementsByTagName("button")[i+bas];
-                            //window.alert(i);
-                            change.style.color='red';
-                            change.style.float='right';
-                            change.addEventListener("click",()=>
-                            {
-                                showbox('队伍名称:'+data[i+1].name+'&nbsp;&nbsp;'+'队伍人数:'+data[i+1].members+'&nbsp;&nbsp;队伍简介:'+data[i+1].description);
-                            })
-                        }
-                    }
-                    
-
-
-
-                /*
-                *********************************此段开始为显示队伍信息
-                */
-                    //构造一个对象
-                    function teaminfor(name,description,leader,cnt,member)
-                    {
-                        this.name=name;
-                        this.description=description;
-                        this.leader=leader;
-                        this.cnt=cnt;
-                        this.member=member;
-                    }
-                    //var member=["gank","tank"];
-                    var team={name:"non",description:"现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;现在还没有什么简介;",leader:"王",cnt:4,member:["gank","tank","txt"]};
-
-
-
-
-                    function showteaminfor()
-                    {
-                        if(check()===true)//如果是队长
-                        {
-                            bas=team.cnt;//偏移量
-
-
-                            var change=document.getElementsByTagName("div")[0];//队长中向class a加入元素
-                            var line="";
-                            
-
-                            line+="<h3>&nbsp;&nbsp;&nbsp;&nbsp;队名";
-                            for(var i=1;i<=25;i++)line+="&nbsp";
-                            line+=team.name+'<br><hr>';
-                            //以上为第1行
-                            
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;简介<br><hr>";
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;<div class='description'>"+team.description+'</div><br><hr>';
-                            //document.getElementsByClassName("description")[0].style.overflow="scroll";
-                            //以上为第2行
-
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
-                            for(var i=1;i<=25;i++)line+="&nbsp";
-                            line+=team.leader+'<br><hr>';
-                            //以上为第3行
-
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;成员数量";
-                            for(var i=1;i<=20;i++)line+="&nbsp";
-                            line+=team.cnt+'<br><hr>';
-                            //以上为第4行
-
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;成员<br><hr></h3>";
-                            for(var i=0;i<team.cnt-1;i++)
-                            {
-                                line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+team.member[i]+"</p>";
-                                //alert(team.member[i].length);
-                                //for(var j=0;j<20-team.member[i].length;j++)line+='&nbsp';
-                                line+="<button>踢出队伍</button><br><hr>";
-                            }
-                            //以上为第5行
-
-
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;<button>解散队伍</button>";
-                            //以上为最终行
-                            
-                            change.innerHTML=line;
-                            
-                            change=document.getElementsByClassName("description")[0];
-                            change.style.overflow="scroll";
-                            change.style.height="20%";
-                            
-                            for(var i=0;i<team.cnt-1;i++)
-                            {
-                                var fbt=document.getElementsByTagName("button")[i];
-                                var fp=document.getElementsByTagName("p")[i];
-                                //fbt.style.position="absolute";
-                                fp.style.display="inline";
-                                fbt.style.display="inline";
-                                fbt.style.float='right';
-                                fbt.addEventListener("click",function()
-                                {
-                                    //踢出队伍
-                                    
-                                    confirmbox("您确定要踢出该队员么?",function()
-                                    {
-                                        
-                                        if(clearp===true)
-                                        {
-                                            /*
-                                            ***********************
-                                            具体操作待完善
-                                            ***********************
-                                            删除，从数据库的队伍信息中删除该队员
-                                            */
-                                            showbox("该队员已被踢出队伍!");
-                                            //然后刷新网页
-                                            //window.location.href="teaminfor.html";
-                                        }
-                                        else
-                                        {
-                                            showbox("取消操作!");
-                                        }
-                                    });
-                                    //alert(1);
-                                    
-                                })
-                            }
-                        var st= document.getElementsByTagName("button")[team.cnt-1];
-                        st.addEventListener("click",function()
-                        {
-                            //解散队伍
-                            inputbox("您确认要解散该队伍么?确认请输入:Clear",function()
-                            {
-                                    var cleart=document.getElementsByClassName("setinput")[0].value;
-                                    if(cleart==="Clear")
-                                    {
-                                        //解散该队伍，然后回到首页
-                                        /*
-                                        *****************
-                                        具体操作待完善
-                                        *****************
-                                        */
-                                        showbox("队伍已解散!");
-                                        //window.location.href="main.html";//回到主页面
-                                    }
-                                    else
-                                    {
-                                        showbox("无效的操作!");
-                                    }
-                            });
-                            
-                        })  
-                        }
-                        else //如果是队员
-                        {
-                            bas=1;//设置偏移量为1
-
-
-                            var change=document.getElementsByTagName("div")[0];
-                            change.style.display="none";//隐藏class a
-                            change=document.getElementsByTagName("div")[1];//队员中向class b加入元素
-                            change.style.display="block";//启动class b
-                            var line="";
-                            
-
-                            line+="<h3>&nbsp;&nbsp;&nbsp;&nbsp;队名";
-                            for(var i=1;i<=25;i++)line+="&nbsp";
-                            line+=team.name+'<br><hr>';
-                            //以上为第1行
-                            
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;简介<br><hr>";
-                            line+='<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;'+team.description+'</div><br><hr>';
-                            //以上为第2行
-
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
-                            for(var i=1;i<=25;i++)line+="&nbsp";
-                            line+=team.leader+'<br><hr>';
-                            //以上为第3行
-
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;成员数量";
-                            for(var i=1;i<=20;i++)line+="&nbsp";
-                            line+=team.cnt+'<br><hr>';
-                            //以上为第4行
-
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;成员<br><hr></h3>";
-                            for(var i=0;i<team.cnt-1;i++)
-                            {
-                                line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+team.member[i]+"<hr></p>";
-                                
-                            }
-                            //以上为第5行
-
-
-                            line+="&nbsp;&nbsp;&nbsp;&nbsp;<button>退出队伍</button>";
-                            //以上为最终行
-                            
-                            change.innerHTML=line;
-                            change=document.getElementsByClassName("description")[0];
-                            change.style.overflow="scroll";
-                            change.style.height="20%";
-                            
-                            
-                            var fbt=document.getElementsByTagName("button")[0];
-                            fbt.addEventListener("click",function()
-                            {
-                                inputbox("您确认要退出队伍?确认请输入:Exit",function()
-                                {
-                                    var ex=document.getElementsByClassName("setinput")[0].value;
-                                    if(ex==="Exit")
-                                    {
-                                        /*
-                                        ************
-                                        删除队伍信息，待完善
-                                        ************
-                                        */
-                                        showbox("成功退出队伍!");
-                                        //window.location.href="main.html";//回到主页面
-                                    }
-                                    else
-                                    {
-                                        showbox("操作失败!");
-                                    }
-                                });
-                                
-                            })
-                        }
-                    }
-                    showteaminfor();
-
-                    init();
+       
+        }).then(res=>
+        {
+            myusers=res;
+            showteaminfor();
+            init();
+        })
     }) 
 
-})
+
+// function check()
+// {
+//     //如果是队长
+//     if(iscaptain==true)return true;
+//     else return false;
+// }
+                    
+var bas=0;//bas为button偏移量
+var count=0;//记录队伍总数
+//****************************************该函数同jointeam.html，修改其中一个后基本可以直接使用
+function init()//初始化，从服务器读取已有队伍信息并显示
+{
     
+
+    var input;
+    var change=document.getElementsByTagName("div")[4];
+    var line="<br><br><hr>";
+    var data=new Array(mybody.length);
+    
+    function team(name,description,id,captain,members,invitecode)
+    {
+        this.name=name;
+        this.description=description;
+        this.id=id;
+        this.captain=captain;
+        this.members=members;
+        this.invitecode=invitecode;
+    }
+    
+    
+    for(var i=1;i<=mybody.length;i++)
+    {
+        /*
+        *****************
+        修改input从服务器读取已经有的队伍信息
+        *****************
+        */
+        input={name:" "+mybody[i-1]['name'],description:mybody[i-1]['description'],id:mybody[i-1]['id'],captain:mybody[i-1]['captain'],members:mybody[i-1]['members'].length,invitecode:mybody[i-1]['inviteCode']};//****************************
+
+
+        data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;队伍名称:";
+        line+=input.name;
+        for(var j=0;j<myusers.length;j++)
+        {
+            if(myusers[j]['id']==input.captain)
+            {
+                line+='&nbsp;&nbsp;&nbsp;&nbsp;队长:'+myusers[j]['username'];
+                break;
+            }
+            
+        }
+        for(var j=1;j<=20;j++)line+=("&nbsp");
+        line+="<button>查看信息</button>";
+        line+='<br><hr>';
+
+        count++;
+    }
+    line+="<br><br>"
+    
+// document.getElementsByClassName("ts-footer")[0].style.top=(400+count*70)+'px';
+    
+    
+    change.innerHTML=line;
+
+    //设置查看各项队伍信息
+    
+    for(var i=0;i<count;i++)
+    {
+        
+        setclick(i);//bas为偏移量
+    }
+
+    function setclick(i)
+    {
+        var change=document.getElementsByTagName("button")[i+bas];
+        //window.alert(i);
+        change.style.color='red';
+        change.style.float='right';
+        change.addEventListener("click",()=>
+        {
+            showbox('队伍名称:'+data[i+1].name+'&nbsp;&nbsp;'+'队伍人数:'+data[i+1].members+'&nbsp;&nbsp;队伍简介:'+data[i+1].description);
+        })
+    }
+}
+
+
+
+
+/*
+*********************************此段开始为显示队伍信息
+*/
+//构造一个对象
+function teaminfor(name,description,leader,cnt,member)
+{
+    this.name=name;
+    this.description=description;
+    this.leader=leader;
+    this.cnt=cnt;
+    this.member=member;
+}
+//var member=["gank","tank"];
+
+
+var team;
+
+function showteaminfor()
+{
+    console.log(teamid);
+    console.log(myusers);
+    
+    for(var i=0;i<mybody.length;i++)
+    {
+        if(mybody[i]['id']==teamid)
+        {
+            team={name:mybody[i]['name'],description:mybody[i]['description'],leader:mybody[i]['captain'],cnt:mybody[i]['members'].length,member:mybody[i]['members']};
+            break;
+        }
+    }
+    console.log(iscaptain);
+    console.log(team.member);
+    if(iscaptain=='true')//如果是队长
+    {
+        bas=team.cnt;//偏移量
+        
+
+        var change=document.getElementsByTagName("div")[0];//队长中向class a加入元素
+        var line="";
+        
+
+        line+="<h3>&nbsp;&nbsp;&nbsp;&nbsp;队名";
+        for(var i=1;i<=25;i++)line+="&nbsp";
+        line+=team.name+'<br><hr>';
+        //以上为第1行
+        
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;简介<br><hr>";
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;<div class='description'>"+team.description+'</div><br><hr>';
+        //document.getElementsByClassName("description")[0].style.overflow="scroll";
+        //以上为第2行
+
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
+        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=0;i<myusers.length;i++)
+        {
+            console.log(team.leader);
+            if(myusers[i]['id']==team.leader)
+            {
+                line+=myusers[i]['username']+'<br><hr>';
+                console.log(myusers[i]['username']);
+                break;
+            }
+            
+        }
+        //以上为第3行
+
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;成员数量";
+        for(var i=1;i<=20;i++)line+="&nbsp";
+        line+=team.cnt+'<br><hr>';
+        //以上为第4行
+
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;成员<br><hr></h3>";
+        for(var i=0;i<team.cnt;i++)
+        {
+            if(team.member[i]==team.leader)continue;
+            console.log(team.member[i]);
+            for(var j=0;j<myusers.length;j++)
+            {
+                if(myusers[j]['id']==team.member[i])
+                {
+                    line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"</p>";
+                    break;
+                }
+               
+            }
+            //alert(team.member[i].length);
+            //for(var j=0;j<20-team.member[i].length;j++)line+='&nbsp';
+            line+="<button>踢出队伍</button><br><hr>";
+        }
+        //以上为第5行
+
+
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;<button>解散队伍</button>";
+        //以上为最终行
+        
+        change.innerHTML=line;
+        
+        change=document.getElementsByClassName("description")[0];
+        change.style.overflow="scroll";
+        change.style.height="20%";
+        
+        for(var i=0;i<team.cnt-1;i++)//第一个队伍人员应该是队长
+        {
+            //if(team.member[i]==team.leader)continue;
+            var fbt=document.getElementsByTagName("button")[i];
+            var fp=document.getElementsByTagName("p")[i];
+            //fbt.style.position="absolute";
+            fp.style.display="inline";
+            fbt.style.display="inline";
+            fbt.style.float='right';
+            setdropsb(i);
+            
+        }
+    var st= document.getElementsByTagName("button")[team.cnt-1];
+    st.addEventListener("click",function()
+    {
+        //解散队伍
+        inputbox("您确认要解散该队伍么?确认请输入:Clear",function()
+        {
+                var cleart=document.getElementsByClassName("setinput")[0].value;
+                if(cleart==="Clear")
+                {
+                    //解散该队伍，然后回到首页
+                    /*
+                    *****************
+                    具体操作待完善
+                    *****************
+                    */
+                    dissolve(function()
+                    {
+                        showbox("成功解散队伍!",function()
+                        {
+                            //点击后刷新页面
+                            //location.reload(true);   
+                            window.location.href="main.html";//回到主页面
+                        });
+                    });
+                    //
+                }
+                else
+                {
+                    showbox("无效的操作!");
+                }
+        });
+        
+    })  
+    }
+    else //如果是队员
+    {
+        bas=1;//设置偏移量为1
+
+
+        var change=document.getElementsByTagName("div")[0];
+        change.style.display="none";//隐藏class a
+        change=document.getElementsByTagName("div")[1];//队员中向class b加入元素
+        change.style.display="block";//启动class b
+        var line="";
+        
+
+        line+="<h3>&nbsp;&nbsp;&nbsp;&nbsp;队名";
+        for(var i=1;i<=25;i++)line+="&nbsp";
+        line+=team.name+'<br><hr>';
+        //以上为第1行
+        
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;简介<br><hr>";
+        line+='<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;'+team.description+'</div><br><hr>';
+        //以上为第2行
+
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
+        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=0;i<myusers.length;i++)
+        {
+            console.log(team.leader);
+            if(myusers[i]['id']==team.leader)
+            {
+                line+=myusers[i]['username']+'<br><hr>';
+                console.log(myusers[i]['username']);
+                break;
+            }
+            
+        }
+        // line+=team.leader+'<br><hr>';
+        //以上为第3行
+
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;成员数量";
+        for(var i=1;i<=20;i++)line+="&nbsp";
+        line+=team.cnt+'<br><hr>';
+        //以上为第4行
+
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;成员<br><hr></h3>";
+        for(var i=0;i<team.cnt;i++)
+        {
+            if(team.member[i]==team.leader)continue;
+            for(var j=0;j<myusers.length;j++)
+            {
+                if(myusers[j]['id']==team.member[i])
+                {
+                    line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"<hr></p>";
+                    break;
+                }
+               
+            }
+            // line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+team.member[i]+"<hr></p>";
+            
+        }
+        //以上为第5行
+
+
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;<button>退出队伍</button>";
+        //以上为最终行
+        
+        change.innerHTML=line;
+        change=document.getElementsByClassName("description")[0];
+        change.style.overflow="scroll";
+        change.style.height="20%";
+        
+        
+        var fbt=document.getElementsByTagName("button")[0];
+        fbt.addEventListener("click",function()
+        {
+            inputbox("您确认要退出队伍?确认请输入:Exit",function()
+            {
+                var ex=document.getElementsByClassName("setinput")[0].value;
+                if(ex==="Exit")
+                {
+                    /*
+                    ************
+                    删除队伍信息，待完善
+                    ************
+                    */
+                   letitgo(function()
+                    {
+                        showbox("成功退出队伍!",function()
+                        {
+                            //点击后刷新页面
+                            window.location.href="main.html";//回到主页面
+                            //location.reload(true);   
+                        });
+                    });
+                    //showbox("成功退出队伍!");
+                    
+                }
+                else
+                {
+                    showbox("操作失败!");
+                }
+            });
+            
+        })
+    }
+}
+function setdropsb(i)
+{
+    var fbt=document.getElementsByTagName("button")[i];
+    fbt.addEventListener("click",function()
+            {
+                //踢出队伍
+                
+                confirmbox("您确定要踢出该队员么?",function()
+                {
+                    
+                    if(clearp===true)
+                    {
+                        /*
+                        ***********************
+                        具体操作待完善
+                        ***********************
+                        删除，从数据库的队伍信息中删除该队员
+                        */
+                       console.log(team.member[i+1]);
+                        dropsb(team.member[i+1],function()
+                        {
+                            showbox("该队员已被踢出队伍!",function()
+                            {
+                                //点击后刷新页面
+                                location.reload(true);   
+                
+                            });
+                        });//踢掉第i个人
+                        //showbox("该队员已被踢出队伍!");
+                        //然后刷新网页
+                        //window.location.href="teaminfor.html";
+                    }
+                    else
+                    {
+                        showbox("取消操作!");
+                    }
+                });
+                //alert(1);
+                
+            })
+}
+
+function dissolve(callback)
+{
+    fetch("http://58.87.111.176/api/auth",
+    {
+        method:'POST',
+        headers:
+        {
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(
+            {
+                'username':'admin',
+                'password':'eesast-software'
+            }
+        )
+    }).then(response=>
+    {
+        return response.json();
+    }).then(res=>
+    {
+        var newtoken=res['token'];
+        //得到新的token，删除id的队伍 teamid
+        console.log(teamid);
+        fetch("http://58.87.111.176/api/teams/"+teamid,
+        {
+            method:'DELETE',
+            headers:
+            {
+                'Content-Type':'application/json',
+                'x-access-token':newtoken.toString()
+            }
+        }).then(response=>
+        {
+            if(response.ok===true)
+            {
+                if(callback&&typeof(callback)==="function")
+                {
+                    callback();
+                }
+            }
+        },error=>
+        {
+            showbox("操作失败，请稍后再试!");
+        })
+    })
+
+    
+}
+
+
+function letitgo(callback)
+{
+    
+        console.log(teamid);
+        fetch("http://58.87.111.176/api/teams/"+teamid+"/members/"+myid,
+        {
+            method:'DELETE',
+            headers:
+            {
+                'Content-Type':'application/json',
+                'x-access-token':token.toString()
+            }
+        }).then(response=>
+        {
+            if(response.ok===true)
+            {
+                if(callback&&typeof(callback)==="function")
+                {
+                    callback();
+                }
+            }
+        },error=>
+        {
+            showbox("操作失败，请稍后再试!");
+        })
+
+    
+    // if(callback&&typeof(callback)==="function")
+    // {
+    //     callback();
+    // }
+}
+
+
+function dropsb(dropsbid,callback)
+{
+    
+        console.log(dropsbid);
+        fetch("http://58.87.111.176/api/teams/"+teamid+"/members/"+dropsbid,
+        {
+            method:'DELETE',
+            headers:
+            {
+                'Content-Type':'application/json',
+                'x-access-token':token.toString()
+            }
+        }).then(response=>
+        {
+            if(response.ok===true)
+            {
+                if(callback&&typeof(callback)==="function")
+                {
+                    callback();
+                }
+            }
+        },error=>
+        {
+            showbox("操作失败，请稍后再试!");
+        })
+
+    
+    // if(callback&&typeof(callback)==="function")
+    // {
+    //     callback();
+    // }
+}
+
+
+function setCookie(cname,cvalue){
+    // var d = new Date();
+    // d.setTime(d.getTime()+(exdays*24*60*60*1000));
+    // var expires = "expires="+d.toGMTString();
+    document.cookie = cname+"="+cvalue;
+}
+function getCookie(cname){
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+    }
+    return "";
+}
