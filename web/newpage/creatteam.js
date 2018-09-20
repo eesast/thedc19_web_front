@@ -1,4 +1,4 @@
-var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDI2MTgxLCJleHAiOjE1Mzc0Mjk3ODF9.11iqS0rHlcBoEWJSp8WX0Tc9bzK-ju8yFLXiwQERpJE"
+var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDMwMDAxLCJleHAiOjE1Mzc0MzM2MDF9.Qta2TRHrjWhfvdbWExMoNq0ZtW0nI8pWbs9EGws0hlc"
 var username='zrtest';//登陆后传入
 var mybody;
 var getinfor,getname;
