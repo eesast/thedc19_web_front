@@ -9,76 +9,90 @@
 </head>
 <body>
 	<div class='picture'>
-		<img src="2.png" id='img'/>
+		<img src="logo1.png" id='img'/>
+		<img src="logo2.png" id='img2'/>
 	</div>
 	<div class="show">
 		<div id='d2' align='center'>
-		<table class='days'>
-			<tr>
-				<td class="day" id='1'>1号</td>
-				<td class="day" id='2'>2号</td>
-				<td class="day" id='3'>3号</td>
-				<td class="day" id='4'>4号</td>
-				<td class="day" id='5'>5号</td>
-			</tr>
-		</table>
-		<table border='1' cellspacing="0"  id='c1' class='time'>
-			<tr>
-				<td class='tal'>场地一</td>
-				<td class='tal' id='00'>9:00</td>
-				<td class='tal' id='01'>10:00</td>
-				<td class='tal' id='02'>11:00</td>
-				<td class='tal' id='03'>12:00</td>
-				<td class='tal' id='04'>13:00</td>
-				<td class='tal' id='05'>14:00</td>
-			</tr>
-		</table>
-		<table border='1' cellspacing="0"  id='c2' class='time'>
-			<tr>
-				<td class='tal'>场地二</td>
-				<td class='tal' id='10'>9:00</td>
-				<td class='tal' id='11'>10:00</td>
-				<td class='tal' id='12'>11:00</td>
-				<td class='tal' id='13'>12:00</td>
-				<td class='tal' id='14'>13:00</td>
-				<td class='tal' id='15'>14:00</td>
-			</tr>
-		</table>
-		<table border='1' cellspacing="0"  id='c3' class='time'>
-			<tr>
-				<td class='tal'>场地三</td>
-				<td class='tal' id='20'>9:00</td>
-				<td class='tal' id='21'>10:00</td>
-				<td class='tal' id='22'>11:00</td>
-				<td class='tal' id='23'>12:00</td>
-				<td class='tal' id='24'>13:00</td>
-				<td class='tal' id='25'>14:00</td>
-			</tr>
-		</table>
+			<table class='days'>
+				<tr>
+					<td class="day" id='1'>1号</td>
+					<td class="day" id='2'>2号</td>
+					<td class="day" id='3'>3号</td>
+					<td class="day" id='4'>4号</td>
+					<td class="day" id='5'>5号</td>
+				</tr>
+			</table>
+			<div>
+				<table border='1' cellspacing="0"  id='c1' class='time'>
+					<tr>
+						<td class='tal' id='place1'>场地一</td>
+						<td class='tal' id='00'>09:00</td>
+						<td class='tal' id='01'>10:00</td>
+						<td class='tal' id='02'>11:00</td>
+						<td class='tal' id='03'>12:00</td>
+						<td class='tal' id='04'>13:00</td>
+						<td class='tal' id='05'>14:00</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<table border='1' cellspacing="0"  id='c2' class='time'>
+					<tr>
+						<td class='tal'>场地二</td>
+						<td class='tal' id='10'>09:00</td>
+						<td class='tal' id='11'>10:00</td>
+						<td class='tal' id='12'>11:00</td>
+						<td class='tal' id='13'>12:00</td>
+						<td class='tal' id='14'>13:00</td>
+						<td class='tal' id='15'>14:00</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<table border='1' cellspacing="0"  id='c3' class='time'>
+					<tr>
+						<td class='tal'>场地三</td>
+						<td class='tal' id='20'>09:00</td>
+						<td class='tal' id='21'>10:00</td>
+						<td class='tal' id='22'>11:00</td>
+						<td class='tal' id='23'>12:00</td>
+						<td class='tal' id='24'>13:00</td>
+						<td class='tal' id='25'>14:00</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div  id='d3' align='center'>
+			输入您的预约时间：<input id='input1'></input>:<input id='input2'></input>
+			~<input id='input3'></input>:<input id='input4'></input>
 		</div>
 		<div align="center">
-				<button class="sure"  id='6'>预约</button>
+				<button class='sure'  id='6'>预约</button>
+				<button class='ture' id='disappointing'>取消预约</button>
 		</div>
 	</div>
 	</div>
 	<nav class="main-menu">
         <ul>
             <li>
-                <a href="../newpage/firstpage.html">
+                <a href="#">
                     <span class="nav-text">
                         &nbsp;&nbsp;&nbsp;&nbsp;首页
                     </span>
                 </a>
             </li>
             <li>
-                <a href="..\log in&sign up/signup.html">
+                <a href="..\log in&sign up/login.html">
                     <span class="nav-text">
                         &nbsp;&nbsp;&nbsp;&nbsp;注册
                     </span>
                 </a>
             </li>
             <li>
-                <a href="..\log in&sign up/login.html">
+                <a href="..\log in&sign up/signup.html">
                     <span class="nav-text">
                         &nbsp;&nbsp;&nbsp;&nbsp;登录
                     </span>
@@ -136,7 +150,7 @@
     	<div class="context"><br>&nbsp;&nbsp;&nbsp;&nbsp;这个用于弹出消息</div> 
     	<!-- 下面是确认建和取消键    -->
     	<button class="ok" value="确定" style="color:white">确认</button> 
-    	<!-- <button class="no" value="取消" style="color:white">取消</button> -->
+    	<button class="no" value="取消" style="color:white">取消</button>
     </div>
 </html>
 <script type="text/javascript" src="alertWindow.js"></script>
