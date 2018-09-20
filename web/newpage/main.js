@@ -1,4 +1,4 @@
-var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDIyNDcyLCJleHAiOjE1Mzc0MjYwNzJ9.6HodNxIa9fst33Yh9_QJ1AlslLUP91rN36njnhNFe30"
+var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDI2MTgxLCJleHAiOjE1Mzc0Mjk3ODF9.11iqS0rHlcBoEWJSp8WX0Tc9bzK-ju8yFLXiwQERpJE"
 var username='zrtest';//登陆后传入
 var mybody='';
 var inteam=false;//是否在队伍中
