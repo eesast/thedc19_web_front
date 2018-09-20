@@ -1,16 +1,58 @@
-
+var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDA2Mzg1LCJleHAiOjE1Mzc0MDk5ODV9.xEqeZwbO1yqhG_Z2H1Qy7_-0bEm2e1HgP2wds0dbeDU"
+var username='admin';//登陆后传入
+var mybody='';
+var inteam=false;//是否在队伍中
     function check()//检查此用户是否已经拥有队伍(创建队伍||加入队伍)
     {
+        fetch("http://58.87.111.176/api/users",
+        {
+            method:'GET',
+            headers:
+            {
+                'Content-Type':'application/json',
+                'x-access-token':token.toString()
+            }
+        }).then(response=>
+        {
+            if(response.ok)
+            {
+                return response.json();
+            }
+        }).then(res=>
+        {
+            mybody=res;
+            console.log(mybody);
+            for(var i=0;i<mybody.length;i++)
+            {
+                if(mybody[i]['username']==username)
+                {
+                    console.log(mybody[i]['username']);
+                    if(mybody[i]['team']==null)
+                    {
+                        inteam=false;
+                    }
+                    else inteam=true;
+                    console.log(inteam);
+                    break;
+                }
+                
+            }
+            init();
+        })
+       
+
         /*
         *******************待完善
         ************************
-        */
-         return false;
-        return true;
+        // */
+        //  return false;
+        // return true;
     }
+    check();
     function init()
     {
-        if(check()===false)//检查已经登陆的账号是否在数据库中（是否已经有队伍）     如果没有队伍，显示创建队伍或加入队伍
+        //check();
+        if(inteam===false)//检查已经登陆的账号是否在数据库中（是否已经有队伍）     如果没有队伍，显示创建队伍或加入队伍
         {
             var bt1=document.getElementsByTagName("button")[0];
             var bt2=document.getElementsByTagName("button")[1];
@@ -68,7 +110,7 @@
             });
         }
     }
-    init();
+   
     
 
 
