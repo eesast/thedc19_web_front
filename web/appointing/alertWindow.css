@@ -68,7 +68,6 @@
     .ok,.no
     {
         display:inline;
-        background-color: rgb(131, 131, 131);
         width:100px;
         height:40px;
         position: fixed;
@@ -78,11 +77,11 @@
     .ok
     {
         background-color: rgb(136, 199, 250);
-        
         left:39%;
     }
     .no
     {
+        background-color: rgb(136, 199, 250);
         left:55%;
     }
     .dark
