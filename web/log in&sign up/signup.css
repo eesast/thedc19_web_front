@@ -52,5 +52,18 @@ body,html
     height: 50px;
     z-index: 4;
     text-align: center;
-    top: 86%;
+    top: 88%;
+}
+.eelogo
+{
+    position: absolute;
+    margin:0 auto;
+    display:block;
+    left:66%;
+    width:200px;
+    height:70px;
+    z-index: 4;
+    text-align: center;
+    top: 86.5%;
+    /* opacity:0.75; */
 }
