@@ -52,5 +52,13 @@ function name_checking(){
         //获取x-access-token保存至本地
         var usertoken=res['token'];
         showbox('您已登录成功！')
+        setCookie("username",userinfo.name)
+        setCookie("token",usertoken)
     })
+}
+function setCookie(cname,cvalue){
+    // var d = new Date();
+    // d.setTime(d.getTime()+(exdays*24*60*60*1000));
+    // var expires = "expires="+d.toGMTString();
+    document.cookie = cname+"="+cvalue;
 }
