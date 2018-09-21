@@ -124,12 +124,13 @@
     height: 20px;
     cursor: pointer;
   }
-  .ts-footer{
-    position:absolute;
-    left:450px;
-    top:500px;
-    width: 400px; 
-    height: 30px;
+    /* 统一尾部 */
+    .ts-footer{
+      position:absolute;
+      left:36%;
+      bottom:8%;
+      width: 400px; 
+      height: 30px;
   }
   .ts-left{
       float:left;
@@ -138,6 +139,7 @@
   .ts-right{
       float:right;
   }
+
   
   html{ height: 100%; margin: 0; padding: 0;font-family: 'Roboto', sans-serif;}
   body{ 

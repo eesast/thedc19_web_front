@@ -6,11 +6,11 @@
     </head>
     <body>
             <img class="logo" src="2.png" alt="logo" ></img>
-            <img class="holdlogo" src="holdlogo.png" alt="logo" ></img>
+            <a href="http://www.leadgentech.ai/"><img class="holdlogo" src="holdlogo.png" alt="logo" ></a>
             <img class="something" src="si.png" alt="logo" ></img>
-            <img class="somethings" src="wi.png" alt="logo" ></img>
+            <!-- <img class="somethings" src="wi.png" alt="logo" ></img> -->
             <img class="mainlogo" src="aai.jpg" alt="logo" ></img>
-            <p>第二十届电子设计大赛</p>
+            <p class='p'>第二十届电子设计大赛</p>
             <nav class="main-menu">
                     <ul>
                         <li>
@@ -50,21 +50,35 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="../newpage/download.html">
                                 <span class="nav-text">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;更多
+                                    &nbsp;&nbsp;&nbsp;&nbsp;文件
                                 </span>
                             </a>
+                            <hr>
                         </li>
                         <li>
-                            <a href="#">
-                                <span class="nav-text">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;......
-                                </span>
-                            </a>
+				
                         </li>
                     </ul>
                 </nav>
+
+
+                <div class="ts-footer">
+                    <div class="col-md-12">
+                        <p class="ts-left">
+                            <small>© 2018
+                            <a href="https://www.eesast.com">EESAST</a> All Rights Reserved.</small>
+                        </p>
+                        <p class="ts-right">
+                            <small class="ts-right">第十九届电子设计大赛</small>
+                        </p>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
     </body>
 </html>
 
@@ -105,12 +119,12 @@
         position:fixed;
         margin:0 auto;
         display:block;
-        left:33%;
-        width:50px;
-        height:50px;
+        left:28%;
+        width:80px;
+        height:80px;
         z-index: 2;
         text-align: center;
-        top:30%; 
+        top:40%; 
         /* opacity:0.75; */
         /* display:none; */
         /* border:3px solid; */
@@ -125,7 +139,7 @@
         /* height:150px; */
         z-index: 2;
         text-align: center;
-        bottom:20%; 
+        bottom:30%; 
         /* border:3px solid; */
     }
     .somethings
@@ -143,15 +157,15 @@
         height:15%;
         /* border:3px solid; */
     }
-    p
+    .p
     {
         position: absolute;
         margin:0 auto;
         /* border:3px solid; */
-        left:37.5%;
-        top:30%;
+        left:34.5%;
+        top:40%;
         font-weight: 700;
-        font-size:40;
+        font-size:60;
         color: rgb(235, 227, 227);
         font-family: 'Microsoft JhengHei';
     }
@@ -167,5 +181,21 @@
         text-align: center;
         bottom:5%; 
         /* opacity:0.75; */
+    }
+    .ts-footer
+    {
+        position:absolute;
+        left:36%;
+        bottom:8%;
+        width: 400px; 
+        height: 30px;
+        color:azure;
+    }
+    .ts-left{
+        float:left;
+        width: 229px; 
+    }
+    .ts-right{
+        float:right;
     }
 </style>
