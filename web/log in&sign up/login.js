@@ -10,6 +10,47 @@ btn.addEventListener("click",name_checking)
 function name_checking(){
     userinfo.name=document.getElementById("username").value
     userinfo.password=document.getElementById("pwd").value
-    console.log(userinfo)
-    //将userinfo发送至服务器进行验证，检验是否存在此用户，取得返回结果，这里先默认返回为false
+    //console.log(userinfo)
+    fetch("http://58.87.111.176/api/auth",
+    {
+        method:'POST',
+        headers:
+        {
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(
+            {
+                'username':userinfo.name,
+                'password':userinfo.password
+            }
+        )
+    }).then(response=>
+    {
+        console.log(response.status)
+        if(response.ok)
+        {
+            return response.json();
+        }
+        else if(response.status=='404')
+        {
+            showbox('该用户不存在！')
+        }
+        else if(response.status=='422')
+        {
+            showbox('用户名或密码字段不应为空！')
+        }
+        else if(response.status=='401')
+        {
+            showbox('用户名或密码错误！')
+        }
+        else
+        {
+            showbox('登录失败！')
+        }
+    }).then(res=>
+    {
+        //获取x-access-token保存至本地
+        var usertoken=res['token'];
+        showbox('您已登录成功！')
+    })
 }
