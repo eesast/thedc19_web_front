@@ -1,21 +1,19 @@
-
-    body,html
-    {
-        position: absolute;
-        width:100%;
-        height:100%;
-        margin:0;
-        padding:0;
-        background: #cfe7fa;
-        background: -moz-radial-gradient(center, ellipse cover,  #cfe7fa 0%, #86858d 100%);
-        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cfe7fa), color-stop(100%,#86858d));
-        background: -webkit-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
-        background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
-        background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
-        background: radial-gradient(ellipse at center,  #cfe7fa 0%,#86858d 100%);
-        /* border: 3px solid; */
-        /* background-color: #e9e9e9; */
-    }
+body,html
+{
+    position: absolute;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    background: #000000;
+    background: -moz-radial-gradient(center, ellipse cover,  #cfe7fa 0%, #2676c0 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cfe7fa), color-stop(100%,#2676c0));
+    background: -webkit-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: radial-gradient(ellipse at center,  #cfe7fa 0%,#579fe4 100%);
+    /* border: 3px solid; */
+}
     /* .maindiv
     {
         margin:0 auto;
