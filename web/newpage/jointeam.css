@@ -95,16 +95,18 @@ body,html
      width: 400px; 
      height: 30px;
  }
- .col-md-12
+ .col
  {
      display:inline;
  }
  .ts-left{
      float:left;
      width: 229px; 
+     display:inline;
  }
  .ts-right{
      float:right;
+     display:inline;
  }
  .holdlogo{
     /* position: fixed; */
