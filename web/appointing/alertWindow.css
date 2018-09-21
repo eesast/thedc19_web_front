@@ -55,19 +55,10 @@
         background-color:rgb(230, 230, 230);
     
     }
-    .setinput
-    {
-        text-align: left;
-        position: fixed;  
-        width: 20%;
-        height:30px;
-        top:320px;
-        left:36.5%;
-        background-color:rgb(167, 158, 172);
-    }
     .ok,.no
     {
         display:inline;
+        background-color: rgb(131, 131, 131);
         width:100px;
         height:40px;
         position: fixed;
@@ -77,12 +68,13 @@
     .ok
     {
         background-color: rgb(136, 199, 250);
+        transform: translateX(-80px);
         left:39%;
     }
     .no
     {
-        background-color: rgb(136, 199, 250);
         left:55%;
+        transform: translateX(-20px);
     }
     .dark
     {
@@ -94,6 +86,6 @@
         z-index:500;
         background-color: black;
         opacity:0.8;
-        /* 设置此div在主要部分之上 透明度0.8 模拟变暗 */
+        /* 设置此div在主要部分之上 透明度0.5 模拟变暗 */
     }
 

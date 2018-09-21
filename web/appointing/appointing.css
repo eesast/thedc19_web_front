@@ -1,18 +1,20 @@
 @charset "utf-8";
 /* CSS Document */
-	html,body
+body,html
 {
+    position: absolute;
+    width:100%;
+    height:100%;
     margin:0;
     padding:0;
-    width:100%;
-    background: #cfe7fa;
-    background: -moz-radial-gradient(center, ellipse cover,  #cfe7fa 0%, #86858d 100%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cfe7fa), color-stop(100%,#86858d));
-    background: -webkit-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
-    background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
-    background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
-    background: radial-gradient(ellipse at center,  #cfe7fa 0%,#86858d 100%);
-    box-sizing: border-box;
+    background: #000000;
+    background: -moz-radial-gradient(center, ellipse cover,  #cfe7fa 0%, #2676c0 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cfe7fa), color-stop(100%,#2676c0));
+    background: -webkit-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: radial-gradient(ellipse at center,  #cfe7fa 0%,#579fe4 100%);
+    /* border: 3px solid; */
 }
 input{
 	width:30px;
@@ -21,6 +23,9 @@ input{
 	border-radius: 4px;
 	transform: translateY(-5px);
 	text-align: center;
+}
+#appointing{
+	background-color: cornflowerblue;
 }
 .picture{
 	width: 100%;
@@ -37,11 +42,22 @@ input{
 	height: 100px;
 }
 #d2{
-		height:300px;
+		/*height:300px;*/
 		width:1000px;
 		margin-left: auto;
 		margin-right: auto;
 	}
+#foot{
+	position: absolute;
+	bottom: 100px;
+	left: 50%;
+	width:800px;
+	margin-left: -400px;
+}
+#showtime{
+	position: absolute;
+	transform: translateY(300px);
+}
 #c1{
 		position:absolute;
 	}
@@ -85,9 +101,8 @@ a{
 		width:100%;
 		height:auto;
 	}
-
- /* 统一尾部 */
- .ts-footer{
+/* 统一尾部 */
+.ts-footer{
 	position:absolute;
 	left:36%;
 	bottom:8%;
@@ -102,14 +117,13 @@ a{
 	float:right;
 }
 .holdlogo{
-    position: fixed;
-    margin: 0 auto;
-    display: block;
-    left: 80%;
-    width: 200px;
-    height: 50px;
-    z-index: 4;
-    text-align: center;
-    top: 86%;
+	position: fixed;
+	margin: 0 auto;
+	display: block;
+	left: 80%;
+	width: 200px;
+	height: 50px;
+	z-index: 4;
+	text-align: center;
+	top: 86%;
 }
-
