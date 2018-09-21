@@ -1,5 +1,18 @@
-body{
-    background-color: rgb(255, 255, 255);
+body,html
+{
+    position: absolute;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    background: #000000;
+    background: -moz-radial-gradient(center, ellipse cover,  #cfe7fa 0%, #2676c0 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cfe7fa), color-stop(100%,#2676c0));
+    background: -webkit-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: radial-gradient(ellipse at center,  #cfe7fa 0%,#579fe4 100%);
+    /* border: 3px solid; */
 }
 .form-heading{
     text-align:center;
@@ -30,22 +43,14 @@ body{
 .ts-right{
     float:right;
 }
-
-  .block1{
-      position: absolute;
-      top:0px;
-  }
-  .block2{
-     position: absolute;
-     top:50px;
-  }
-  .block3{
-     position: absolute;
-     top:100px;
-  }
-  .submit-box{
-     position: absolute;
-     top:140px;
-     left:55px;
-  }
-
+.holdlogo{
+    position: fixed;
+    margin: 0 auto;
+    display: block;
+    left: 80%;
+    width: 200px;
+    height: 50px;
+    z-index: 4;
+    text-align: center;
+    top: 86%;
+}

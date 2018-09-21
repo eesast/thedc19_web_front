@@ -10,29 +10,29 @@
 </head>
 
 <body>
-    <section id="login-form">
-        <div class="container">
-            <article class="form-head">
-                <h1 class=form-title>登录</h1>
-                <hr>
-                <a href="signup.html" style="margin-bottom: 50px">还没注册？点击注册</a>
-            </article>
+   
+    <div class="form-heading">
+        <div class="account-heading-image">
+            <img class="logo-picture" src="2.png" height="100px" width="100px" top=8%>
         </div>
-    </section>
-    <section id="check-box">
-        <div class="name">
-            <div class="wrap1">
-                <input id="text1" type="text" placeholder="输入用户名" />
-                <button id="btn_username">OK</button>
-            </div>
-        </div>
-        <div class="password">
-            <div class="wrap2">
-                <input id="text2" type="password" placeholder="输入密码" />
-                <button id="btn_password">OK</button>
-            </div>
-        </div>
-    </section>
+        <br><br><br><br><br><br>
+        <p>登录</p>
+        <a href="signup.html" style="margin-bottom: 50px;color:black">还没注册？点击注册</a>
+    </div>
+
+    <form class="form-info" action="" method="POST" onsubmit="false">
+        <label for="username"></label>
+        <input type="text" class="block1" id="username" name="username" required="" placeholder="用户名" maxlength="30" autocomplete="on">
+        <br>
+        <label for="pwd"></label>
+        <input type="password" class="block2" id="pwd" name="password" required="" placeholder="密码" maxlength="20" autocomplete="on">
+        <br>
+        <label for="submit"></label>
+        <input type="button" class="submit-box" id="submit" name="submit" value="注册">
+        <br>
+    </form>
+
+    <section>
         <div class="ts-footer">
             <div class="col-md-12">
                 <p class="ts-left">
@@ -44,6 +44,7 @@
                 </p>
             </div>
         </div>
+        <a href="http://www.leadgentech.ai/"><img class="holdlogo" src="1.png" alt="logo" ></a>
     </section>
 
     <!--以下是附加的弹窗控件-->
@@ -112,7 +113,6 @@
                     <hr>
                 </li>
             <li>
-				
 			</li>
         </ul>
     </nav>
