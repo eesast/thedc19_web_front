@@ -85,19 +85,19 @@ a{
 		width:100%;
 		height:auto;
 	}
-/* 统一尾部 */
-.ts-footer{
-    position:absolute;
-    left:450px;
-    top:700px;
-    width: 400px; 
-    height: 30px;
-    }
+
+ /* 统一尾部 */
+ .ts-footer{
+	position:absolute;
+	left:36%;
+	bottom:8%;
+	width: 400px; 
+	height: 30px;
+}
 .ts-left{
-        float:left;
-        width: 229px; 
-    }
-    
+	float:left;
+	width: 229px; 
+}
 .ts-right{
-        float:right;
-    }
+	float:right;
+}

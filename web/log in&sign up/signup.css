@@ -15,20 +15,22 @@ body{
     left:550px;
 }
 
-.ts-footer{
+ /* 统一尾部 */
+ .ts-footer{
     position:absolute;
-    left:450px;
-    top:500px;
+    left:36%;
+    bottom:8%;
     width: 400px; 
     height: 30px;
-  }
-  .ts-left{
-      float:left;
-      width: 229px; 
-  }
-  .ts-right{
-      float:right;
-  }
+}
+.ts-left{
+    float:left;
+    width: 229px; 
+}
+.ts-right{
+    float:right;
+}
+
   .block1{
       position: absolute;
       top:0px;

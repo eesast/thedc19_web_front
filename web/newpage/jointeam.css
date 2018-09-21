@@ -11,6 +11,7 @@ html,body
     background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#86858d 100%);
     background: radial-gradient(ellipse at center,  #cfe7fa 0%,#86858d 100%);
     box-sizing: border-box;
+    /* background-color: rgb(220, 232, 236); */
 }
 
     .titlelogo
@@ -84,18 +85,19 @@ html,body
         box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
     }
   
-/* 统一尾部 */
-.ts-footer{
-    position:absolute;
-    left:450px;
-    bottom:20px;
-    width: 400px; 
-    height: 30px;
-    }
-    .ts-left{
-        float:left;
-        width: 229px; 
-    }
-    .ts-right{
-        float:right;
-    }
+ /* 统一尾部 */
+ .ts-footer
+ {
+     position: relative;
+     left:36%;
+     /* bottom:-8%; */
+     width: 400px; 
+     height: 30px;
+ }
+ .ts-left{
+     float:left;
+     width: 229px; 
+ }
+ .ts-right{
+     float:right;
+ }

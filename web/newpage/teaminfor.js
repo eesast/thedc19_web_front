@@ -1,6 +1,6 @@
 var mybody;//队伍集合
 var myusers;//使用者集合
-var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDQ5MjM3LCJleHAiOjE1Mzc0NTI4Mzd9.X6j0O1EfQl-7A74KrbxVdBTjNGvByTSEEcjiiKwKCr4"
+var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NTAxNTQ4LCJleHAiOjE1Mzc1MDUxNDh9.ME3OcxgxsrOLAz-KC6uy20t-MzKwXc_bivOVxeQbdSA"
 var username='zrtest';//登陆后传入
 var iscaptain=getCookie("iscaptain");
 var teamid=getCookie("teamid");//获得teamid，然后用mybody[]显示
@@ -72,8 +72,8 @@ function init()//初始化，从服务器读取已有队伍信息并显示
     
 
     var input;
-    var change=document.getElementsByTagName("div")[4];
-    var line="<br><br><hr>";
+    var change=document.getElementsByClassName("d")[0];
+    var line="<br>";
     var data=new Array(mybody.length);
     
     function team(name,description,id,captain,members,invitecode)
@@ -86,7 +86,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         this.invitecode=invitecode;
     }
     
-    
+    line+="<tr><th>队伍名称</th><th>队长</th><th>简介</th><th>队伍人数</th></tr><tbody>";
     for(var i=1;i<=mybody.length;i++)
     {
         /*
@@ -94,53 +94,81 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         修改input从服务器读取已经有的队伍信息
         *****************
         */
+       line+='<tr>';
         input={name:" "+mybody[i-1]['name'],description:mybody[i-1]['description'],id:mybody[i-1]['id'],captain:mybody[i-1]['captain'],members:mybody[i-1]['members'].length,invitecode:mybody[i-1]['inviteCode']};//****************************
 
 
         data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
-        line+="&nbsp;&nbsp;&nbsp;&nbsp;队伍名称:";
-        line+=input.name;
+        //line+="&nbsp;&nbsp;&nbsp;&nbsp;";
+        line+="<td>"+input.name+'</td>';
         for(var j=0;j<myusers.length;j++)
         {
             if(myusers[j]['id']==input.captain)
             {
-                line+='&nbsp;&nbsp;&nbsp;&nbsp;队长:'+myusers[j]['username'];
+                line+='<td>'+myusers[j]['username']+'</td>';
                 break;
             }
             
         }
-        for(var j=1;j<=20;j++)line+=("&nbsp");
-        line+="<button>查看信息</button>";
-        line+='<br><hr>';
-
+        line+='<td><div class="more">'+input.description+'</div></td>';
+        //for(var j=1;j<=20;j++)line+=("&nbsp");
+        //line+="<button>查看信息</button>";
+        //line+='<br><hr>';
+        line+='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+input.members+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
         count++;
+        line+='</tr>'
+        
     }
-    line+="<br><br>"
+    line+="<br></tbody>"
     
+
 // document.getElementsByClassName("ts-footer")[0].style.top=(400+count*70)+'px';
     
     
     change.innerHTML=line;
+    for(var i=0;i<mybody.length;i++)
+    {
+         var turn=document.getElementsByClassName("more")[i];
+        turn.style.width="750px";
+        turn.style.height="60px";
+        turn.style.wordBreak="break-all";
+        turn.style.overflow="scroll";
+        turn.style.overflowX="hidden";
 
+        
+    }
+    for(var i=0;i<=mybody.length;i++)
+    {
+        var turn=document.getElementsByTagName("tr")[i];
+        if(i%2==1)
+        {
+            turn.style.backgroundColor="#e9e9e9";
+        }
+        else
+        {
+            turn.style.backgroundColor="rgb(243, 243, 243)";
+        }
+    }
+  
     //设置查看各项队伍信息
     
-    for(var i=0;i<count;i++)
-    {
+    // for(var i=0;i<count;i++)
+    // {
         
-        setclick(i);//bas为偏移量
-    }
+    //     setclick(i);//bas为偏移量
+    // }
 
-    function setclick(i)
-    {
-        var change=document.getElementsByTagName("button")[i+bas];
-        //window.alert(i);
-        change.style.color='red';
-        change.style.float='right';
-        change.addEventListener("click",()=>
-        {
-            showbox('队伍名称:'+data[i+1].name+'&nbsp;&nbsp;'+'队伍人数:'+data[i+1].members+'&nbsp;&nbsp;队伍简介:'+data[i+1].description);
-        })
-    }
+    // function setclick(i)
+    // {
+    //     var change=document.getElementsByTagName("button")[i+bas];
+    //     //window.alert(i);
+    //     change.style.color='red';
+    //     change.style.float='right';
+    //     change.addEventListener("click",()=>
+    //     {
+    //         showbox('队伍名称:'+data[i+1].name+'&nbsp;&nbsp;'+'队伍人数:'+data[i+1].members+'&nbsp;&nbsp;队伍简介:'+data[i+1].description);
+    //     })
+    // }
 }
 
 
@@ -193,7 +221,7 @@ function showteaminfor()
         //以上为第1行
         
         line+="&nbsp;&nbsp;&nbsp;&nbsp;简介<br><hr>";
-        line+="&nbsp;&nbsp;&nbsp;&nbsp;<div class='description'>"+team.description+'</div><br><hr>';
+        line+="<div class='description'>&nbsp;&nbsp;&nbsp;&nbsp;"+team.description+'</div><br><hr>';
         //document.getElementsByClassName("description")[0].style.overflow="scroll";
         //以上为第2行
 
@@ -245,6 +273,8 @@ function showteaminfor()
         
         change=document.getElementsByClassName("description")[0];
         change.style.overflow="scroll";
+        change.style.overflowX="hidden";
+        change.style.wordBreak="break-all";
         change.style.height="20%";
         
         for(var i=0;i<team.cnt-1;i++)//第一个队伍人员应该是队长
@@ -360,6 +390,8 @@ function showteaminfor()
         change.innerHTML=line;
         change=document.getElementsByClassName("description")[0];
         change.style.overflow="scroll";
+        change.style.overflowX="hidden";
+        change.style.wordBreak="break-all";
         change.style.height="20%";
         
         

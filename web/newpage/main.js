@@ -1,4 +1,4 @@
-var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NDQ5MjM3LCJleHAiOjE1Mzc0NTI4Mzd9.X6j0O1EfQl-7A74KrbxVdBTjNGvByTSEEcjiiKwKCr4"
+var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NTAxNTQ4LCJleHAiOjE1Mzc1MDUxNDh9.ME3OcxgxsrOLAz-KC6uy20t-MzKwXc_bivOVxeQbdSA"
 var username='zrtest';//登陆后传入
 var mybody='';
 var inteam=false;//是否在队伍中
@@ -99,11 +99,13 @@ var myid=null;
                 var noteword="如果确认";
                 if(iscaptain===false)noteword+="退出";
                 else noteword+="解散";
-                noteword+="队伍，请输入:Exit";
+                noteword+="队伍，请输入:";
+                if(iscaptain==false)noteword+="Exit";
+                else noteword+="Clear"
                 inputbox(noteword,function()
                  {
                     var makeconfirm=document.getElementsByClassName("setinput")[0].value;
-                    if(makeconfirm==="Exit")
+                    if((iscaptain===true&&makeconfirm==="Clear")||(iscaptain===false&&makeconfirm==="Exit"))
                     {
                         //删除队伍信息
                         /*
