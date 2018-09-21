@@ -12,7 +12,10 @@
 	var p=0;
 	var q=0;
 	var i=0;
-	var flag = '';
+	var showtime='';
+	var day = document.getElementById('1')
+	var flag = document.getElementById('c1');
+	var space = document.getElementById('1-space1')
 	for(i=0;i<5;i++){
 		number[i]=new Array([6])
 		time[i]=new Array([6]);
@@ -28,7 +31,7 @@
 		document.getElementById('c3').parentNode.style.visibility='hidden';
 	}
 
-	function appointing(hour1,min1,hour2,min2)//显示约定的时间
+	function appointing(hour1,min1,hour2,min2,mark)//显示约定的时间,mark用来表示是否为用户添加的时间
 	{
 		if(hour1<9 || hour1>14 || !hour1){
 			return 0;
@@ -44,6 +47,12 @@
 			if(!min2) min2=0;
 			else return 0;
 		}
+		if(min1<10 || min2 <10) showtime = hour1 + ':' + '0' + min1 + '~' + hour2 + ':' + '0' + min2;
+		else showtime = hour1 + ':' + min1 + '~' + hour2 + ':' + min2;
+		document.getElementById('input1').value='';
+		document.getElementById('input2').value='';
+		document.getElementById('input3').value='';
+		document.getElementById('input4').value='';		
 		var div = document.createElement('div');
 		flag.parentNode.appendChild(div);
 		var wid0 = parseFloat(document.getElementsByClassName('time')[0].rows[0].cells[0].offsetWidth);
@@ -52,48 +61,53 @@
 		div.style.width = wid1 * wid2+'px';
 		div.style.height = '50px';
 		div.style.position = 'absolute';
-		alert((((hour1 + min1/60)-9)/6)*wid2 + wid0)
 		div.style.marginLeft= ((((hour1 + min1/60)-9)/6)*wid2 + wid0) + 'px';
 		div.style.marginTop = '2px'
 		div.style.backgroundColor = 'cornflowerblue';
 		div.style.opacity = '0.5';//降低透明度
 		//div.innerText = hour1 + ':' + min1 + '~' + hour2 + ':' + min2;
 		div.style.lineHeight = '50px';
+		document.getElementById('showtime').innerText ='您预约的时间和地点：' + day.innerText + showtime + flag.rows[0].cells[0].innerText;
 		div.addEventListener('mouseover',function(){
-			div.style.opacity = '1';//回复透明度
-			div.innerText = hour1 + ':' + min1 + '~' + hour2 + ':' + min2;
+		div.style.opacity = '1';//回复透明度
+		div.innerText =showtime;
 		})
 		div.addEventListener('mouseout',function(){
-			div.style.opacity = '0.5';//减低透明度
-			div.innerText = '';
+		div.style.opacity = '0.5';//减低透明度
+		div.innerText = '';
 		})
-		div.className = 'add';
+		if(mark) div.className = 'add';
 	}
-	function choose(j,k)//选择时间按钮
+	function white(){
+		for(p=1;p<4;p++)
+		{
+			for(q=1;q<3;q++)
+				{
+					var st=String(p)+'-place'+String(q);
+					document.getElementById(st).style.backgroundColor = 'white';
+				}
+		}
+	}
+	function choose(j)//选择时间按钮
 	{
-		if(time[j][k].style.backgroundColor=='white'){
-			time[j][k].style.backgroundColor='cornflowerblue';
-			number[j][k]=1;
-		}
-		else {
-			time[j][k].style.backgroundColor='white';
-			number[j][k]=0;
-		}
+		white();
+		j.style.backgroundColor='cornflowerblue';
+		space = j;
 	}
 	function begin()//开始的初始化
 	{
-		for(p=0;p<3;p++)
+		for(p=1;p<4;p++)
 			{
-				for(q=0;q<6;q++)
+				for(q=1;q<3;q++)
 					{
-						var st=String(p)+String(q);
+						var st=String(p)+'-place'+String(q);
 						var id1=p;
 						var id2=q;
-						time[p][q]=document.getElementById(st);
-						time[p][q].style.backgroundColor='white';
+						if(q==1) document.getElementById(st).style.backgroundColor = 'cornflowerblue';
+						else document.getElementById(st).style.backgroundColor = 'white';
 						document.getElementById(st).addEventListener('click',function(){
 							//alert('click'+this.getAttribute('id'))
-							choose(this.getAttribute('id')[0],this.getAttribute('id')[1])
+							choose(this)
 						});
 					}
 			}
@@ -103,6 +117,7 @@
 		hidden();
 		document.getElementById(k).parentNode.style.visibility='visible';
 		flag = document.getElementById(k);
+		day = j;
 		a.style.backgroundColor='aliceblue';
 		b.style.backgroundColor='aliceblue';
 		c.style.backgroundColor='aliceblue';
@@ -118,7 +133,6 @@
         document.getElementsByClassName("ok")[0].style.left="46.5%";
         //设置调用按钮功能
         
-        
         document.getElementsByClassName("ok")[0].addEventListener("click",function()
         {
             //按下了确认
@@ -128,21 +142,19 @@
             if(callback && typeof(callback)==="function")
             {
                 callback();
-               
-            }
+			}
         });
 		document.getElementsByClassName('no')[0].addEventListener('click',function()
 	{
 		//按下了取消
         //优先关闭窗口
         document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
-        document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
+		document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
 	})
     }
 	begin();
 	hidden();
 	document.getElementById('c1').parentNode.style.visibility='visible';
-	flag = document.getElementById('c1');
 	a.style.backgroundColor='cornflowerblue';
 	a.addEventListener('click',function(){change(a,'c1')});
 	b.addEventListener('click',function(){change(b,'c2')});
@@ -154,17 +166,18 @@
 		parseInt(document.getElementById('input1').value),
 		parseInt(document.getElementById('input2').value),
 		parseInt(document.getElementById('input3').value),
-		parseInt(document.getElementById('input4').value)
-	)
-	})
+		parseInt(document.getElementById('input4').value),
+		1
+	)})
 	button2.addEventListener//取消预约按钮的功能实现
 	('click',function(){showbox('确定要取消您所有的预约',
 		function(){
 			var my = document.getElementsByClassName('add');
-			for(var ti =0 ; ti<my.length;ti++)
+			for(var ti = 0 ; ti<my.length;ti++)
 			{
 				my[ti].parentNode.removeChild(my[ti])
 			}
+			document.getElementById('showtime').innerText ='您预约的时间和地点：' ;
 		})
 	})
 
