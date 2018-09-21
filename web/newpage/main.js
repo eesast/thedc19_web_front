@@ -65,6 +65,7 @@ var myid=null;
         // return true;
     }
     check();
+    
     function init()
     {
         //check();
