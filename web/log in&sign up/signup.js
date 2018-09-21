@@ -63,7 +63,7 @@ function name_checking(){
         }
         else
         {
-            showbox('登录失败！')
+            showbox('注册失败！')
         }
     }).then(res=>
     {
