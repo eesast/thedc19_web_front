@@ -1,5 +1,5 @@
-var token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNTM3NTAxNTQ4LCJleHAiOjE1Mzc1MDUxNDh9.ME3OcxgxsrOLAz-KC6uy20t-MzKwXc_bivOVxeQbdSA"
-var username='zrtest';//登陆后传入
+var token=getCookie('token');
+var username=getCookie('username');//登陆后传入
 var myusers;//使用者集合
 var mobody;
     console.log(token);
