@@ -95,6 +95,10 @@ body,html
      width: 400px; 
      height: 30px;
  }
+ .col-md-12
+ {
+     display:inline;
+ }
  .ts-left{
      float:left;
      width: 229px; 
@@ -103,13 +107,28 @@ body,html
      float:right;
  }
  .holdlogo{
-    position: fixed;
-    margin: 0 auto;
-    display: block;
-    left: 80%;
+    /* position: fixed; */
+    /* margin: 0 auto; */
+    /* display: block; */
+    /* left: 80%; */
     width: 200px;
     height: 50px;
-    z-index: 4;
-    text-align: center;
-    top: 86%;
+    /* display:inline; */
+    /* z-index: 4; */
+    /* text-align: center; */
+    /* top: 88%; */
+}
+.eelogo
+{
+    /* position: absolute;
+    margin:0 auto;
+    display:block; */
+    /* left:66%; */
+    width:200px;
+    height:70px;
+    /* display:inline; */
+    /* z-index: 4;
+    text-align: center; */
+    /* top: 87%; */
+    /* opacity:0.75; */
 }

@@ -14,6 +14,7 @@
     background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
     background: radial-gradient(ellipse at center,  #cfe7fa 0%,#579fe4 100%);
     /* border: 3px solid; */
+    overflow-x: hidden;
 }
     #id4
     {
@@ -116,6 +117,18 @@
         height: 50px;
         z-index: 4;
         text-align: center;
-        top: 86%;
+        top: 88%;
     }
-    
+    .eelogo
+    {
+        position: absolute;
+        margin:0 auto;
+        display:block;
+        left:66%;
+        width:200px;
+        height:70px;
+        z-index: 4;
+        text-align: center;
+        top: 87%;
+        /* opacity:0.75; */
+    }

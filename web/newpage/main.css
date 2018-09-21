@@ -29,6 +29,7 @@ body,html
         left:46.5%;
         text-align: center;
         top:100px; 
+        border-radius: 50%;
         /* border:3px solid; */
     }
     .maintitle
@@ -138,9 +139,21 @@ body,html
         height: 50px;
         z-index: 4;
         text-align: center;
-        top: 86%;
+        top: 88%;
     }
-    
+    .eelogo
+    {
+        position: absolute;
+        margin:0 auto;
+        display:block;
+        left:66%;
+        width:200px;
+        height:70px;
+        z-index: 4;
+        text-align: center;
+        top: 87%;
+        /* opacity:0.75; */
+    }
 
 
 
