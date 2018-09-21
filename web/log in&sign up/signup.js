@@ -75,10 +75,10 @@ function name_checking(){
         setCookie("token",usertoken)
     })
 }
+
 function setCookie(cname,cvalue){
     // var d = new Date();
     // d.setTime(d.getTime()+(exdays*24*60*60*1000));
     // var expires = "expires="+d.toGMTString();
-    document.cookie = cname+"="+cvalue;
+    document.cookie = cname+"="+cvalue+";path=/";
 }
-

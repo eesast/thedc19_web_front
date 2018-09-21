@@ -349,7 +349,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         // var d = new Date();
         // d.setTime(d.getTime()+(exdays*24*60*60*1000));
         // var expires = "expires="+d.toGMTString();
-        document.cookie = cname+"="+cvalue;
+        document.cookie = cname+"="+cvalue+";path=/";
     }
     function getCookie(cname){
         var name = cname + "=";
