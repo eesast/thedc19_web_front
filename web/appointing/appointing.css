@@ -58,6 +58,14 @@ input{
 	position: absolute;
 	transform: translateY(300px);
 }
+.sure{
+	border-radius: 300px;
+	box-shadow: 0;
+	/* background-color: aqua; */
+	font-size: 14;
+	font-weight: bold;
+	background-color: rgb(136, 199, 250);
+}
 #c1{
 		position:absolute;
 	}
@@ -90,6 +98,7 @@ button{
 		height: 50px;
 		background-color: white;
 		text-align: center;
+		opacity: 0.5
 	}
 a{
 		color:black;
@@ -115,8 +124,8 @@ a{
 		width:100%;
 		height:auto;
 	}
-/* 统一尾部 */
-.ts-footer{
+ /* 统一尾部 */
+ .ts-footer{
 	position:absolute;
 	left:36%;
 	bottom:8%;

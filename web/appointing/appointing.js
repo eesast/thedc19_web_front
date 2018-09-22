@@ -28,9 +28,9 @@
 			else{showbox('输入错误'); return 0;}
 		}
 		//判断时间是否是分段的
-		var h1=hour1 + min1/60;
-		var h2=hour2 + min2/60;
-		if(hour1>=hour2 || hour1<0 || hour2>24 || hour2-hour1>2 || !hour1 || !hour2 ){ showbox('输入错误');return 0}
+		var h1=hour1 + parseFloat(min1)/60;
+		var h2=hour2 + parseFloat(min2)/60;
+		if(h1>=h2 || hour1<0 || hour2>24 || hour2-hour1>2 || !hour1 || !hour2 ){ showbox('输入错误');return 0}
 		else{ if(h1<12 && h2<=12){
 			sign = 0;
 			var st=0;
@@ -78,14 +78,13 @@
 			div.style.opacity = '0.5';//降低透明度
 			//div.innerText = hour1 + ':' + min1 + '~' + hour2 + ':' + min2;
 			if(t) div.style.marginTop = '56px'
-			div.style.lineHeight = '50px';
 			//添加div的显示监听 
 			div.addEventListener('mouseover',function(){
 				div.style.opacity = '1';//回复透明度
-				if(min1<10 && min2 <10) div.innerText = hour1 + ':' + '0' + min1 + '~' + hour2 + ':' + '0' + min2;
-				if(min1<10 && min2>=10) div.innerText = hour1 + ':' + '0' + min1 + '~' + hour2 + ':' + min2;
-				if(min1>=10 && min2<10) div.innerText = hour1 + ':' + min1 + '~' + hour2 + ':' + '0' + min2;
-				if(min1>=10 && min2>=10) div.innerText  = hour1 + ':' + min1 + '~' + hour2 + ':' + min2;
+				if(min1<10 && min2 <10) div.innerHTML = hour1 + ':' + '0' + min1 + '<br>~<br>' + hour2 + ':' + '0' + min2;
+				if(min1<10 && min2>=10) div.innerHTML= hour1 + ':' + '0' + min1 + '<br>~<br>' + hour2 + ':' + min2;
+				if(min1>=10 && min2<10) div.innerHTML = hour1 + ':' + min1 + '<br>~<br>' + hour2 + ':' + '0' + min2;
+				if(min1>=10 && min2>=10) div.innerHTML  = hour1 + ':' + min1 + '<br>~<br>' + hour2 + ':' + min2;
 			})
 			div.addEventListener('mouseout',function(){
 				div.style.opacity = '0.5';//减低透明度
@@ -153,10 +152,13 @@
 	})
 	//显示预约情况
 	document.getElementById('showappointment').addEventListener('click',function(){
-		update();
+		update(days);
 	})
-	//后端交互
 
+
+	//后端交互
+	var token=getCookie('token');
+	var username=getCookie('username');//登陆后传入
 	function setCookie(cname,cvalue){
 		// var d = new Date();
 		// d.setTime(d.getTime()+(exdays*24*60*60*1000));
@@ -215,8 +217,6 @@
 			if(response.status=409) showbox('预约时间冲突')//时间冲突提示
 		})
 	}
-	var token=getCookie('token');
-	var username=getCookie('username');//登陆后传入
 
 	//以下为以前版本
 	//fetch('https://58.87.111.176/api/sites/:id',{
