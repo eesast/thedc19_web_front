@@ -30,47 +30,39 @@ p{
 
 .form-info{
     text-align:center;
-    position:fixed;
+    position:absolute;
     top:30%;
     left:43%;
     margin:0;
     padding:0;
     line-height: 20px;
   }
-  #submit{
-      top:99%;
-      left:25%;
-      text-align: center;
-      /* border:3px solid; 
-      padding:10px;
-      margin-top:200px;
-      /* border-radius: 600px; */
-      /* background:#8dc63f;  */
-      /* box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4); */
-      width:50%;
-      height:35%;
-      position: absolute;
-      margin:0 auto;
-      border-radius: 300px;
-      box-shadow: 0;
-      font-size: 14;
-      font-weight: bold;
-      background-color: rgb(136, 199, 250);
-  }
+#submit{
+    text-align: center;
+    margin:0;
+    height:40px;
+    width:80px;
+    border-radius: 300px;
+    box-shadow: 0;
+    font-size: 14;
+    font-weight: bold;
+    background-color: rgb(136, 199, 250);
+    margin-top:35px;
+}
   
-  .block{
-      background-color:rgb(206, 228, 247);
-      border-radius:100px;
-      height:25px;
-      margin-top:20px
-  }
+.block{
+    background-color:rgb(206, 228, 247);
+    border-radius:100px;
+    height:25px;
+    margin-top:20px;
+}
   
 
  /* 统一尾部 */
  .ts-footer{
     position:absolute;
     left:36%;
-    bottom:8%;
+    top:115%;
     width: 400px; 
     height: 30px;
 }
@@ -90,7 +82,7 @@ p{
     height: 50px;
     z-index: 4;
     text-align: center;
-    top: 88%;
+    top: 110%;
 }
 .eelogo
 {
@@ -102,6 +94,6 @@ p{
     height:70px;
     z-index: 4;
     text-align: center;
-    top: 86.5%;
+    top: 110%;
     /* opacity:0.75; */
 }
