@@ -257,7 +257,7 @@ function showteaminfor()
     {
         if(mybody[i]['id']==teamid)
         {
-            team={name:mybody[i]['name'],description:mybody[i]['description'],leader:mybody[i]['captain'],cnt:mybody[i]['members'].length,member:mybody[i]['members'],invitecode:mybody[i]['invitecode']};
+            team={name:mybody[i]['name'],description:mybody[i]['description'],leader:mybody[i]['captain'],cnt:mybody[i]['members'].length,member:mybody[i]['members'],invitecode:mybody[i]['inviteCode']};
             break;
         }
     }
