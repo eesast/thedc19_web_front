@@ -234,13 +234,14 @@ function init()//初始化，从服务器读取已有队伍信息并显示
 *********************************此段开始为显示队伍信息
 */
 //构造一个对象
-function teaminfor(name,description,leader,cnt,member)
+function teaminfor(name,description,leader,cnt,member,invitecode)
 {
     this.name=name;
     this.description=description;
     this.leader=leader;
     this.cnt=cnt;
     this.member=member;
+    this.invitecode=invitecode;
 }
 //var member=["gank","tank"];
 
@@ -256,7 +257,7 @@ function showteaminfor()
     {
         if(mybody[i]['id']==teamid)
         {
-            team={name:mybody[i]['name'],description:mybody[i]['description'],leader:mybody[i]['captain'],cnt:mybody[i]['members'].length,member:mybody[i]['members']};
+            team={name:mybody[i]['name'],description:mybody[i]['description'],leader:mybody[i]['captain'],cnt:mybody[i]['members'].length,member:mybody[i]['members'],invitecode:mybody[i]['invitecode']};
             break;
         }
     }
@@ -280,7 +281,9 @@ function showteaminfor()
         line+="<div class='description'>&nbsp;&nbsp;&nbsp;&nbsp;"+team.description+'</div><br><hr>';
         //document.getElementsByClassName("description")[0].style.overflow="scroll";
         //以上为第2行
-
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
+        for(var i=1;i<=25;i++)line+="&nbsp";
+        line+=team.invitecode;
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
         for(var i=1;i<=25;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
@@ -399,7 +402,9 @@ function showteaminfor()
         line+="&nbsp;&nbsp;&nbsp;&nbsp;简介<br><hr>";
         line+='<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;'+team.description+'</div><br><hr>';
         //以上为第2行
-
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
+        for(var i=1;i<=25;i++)line+="&nbsp";
+        line+=team.invitecode;
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
         for(var i=1;i<=25;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
