@@ -1,5 +1,12 @@
 var token=getCookie('token');
 var username=getCookie('username');//登陆后传入
+if(token==null||username==null)
+{
+    showbox("请先登录",function()
+    {
+        // location.reload(true);       
+    })
+}
 var mybody='';
 var inteam=false;//是否在队伍中
 var iscaptain=null;//是否为队长
@@ -21,6 +28,12 @@ var myid=null;
             {
                 return response.json();
             }
+        },error=>
+        {
+                showbox("登录失效，请重新登录",function()
+                {
+                    // location.reload(true);       
+                });
         }).then(res=>
         {
             mybody=res;
@@ -169,6 +182,12 @@ var myid=null;
                     'password':'eesast-software'
                 }
             )
+        },error=>
+        {
+            showbox("登录失效，请重新登录",function()
+            {
+                // location.reload(true);       
+            });        
         }).then(response=>
         {
             return response.json();
@@ -196,7 +215,10 @@ var myid=null;
                 }
             },error=>
             {
-                showbox("操作失败，请稍后再试!");
+                showbox("登录失效，请重新登录",function()
+                {
+                    // location.reload(true);       
+                });
             })
         })
 
@@ -227,7 +249,10 @@ var myid=null;
                 }
             },error=>
             {
-                showbox("操作失败，请稍后再试!");
+                showbox("登录失效，请重新登录",function()
+                {
+                    // location.reload(true);       
+                });
             })
     
         

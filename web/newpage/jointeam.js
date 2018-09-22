@@ -1,5 +1,12 @@
 var token=getCookie('token');
 var username=getCookie('username');//登陆后传入
+if(token==null||username==null)
+{
+    showbox("请先登录",function()
+    {
+        // location.reload(true);       
+    })
+}
 var myusers;//使用者集合
 var mobody;
     console.log(token);
@@ -17,6 +24,12 @@ fetch('http://58.87.111.176/api/auth',
 }).then(response=>
 {
     if(response.ok)return response.json();
+},error=>
+{
+    showbox("登录失效，请重新登录",function()
+    {
+        // location.reload(true);       
+    });
 }).then(res=>
 {
     var newtoken=res['token'];
@@ -41,6 +54,10 @@ fetch('http://58.87.111.176/api/auth',
     {
         //alert(response);
         //alert("网页错误");
+        showbox("登录失效，请重新登录",function()
+        {
+            // location.reload(true);       
+        });
     }).then(res=>
     {
         console.log(res);
@@ -66,6 +83,12 @@ fetch('http://58.87.111.176/api/auth',
             }
                     
        
+        },error=>
+        {
+            showbox("登录失效，请重新登录",function()
+            {
+                // location.reload(true);       
+            });        
         }).then(res=>
         {
             myusers=res;
@@ -252,7 +275,13 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                                 'x-access-token':token.toString(),
                             },
                             
-                        }).then(response=>
+                        },error=>
+                    {
+                        showbox("登录失效，请重新登录",function()
+                        {
+                            // location.reload(true);       
+                        });
+                    }).then(response=>
                         {
                         })
                         return true;
@@ -272,7 +301,13 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         'x-access-token':token.toString(),
                     },
                     
-                }).then(response=>
+                },error=>
+            {
+                showbox("登录失效，请重新登录",function()
+                {
+                    // location.reload(true);       
+                });
+            }).then(response=>
                 {
                 })
 

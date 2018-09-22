@@ -2,6 +2,13 @@ var mybody;//队伍集合
 var myusers;//使用者集合
 var token=getCookie('token');
 var username=getCookie('username');//登陆后传入
+if(token==null||username==null)
+{
+    showbox("请先登录",function()
+    {
+        // location.reload(true);       
+    })
+}
 var iscaptain=getCookie("iscaptain");
 var teamid=getCookie("teamid");//获得teamid，然后用mybody[]显示
 var myid=getCookie("myid");
@@ -25,8 +32,10 @@ var myid=getCookie("myid");
         }
     },error=>
     {
-        //alert(response);
-        alert("网页错误");
+        showbox("登录失效，请重新登录",function()
+        {
+            // location.reload(true);       
+        });
     }).then(res=>
     {
         mybody=res;
@@ -48,6 +57,12 @@ var myid=getCookie("myid");
             }
                     
        
+        },error=>
+        {
+                showbox("登录失效，请重新登录",function()
+                {
+                    // location.reload(true);       
+                });
         }).then(res=>
         {
             myusers=res;
@@ -489,6 +504,12 @@ function dissolve(callback)
     }).then(response=>
     {
         return response.json();
+    },error=>
+    {
+                showbox("登录失效，请重新登录",function()
+                {
+                    // location.reload(true);       
+                });
     }).then(res=>
     {
         var newtoken=res['token'];
@@ -513,7 +534,10 @@ function dissolve(callback)
             }
         },error=>
         {
-            showbox("操作失败，请稍后再试!");
+            showbox("登录失效，请重新登录",function()
+            {
+                // location.reload(true);       
+            });
         })
     })
 
@@ -544,7 +568,10 @@ function letitgo(callback)
             }
         },error=>
         {
-            showbox("操作失败，请稍后再试!");
+            showbox("登录失效，请重新登录",function()
+            {
+                // location.reload(true);       
+            });
         })
 
     
@@ -578,7 +605,10 @@ function dropsb(dropsbid,callback)
             }
         },error=>
         {
-            showbox("操作失败，请稍后再试!");
+            showbox("登录失效，请重新登录",function()
+            {
+                // location.reload(true);       
+            });
         })
 
     
