@@ -320,7 +320,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         'x-access-token':token.toString(),
                     },
                     
-                }.then(response=>
+                }).then(response=>
                 {
                     switch(response.status)
                     {
@@ -350,7 +350,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                             location=location;   
                         });
                     }
-                }));
+                });
             
             //else
                 // return false;
