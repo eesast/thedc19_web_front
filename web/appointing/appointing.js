@@ -177,7 +177,7 @@
 
 	function update(day)//获取当前日期的预约情况函数
 	{
-		fetch('https://58.87.111.176/api/sites/:id/appointments',{
+		fetch('http://58.87.111.176/api/sites/:id/appointments',{
 			headers:{
 				'Content-Type':'application/json',
 				'x-access-token':token,
@@ -205,7 +205,7 @@
 			'startTime':st,
 			'endtime':et
 		}
-		fetch('https://58.87.111.176/api/sites/:id/appointments',{
+		fetch('http://58.87.111.176/api/sites/:id/appointments',{
 			method:'POST',
 			headers:{
 				'Content-Type':'application/json',
