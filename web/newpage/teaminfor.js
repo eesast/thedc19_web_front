@@ -254,7 +254,7 @@ function showteaminfor()
         bas=team.cnt;//偏移量
         
 
-        var change=document.getElementsByTagName("div")[0];//队长中向class a加入元素
+        var change=document.getElementsByClassName("a")[0];//队长中向class a加入元素
         var line="";
         
 
@@ -371,9 +371,9 @@ function showteaminfor()
         bas=1;//设置偏移量为1
 
 
-        var change=document.getElementsByTagName("div")[0];
+        var change=document.getElementsByClassName("a")[0];
         change.style.display="none";//隐藏class a
-        change=document.getElementsByTagName("div")[1];//队员中向class b加入元素
+        change=document.getElementsByClassName("b")[0];//队员中向class b加入元素
         change.style.display="block";//启动class b
         var line="";
         
