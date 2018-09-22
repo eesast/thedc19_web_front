@@ -53,7 +53,10 @@ var myid=getCookie("myid");
     {
         if(response.status==401)
         {
+            
             showbox("登陆已失效，请重新登录");
+            document.getElementById("userinfor2").style.display="none";
+            document.getElementById("userinfor1").style.display="block";
         }
         if(response.ok)
         {
@@ -83,6 +86,8 @@ var myid=getCookie("myid");
             if(response.status==401)
             {
                 showbox("登陆已失效，请重新登录");
+                document.getElementById("userinfor2").style.display="none";
+                document.getElementById("userinfor1").style.display="block";
             }
             if(response.ok)
             {
@@ -542,6 +547,8 @@ function dissolve(callback)
         if(response.status==401)
         {
             showbox("登陆已失效，请重新登录");
+            document.getElementById("userinfor2").style.display="none";
+                document.getElementById("userinfor1").style.display="block";
         }
         return response.json();
     },error=>
@@ -568,6 +575,8 @@ function dissolve(callback)
             if(response.status==401)
             {
                 showbox("登陆已失效，请重新登录");
+                document.getElementById("userinfor2").style.display="none";
+                document.getElementById("userinfor1").style.display="block";
             }
             if(response.ok===true)
             {
@@ -606,6 +615,8 @@ function letitgo(callback)
             if(response.status==401)
             {
                 showbox("登陆已失效，请重新登录");
+                document.getElementById("userinfor2").style.display="none";
+                document.getElementById("userinfor1").style.display="block";
             }
             if(response.ok===true)
             {
@@ -647,6 +658,8 @@ function dropsb(dropsbid,callback)
             if(response.status==401)
             {
                 showbox("登陆已失效，请重新登录");
+                document.getElementById("userinfor2").style.display="none";
+                document.getElementById("userinfor1").style.display="block";
             }
             if(response.ok===true)
             {

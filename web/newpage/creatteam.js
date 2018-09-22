@@ -114,6 +114,8 @@ bt.addEventListener("click",function(){
             if(response.status==401)
             {
                 showbox("登陆已失效，请重新登录");
+                document.getElementById("userinfor2").style.display="none";
+                document.getElementById("userinfor1").style.display="block";
             }
             if(response.ok)
             {

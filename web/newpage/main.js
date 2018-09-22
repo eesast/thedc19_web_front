@@ -62,6 +62,9 @@ var myid=null;
             if(response.status==401)
             {
                 showbox("登陆已失效，请重新登录");
+                document.getElementById("userinfor2").style.display="none";
+                document.getElementById("userinfor1").style.display="block";
+                // location.reload(true);
             }
             if(response.ok)
             {
@@ -246,6 +249,8 @@ var myid=null;
             if(response.status==401)
             {
                 showbox("登陆已失效，请重新登录");
+                document.getElementById("userinfor2").style.display="none";
+                document.getElementById("userinfor1").style.display="block";
             }
             return response.json();
         }).then(res=>
@@ -300,6 +305,8 @@ var myid=null;
                 if(response.status==401)
                 {
                     showbox("登陆已失效，请重新登录");
+                    document.getElementById("userinfor2").style.display="none";
+                     document.getElementById("userinfor1").style.display="block";
                 }
                 if(response.ok===true)
                 {
