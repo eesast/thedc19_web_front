@@ -6,7 +6,7 @@ if(token==null||username==null)
 {
     showbox("请先登录",function()
     {
-        // location.reload(true);       
+         window.location.href='main.html';       
     })
 }
 var iscaptain=getCookie("iscaptain");
@@ -34,7 +34,7 @@ var myid=getCookie("myid");
     {
         showbox("登录失效，请重新登录",function()
         {
-            // location.reload(true);       
+            window.location.href='main.html';       
         });
     }).then(res=>
     {
@@ -61,7 +61,7 @@ var myid=getCookie("myid");
         {
                 showbox("登录失效，请重新登录",function()
                 {
-                    // location.reload(true);       
+                    window.location.href='main.html';       
                 });
         }).then(res=>
         {
@@ -324,7 +324,7 @@ function showteaminfor()
                         showbox("成功解散队伍!",function()
                         {
                             //点击后刷新页面
-                            //location.reload(true);   
+                            window.location.href='main.html';   
                             window.location.href="main.html";//回到主页面
                         });
                     });
@@ -429,7 +429,7 @@ function showteaminfor()
                         {
                             //点击后刷新页面
                             window.location.href="main.html";//回到主页面
-                            //location.reload(true);   
+                            // window.location.href='main.html';   
                         });
                     });
                     //showbox("成功退出队伍!");
@@ -468,7 +468,7 @@ function setdropsb(i)
                             showbox("该队员已被踢出队伍!",function()
                             {
                                 //点击后刷新页面
-                                location.reload(true);   
+                                window.location.href='main.html';   
                 
                             });
                         });//踢掉第i个人
@@ -508,7 +508,7 @@ function dissolve(callback)
     {
                 showbox("登录失效，请重新登录",function()
                 {
-                    // location.reload(true);       
+                    window.location.href='main.html';       
                 });
     }).then(res=>
     {
@@ -536,7 +536,7 @@ function dissolve(callback)
         {
             showbox("登录失效，请重新登录",function()
             {
-                // location.reload(true);       
+                window.location.href='main.html';       
             });
         })
     })
@@ -570,7 +570,7 @@ function letitgo(callback)
         {
             showbox("登录失效，请重新登录",function()
             {
-                // location.reload(true);       
+                window.location.href='main.html';       
             });
         })
 
@@ -607,7 +607,7 @@ function dropsb(dropsbid,callback)
         {
             showbox("登录失效，请重新登录",function()
             {
-                // location.reload(true);       
+                window.location.href='main.html';       
             });
         })
 
@@ -632,5 +632,47 @@ function getCookie(cname){
         var c = ca[i].trim();
         if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
     }
-    return "";
+    return null;
 }
+
+function showbox(s,callback)//打印一段话
+    {
+        document.getElementsByClassName("dark")[0].style.display="block";//屏幕半黑
+        document.getElementsByClassName("showinfor")[0].style.display="block";//弹框
+        document.getElementsByClassName("context")[0].innerHTML="<br>&nbsp;&nbsp;&nbsp;&nbsp;"+s;//弹出消息
+        document.getElementsByClassName("ok")[0].style.left="46.5%";
+        //设置调用按钮功能
+        document.getElementsByClassName("ok")[0].focus();
+        document.addEventListener("keydown",handdle);
+        function handdle(e) {
+           
+            //捕捉回车事件
+            var ev =e.keyCode;//event || window.event || arguments.callee.caller.arguments[0];
+            //alert(ev.keyCode);
+            if(ev == 13) 
+            {   
+                 document.removeEventListener("keydown",handdle);
+                
+                document.getElementsByClassName("ok")[0].click();
+               
+             }
+             
+        }
+
+        document.getElementsByClassName("ok")[0].addEventListener("click",function()
+        {
+            //按下了确认
+            //优先关闭窗口
+            
+            //document.getElementsByClassName("ok")[0].target.blur();
+            document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
+            document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
+          
+            if(callback && typeof(callback)==="function")
+            {
+                callback();
+               
+            }
+           
+        });
+    }

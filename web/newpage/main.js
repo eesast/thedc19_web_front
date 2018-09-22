@@ -1,12 +1,12 @@
+// document.write("<script language=javascript src='alertWindow.js'><\/script>");
+// new_element=document.createElement("script");
+// new_element.setAttribute("type","text/javascript");
+// new_element.setAttribute("src","alertWindow.js");
+// document.body.appendChild(new_element);
+
 var token=getCookie('token');
 var username=getCookie('username');//登陆后传入
-if(token==null||username==null)
-{
-    showbox("请先登录",function()
-    {
-        // location.reload(true);       
-    })
-}
+
 var mybody='';
 var inteam=false;//是否在队伍中
 var iscaptain=null;//是否为队长
@@ -14,6 +14,15 @@ var teamid=null;//队伍的id是多少
 var myid=null;
     function check()//检查此用户是否已经拥有队伍(创建队伍||加入队伍)
     {
+        if(token==null||username==null)
+        {
+            // showbox("请先登录",function()
+            // {
+            //     // location.reload(true);       
+            // });
+            init();
+            return ;
+        }
         fetch("http://58.87.111.176/api/users",
         {
             method:'GET',
@@ -30,10 +39,10 @@ var myid=null;
             }
         },error=>
         {
-                showbox("登录失效，请重新登录",function()
-                {
-                    // location.reload(true);       
-                });
+                // showbox("登录失效，请重新登录",function()
+                // {
+                //     // location.reload(true);       
+                // });
         }).then(res=>
         {
             mybody=res;
@@ -87,8 +96,14 @@ var myid=null;
             var bt1=document.getElementsByTagName("button")[0];
             var bt2=document.getElementsByTagName("button")[1];
             
-            bt1.addEventListener("click",function(){window.location.href='creatteam.html';});
-            bt2.addEventListener("click",function(){window.location.href='jointeam.html';});
+            bt1.addEventListener("click",function(){
+                if(token===null)showbox("请先登录后操作");    
+                else window.location.href='creatteam.html';
+            });
+            bt2.addEventListener("click",function(){
+                if(token===null)showbox("请先登录后操作");    
+                else window.location.href='jointeam.html';
+            });
         }
         else//显示查看队伍信息和退出队伍
         {
@@ -102,9 +117,16 @@ var myid=null;
             bt4.style.display='inline';
             if(iscaptain===true)bt4.innerHTML="解散队伍";
 
-            bt3.addEventListener("click",function(){window.location.href='teaminfor.html';});//查看队伍信息
+            bt3.addEventListener("click",function(){
+                if(token===null)showbox("请先登录后操作");    
+                else window.location.href='teaminfor.html';});//查看队伍信息
             //退出队伍
             bt4.addEventListener("click",function(){
+                if(token===null)
+                {
+                    showbox("请先登录后操作");    
+                    return ;
+                }
                 /*
                 ****************************************
                 ***********************待完善，删除队伍信息
@@ -284,6 +306,48 @@ var myid=null;
             var c = ca[i].trim();
             if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
         }
-        return "";
+        return null;
     }
     
+
+    function showbox(s,callback)//打印一段话
+    {
+        document.getElementsByClassName("dark")[0].style.display="block";//屏幕半黑
+        document.getElementsByClassName("showinfor")[0].style.display="block";//弹框
+        document.getElementsByClassName("context")[0].innerHTML="<br>&nbsp;&nbsp;&nbsp;&nbsp;"+s;//弹出消息
+        document.getElementsByClassName("ok")[0].style.left="46.5%";
+        //设置调用按钮功能
+        document.getElementsByClassName("ok")[0].focus();
+        document.addEventListener("keydown",handdle);
+        function handdle(e) {
+           
+            //捕捉回车事件
+            var ev =e.keyCode;//event || window.event || arguments.callee.caller.arguments[0];
+            //alert(ev.keyCode);
+            if(ev == 13) 
+            {   
+                 document.removeEventListener("keydown",handdle);
+                
+                document.getElementsByClassName("ok")[0].click();
+               
+             }
+             
+        }
+
+        document.getElementsByClassName("ok")[0].addEventListener("click",function()
+        {
+            //按下了确认
+            //优先关闭窗口
+            
+            //document.getElementsByClassName("ok")[0].target.blur();
+            document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
+            document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
+          
+            if(callback && typeof(callback)==="function")
+            {
+                callback();
+               
+            }
+           
+        });
+    }
