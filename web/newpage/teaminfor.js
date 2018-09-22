@@ -51,6 +51,10 @@ var myid=getCookie("myid");
             'x-access-token':token.toString()},
     }).then(response=>
     {
+        if(response.status==401)
+        {
+            showbox("登陆已失效，请重新登录");
+        }
         if(response.ok)
         {
             return response.json();
@@ -76,6 +80,10 @@ var myid=getCookie("myid");
                 'x-access-token':token.toString()},
         }).then(response=>
         {
+            if(response.status==401)
+            {
+                showbox("登陆已失效，请重新登录");
+            }
             if(response.ok)
             {
                 return response.json();
@@ -531,6 +539,10 @@ function dissolve(callback)
         )
     }).then(response=>
     {
+        if(response.status==401)
+        {
+            showbox("登陆已失效，请重新登录");
+        }
         return response.json();
     },error=>
     {
@@ -553,6 +565,10 @@ function dissolve(callback)
             }
         }).then(response=>
         {
+            if(response.status==401)
+            {
+                showbox("登陆已失效，请重新登录");
+            }
             if(response.ok===true)
             {
                 if(callback&&typeof(callback)==="function")
@@ -587,6 +603,10 @@ function letitgo(callback)
             }
         }).then(response=>
         {
+            if(response.status==401)
+            {
+                showbox("登陆已失效，请重新登录");
+            }
             if(response.ok===true)
             {
                 if(callback&&typeof(callback)==="function")
@@ -624,6 +644,10 @@ function dropsb(dropsbid,callback)
             }
         }).then(response=>
         {
+            if(response.status==401)
+            {
+                showbox("登陆已失效，请重新登录");
+            }
             if(response.ok===true)
             {
                 if(callback&&typeof(callback)==="function")
