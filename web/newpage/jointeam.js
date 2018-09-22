@@ -200,7 +200,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         }
         //设置查看各项队伍信息
         
-        for(var i=0;i<count;i++)
+        for(var i=1;i<=count;i++)
         {
             
             //setclickinfor(i);
@@ -221,7 +221,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
 
         function setclickjoin(i)//设置如下
         {
-            var change=document.getElementsByTagName("button")[i];
+            var change=document.getElementsByTagName("button")[i-1];
             //window.alert(i);
             change.style.color='rgb(57, 83, 17)';
             change.addEventListener("click",()=>
