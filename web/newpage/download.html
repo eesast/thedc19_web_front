@@ -5,7 +5,10 @@
                 <link rel="stylesheet" type="text/css" href="side-bar.css">
         </head>
     <body>
+        <img class="logo" src="thelogo.jpg" alt="logo" ></img>
+        <h1>文件下载</h1>
         <div id="mainbox">
+            <br><br>
         <div id="notice"> 
             <li id="little">电设20规则</li>
             <p id="file">文件:<a href="" >EDC20规则</a></p>
@@ -22,7 +25,7 @@
                 <li id="little">小车装配指南</li>
                 <p id="file">文件:<a href="">小车装配指南</a></p>
             </div>
-
+            <br>
         </div>
 
             <nav class="main-menu">
@@ -105,10 +108,21 @@
     #mainbox
     {
         position:absolute;
-        left:30%;
-        top:10%;
+        left:34.5%;
+        top:35%;
+        width:30%;
+        text-align: center;
         color: #5e5c61;
-        font-size:30;
+        font-size:15;
+        background-color: #cfe7fa;
+        box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
+        border:3px solid rgb(87, 143, 216);
+        border-radius: 10%;
+    }
+    li
+    {
+        font-size:20;
+        color: #000000;
     }
     body,html
 {
@@ -164,5 +178,30 @@
         text-align: center;
         top: 86.5%;
         /* opacity:0.75; */
+    }
+    .logo
+    {
+        position:fixed;
+        margin:0 auto;
+        display:block;
+        left:46.5%;
+        width:100px;
+        height:100px;
+        text-align: center;
+        top:100px; 
+        border-radius: 50%;
+        /* border:3px solid; */
+    }
+    h1
+    {
+        width:40%;
+        color:rgb(78, 78, 78);
+        position:relative;
+        margin:0 auto;
+        text-shadow: 3px 3px 3px rgb(145, 145, 145);
+        text-align: center;
+        top:200px;
+        font-weight: 100;
+        /* border:3px solid; */
     }
 </style>
