@@ -172,7 +172,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
     for(var i=0;i<mybody.length;i++)
     {
          var turn=document.getElementsByClassName("more")[i];
-        turn.style.width="750px";
+        turn.style.width="50%";
         turn.style.height="60px";
         turn.style.wordBreak="break-all";
         turn.style.overflow="scroll";

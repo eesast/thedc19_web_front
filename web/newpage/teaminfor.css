@@ -81,54 +81,71 @@ body,html
         box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
     }
    
-     /* 统一尾部 */
     .ts-footer
     {
         position: relative;
         left:36%;
-        /* bottom:-8%; */
+        /* top:20%; */
         width: 400px; 
         height: 30px;
     }
-    .ts-left{
-        float:left;
-        width: 229px; 
-    }
-    .ts-right{
-        float:right;
-    }
-    .holdlogo{
-        /* position: fixed; */
-        /* margin: 0 auto; */
-        /* display: block; */
-        /* left: 80%; */
-        width: 200px;
-        height: 50px;
-        /* display:inline; */
-        /* z-index: 4; */
-        /* text-align: center; */
-        /* top: 88%; */
-    }
-    .eelogo
-    {
-        /* position: absolute;
-        margin:0 auto;
-        display:block; */
-        /* left:66%; */
-        width:200px;
-        height:70px;
-        top:-0.5%;
-        /* display:inline; */
-        /* z-index: 4;
-        text-align: center; */
-        /* top: 87%; */
-        /* opacity:0.75; */
-    }
-    
     .foot
     {
        position: relative;
-       left:66%;
+       left:60%;
        top:-8%;
+       height:10%;
+       /* border:1px solid; */
         /* display:inline; */
     }
+    .ts-left{
+       float:left;
+       width: 229px; 
+      
+   }
+   .ts-right{
+       float:right;
+      
+   }
+   /* .ts-rightx{
+       float:right;
+      display:inline;
+   } */
+    .holdlogo{
+       /* position: fixed; */
+       /* margin: 0 auto; */
+       /* display: block; */
+       /* left: 80%; */
+       width: 200px;
+       height: 50px;
+       /* display:inline; */
+       /* z-index: 4; */
+       /* text-align: center; */
+       /* top: 88%; */
+   }
+   .eelogo
+       {
+           position: relative;
+           top:90%;
+           left:-69%;
+           /* position:fixed;
+           margin:0 auto;
+           display:block;
+           left:6%;*/
+           width:30px;
+           height:30px;
+        }
+       .dclogo
+       {
+           position: relative;
+           top:62%;
+           left:-68%;
+           /* position:fixed;
+           margin:0 auto;
+           display:block;
+           left:6%;*/
+           width:30px;
+           border-radius: 50%;
+           height:30px;
+          
+       }

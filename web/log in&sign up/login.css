@@ -88,14 +88,28 @@ body,html
   }
   .eelogo
   {
-      position: absolute;
+      position:fixed;
       margin:0 auto;
       display:block;
-      left:66%;
-      width:200px;
-      height:70px;
+      left:6%;
+      width:30px;
+      height:30px;
       z-index: 4;
       text-align: center;
-      top: 86.5%;
+      top:92%;
+      /* opacity:0.75; */
+  }
+  .dclogo
+  {
+      position:fixed;
+      margin:0 auto;
+      display:block;
+      left:9%;
+      width:30px;
+      height:30px;
+      z-index: 4;
+      text-align: center;
+      top:92%;
+      border-radius: 50%;
       /* opacity:0.75; */
   }
