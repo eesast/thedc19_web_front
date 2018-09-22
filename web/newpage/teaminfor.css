@@ -92,7 +92,7 @@ body,html
     .foot
     {
        position: relative;
-       left:60%;
+       left:56%;
        top:-8%;
        height:10%;
        /* border:1px solid; */
@@ -126,8 +126,8 @@ body,html
    .eelogo
        {
            position: relative;
-           top:90%;
-           left:-69%;
+           top:50%;
+           left:-65%;
            /* position:fixed;
            margin:0 auto;
            display:block;
@@ -138,14 +138,14 @@ body,html
        .dclogo
        {
            position: relative;
-           top:62%;
-           left:-68%;
+           top:22%;
+           left:-64%;
            /* position:fixed;
            margin:0 auto;
            display:block;
            left:6%;*/
-           width:30px;
-           border-radius: 50%;
-           height:30px;
+           width:100px;
+           /* border-radius: 50%; */
+           height:40px;
           
        }
