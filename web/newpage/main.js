@@ -27,7 +27,7 @@ var myid=null;
         {
             document.getElementById("userinfor1").style.display="none";
             document.getElementById("userinfor2").style.display="block";
-            document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'>"+username+'</p>';
+            document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'>"+username+'</p>(点击退出登录)';
             document.getElementById("user").style.color="red";
             document.getElementById("user").addEventListener("click",function()
             {
@@ -340,7 +340,7 @@ var myid=null;
     exp.setTime(exp.getTime() - 1);
     var cval=getCookie(name);
     if(cval!=null)
-    document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    document.cookie= name + "="+cval+";expires="+exp.toGMTString()+";path=/";
     }
 
     function showbox(s,callback)//打印一段话
