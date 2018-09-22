@@ -180,7 +180,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         
             line+='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+input.members+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
         
-            line+="<td>&nbsp;&nbsp;&nbsp<button>加入队伍</button>;&nbsp;&nbsp;&nbsp;</td>";
+            line+="<td>&nbsp;&nbsp;&nbsp<button>加入队伍</button>;&nbsp;&nbsp;</td>";
             line+='</tr>';
 
             count++;
@@ -291,6 +291,17 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         {
             if(i==0)
             {
+                var finalteamcnt=0;
+                for(var j=0;j<mybody.length;j++)
+                {
+                    if(idnum==mybody[j]['inviteCode'])finalteamcnt++;
+                }
+                if(finalteamcnt>1)//不唯一
+                {
+
+                    return false;
+                }
+                else if(finalteamcnt===0)return false;
                 for(var j=0;j<mybody.length;j++)
                 {
                     console.log(idnum);
@@ -406,7 +417,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             }
             else
             {
-                showbox("邀请码错误，请重新检查!",function()
+                showbox("邀请码错误或存在邀请码相同的队伍，请尝试选定队伍后加入!",function()
                 {
                     location=location;         
                 });
