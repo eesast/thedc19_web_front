@@ -11,29 +11,8 @@ if(token==null||username==null)
 var myusers;//使用者集合
 var mobody;
     console.log(token);
-if(token!=null&&username!=null)fetch('http://58.87.111.176/api/auth',
+if(token!=null&&username!=null)
 {
-    method:'POST',
-    headers:
-    {
-        'Content-Type':'application/json'
-    },
-    body:JSON.stringify({
-        'username':'admin',
-        'password':'eesast-software'
-    })
-}).then(response=>
-{
-    if(response.ok)return response.json();
-},error=>
-{
-    showbox("登录失效，请重新登录",function()
-    {
-        // location.reload(true);       
-    });
-}).then(res=>
-{
-    var newtoken=res['token'];
     //alert(token);
     fetch('http://58.87.111.176/api/teams',
     {
@@ -41,7 +20,7 @@ if(token!=null&&username!=null)fetch('http://58.87.111.176/api/auth',
         headers:
         {
             'Content-Type':'application/json',
-            'x-access-token':newtoken.toString()},//以管理员权限访问所有队伍信息
+            'x-access-token':token.toString()},//以管理员权限访问所有队伍信息
     }).then(response=>
     {
         if(response.ok)
@@ -62,7 +41,7 @@ if(token!=null&&username!=null)fetch('http://58.87.111.176/api/auth',
     }).then(res=>
     {
         console.log(res);
-        mybody=res;//获取所有队伍信息，包括邀请码
+        mybody=res;//获取所有队伍信息，不包括邀请码
         console.log(mybody[0]);
         console.log(mybody.length);//获取长度
 
@@ -94,18 +73,12 @@ if(token!=null&&username!=null)fetch('http://58.87.111.176/api/auth',
         {
             myusers=res;
             init();//打印队伍信息
-            setjoin();//设置一键加入
+            //setjoin();//设置一键加入
         })
         
     })
-})
-    
-
-
-else
-{
-    setjoin();
 }
+    
 if(token!=null&&username!=null)
 {
     document.getElementById("userinfor1").style.display="none";
@@ -252,26 +225,27 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                 {
                     var idnum=document.getElementsByClassName("setinput")[0].value;
                     //alert(idnum);
-                    if(check(idnum,i)===true)
-                    {
-                        //报名加入信息
-                        /*
-                        ****************
-                        该处更新保存数据
-                        待完善
-                        */
-                        showbox("加入队伍成功",function()
-                        {
-                            window.location.href='main.html';
-                        });
-                        //返回初始界面
+                    // if(check(idnum,i)===true)
+                    // {
+                    //     //报名加入信息
+                    //     /*
+                    //     ****************
+                    //     该处更新保存数据
+                    //     待完善
+                    //     */
+                    //     showbox("加入队伍成功",function()
+                    //     {
+                    //         window.location.href='main.html';
+                    //     });
+                    //     //返回初始界面
 
                         
-                    }
-                    else
-                    {
-                        showbox("邀请码错误，请重新检查!");
-                    }
+                    // }
+                    // else
+                    // {
+                    //     showbox("邀请码错误，请重新检查!");
+                    // }
+                    check(idnum,i);
                 });
                 //while(setinputflag===false)window.sleep(100);
                 //alert(1);
@@ -289,50 +263,45 @@ function init()//初始化，从服务器读取已有队伍信息并显示
     
         function check(idnum,i)//与服务器数据中的邀请码进行匹配  idnum是邀请码  i是与第几个队伍比较（为0则放弃比较）
         {
-            if(i==0)
-            {
-                var finalteamcnt=0;
-                for(var j=0;j<mybody.length;j++)
-                {
-                    if(idnum==mybody[j]['inviteCode'])finalteamcnt++;
-                }
-                if(finalteamcnt>1)//不唯一
-                {
-
-                    return false;
-                }
-                else if(finalteamcnt===0)return false;
-                for(var j=0;j<mybody.length;j++)
-                {
-                    console.log(idnum);
-                    if(idnum==mybody[j]['inviteCode'])
-                    {
-                        //发送更新消息
-                        fetch("http://58.87.111.176/api/teams/"+mybody[j]['id']+'/members?inviteCode='+idnum,
-                        {
-                            method:'POST',
-                            headers:
-                            {
-                                'Content-Type':'application/json',
-                                'x-access-token':token.toString(),
-                            },
+            // if(i==0)
+            // {
+            //     for(var j=0;j<mybody.length;j++)
+            //     {
+            //         console.log(idnum);
+            //             //发送更新消息
+            //             fetch("http://58.87.111.176/api/teams/"+mybody[j]['id']+'/members?inviteCode='+idnum,
+            //             {
+            //                 method:'POST',
+            //                 headers:
+            //                 {
+            //                     'Content-Type':'application/json',
+            //                     'x-access-token':token.toString(),
+            //                 },
                             
-                        },error=>
-                    {
-                        showbox("登录失效，请重新登录",function()
-                        {
-                            // location.reload(true);       
-                        });
-                    }).then(response=>
-                        {
-                        })
-                        return true;
+            //             }.then(response=>
+            //             {
+            //                 switch(response.status)
+            //                 {
+            //                     case 204:showbox("加入成功!",function()
+            //                         {
+            //                             window.location.href='main.html';
+            //                         });break;
+            //                     // case 409:showbox("您已加入队伍!");break;
+            //                     // case 422:showbox("缺少邀请码!");break;
+            //                     // case 403:showbox("邀请码错误!");break;
+            //                     // case 401:showbox("登录已失效，请重新登录!")break;
+            //                     // case 404:showbox("队伍不存在");
+            //                 }
+            //             }));
+
+                    
                         
-                    }
-                }
-            }
-            else if(idnum==data[i].invitecode)
-            {
+                    
+            //     }
+            //     // return true;
+            // }
+            // else 
+            // {
                 //发送更新消息
                 fetch("http://58.87.111.176/api/teams/"+data[i]['id']+'/members?inviteCode='+idnum,
                 {
@@ -343,24 +312,43 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         'x-access-token':token.toString(),
                     },
                     
-                },error=>
-            {
-                showbox("登录失效，请重新登录",function()
+                }.then(response=>
                 {
-                    // location.reload(true);       
-                });
-            }).then(response=>
-                {
-                })
-
-                return true;
-            }
+                    switch(response.status)
+                    {
+                        case 204:showbox("加入队伍成功",function()
+                        {
+                            window.location.href='main.html';
+                        });break;
+                        case 409:showbox("您已加入队伍!",function()
+                        {
+                            location=location;        
+                        });break;
+                        case 422:showbox("缺少邀请码!",function()
+                            {
+                                location=location;        
+                            }
+                        );break;
+                        case 403:showbox("邀请码错误!",function()
+                        {
+                            location=location;   
+                        });break;
+                        case 401:showbox("登录已失效，请重新登录!",function()
+                        {
+                            location=location;   
+                        });break;
+                        case 404:showbox("队伍不存在",function()
+                        {
+                            location=location;   
+                        });
+                    }
+                }));
             
             //else
-            return false;
-        }
+                // return false;
+            //  }
 
-   
+        }
 
     //设置立即加入队伍（利用邀请码）
      function setjoin()
@@ -398,30 +386,30 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             /*
             ****和服务器内存有的邀请码进行匹配，查看是否符合条件
             */
-       
-            if(check(idnum,0)==true)
-            {
-                //报名加入信息
-                /*
-                ****************
-                该处更新保存数据
-                待完善
-                */
-                showbox("加入队伍成功",function()
-                {
-                    window.location.href='main.html';
-                });
-                //返回初始界面
+            check(idnum,0);
+            // if(check(idnum,0)==true)
+            // {
+            //     //报名加入信息
+            //     /*
+            //     ****************
+            //     该处更新保存数据
+            //     待完善
+            //     */
+            //     showbox("加入队伍成功",function()
+            //     {
+            //         window.location.href='main.html';
+            //     });
+            //     //返回初始界面
 
-               // window.location.href='main.html';
-            }
-            else
-            {
-                showbox("邀请码错误或存在邀请码相同的队伍，请尝试选定队伍后加入!",function()
-                {
-                    location=location;         
-                });
-            }
+            //    // window.location.href='main.html';
+            // }
+            // else
+            // {
+            //     showbox("邀请码错误或存在邀请码相同的队伍，请尝试选定队伍后加入!",function()
+            //     {
+            //         location=location;         
+            //     });
+            // }
             
             
            // document.getElementById("name").focus();
