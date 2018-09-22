@@ -5,6 +5,7 @@ position:fixed;
 top:150px;
 left:0;
 width:70px;
+z-index: 100;
 }
 .main-menu-1 {
 background:rgb(85, 85, 85);
