@@ -52,9 +52,15 @@ a:link,a:visited{
     font-size:16;
     z-index: 10;
 }
+#user
+{
+    display:inline;
+    color:yellow;
+}
 #user:hover
 {
     color:black;
+    
 }
 
     .mainlogo
