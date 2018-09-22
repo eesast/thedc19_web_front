@@ -200,7 +200,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         }
         //设置查看各项队伍信息
         
-        for(var i=1;i<=count;i++)
+        for(var i=0;i<count;i++)
         {
             
             //setclickinfor(i);
