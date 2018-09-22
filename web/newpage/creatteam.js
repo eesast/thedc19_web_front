@@ -205,6 +205,14 @@ function getCookie(cname){
     }
     return null;
 }
+function delCookie(name)
+{
+var exp = new Date();
+exp.setTime(exp.getTime() - 1);
+var cval=getCookie(name);
+if(cval!=null)
+document.cookie= name + "="+cval+";expires="+exp.toGMTString()+";path=/";
+}
 function showbox(s,callback)//打印一段话
     {
         document.getElementsByClassName("dark")[0].style.display="block";//屏幕半黑

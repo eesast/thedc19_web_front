@@ -11,7 +11,7 @@ if(token==null||username==null)
 var myusers;//使用者集合
 var mobody;
     console.log(token);
-if(token!=null)fetch('http://58.87.111.176/api/auth',
+if(token!=null&&username!=null)fetch('http://58.87.111.176/api/auth',
 {
     method:'POST',
     headers:
@@ -106,6 +106,33 @@ else
 {
     setjoin();
 }
+if(token!=null&&username!=null)
+{
+    document.getElementById("userinfor1").style.display="none";
+    document.getElementById("userinfor2").style.display="block";
+    document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'>"+username+'</p>';
+    document.getElementById("user").style.color="red";
+    document.getElementById("user").addEventListener("click",function()
+    {
+
+        //退出登录
+        confirmbox("您确定退出登录么?",function()
+        {
+            
+            if(clearp===true)
+            {
+                delCookie("username");
+                delCookie("token");
+                location.reload(true);
+            }
+            else
+            {
+
+            }
+        });
+    });
+}
+
 var data;
 function init()//初始化，从服务器读取已有队伍信息并显示
     {
@@ -403,6 +430,14 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
         }
         return null;
+    }
+    function delCookie(name)
+    {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(name);
+    if(cval!=null)
+    document.cookie= name + "="+cval+";expires="+exp.toGMTString()+";path=/";
     }
     function showbox(s,callback)//打印一段话
     {

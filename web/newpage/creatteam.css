@@ -16,6 +16,7 @@
     /* border: 3px solid; */
     overflow-x: hidden;
 }
+
     #id4
     {
         position: relative;
@@ -27,8 +28,8 @@
     .titlelogo
     {
         position:fixed;
-        left:4.5%;
-        top:5%;
+        left:8%;
+        top:10%;
     }
     h1
     {
@@ -36,7 +37,8 @@
         font-size:50;
         text-shadow: 3px 3px 3px rgb(92, 117, 150);
         position: relative;
-        left:10%;
+        left:15%;
+        top:5%;
         color:rgb(47, 25, 88);
         font-family:'KaiTi';
     }
@@ -45,6 +47,7 @@
         position:relative;
         left:10%;
         width:80%;
+        top:4.5%;
         border: 3px solid;
         height: 60%;
         border-radius: 20px;

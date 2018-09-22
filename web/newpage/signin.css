@@ -1,0 +1,38 @@
+.userinfor
+{
+    position: absolute;
+    top:55px;
+    /* border: 1px solid; */
+    width:100%;
+    z-index: 10;
+}
+#signin:link,#signin:visited{
+    text-decoration:none;  /*超链接无下划线*/
+    font-size:24;
+   }
+   #signin
+   {
+       color:#575656;
+   }
+   #signin:hover
+   {
+       color:#000000;
+   }
+   
+#userinfor1
+{
+    position: absolute;
+    right:5%;
+    top:2%;
+    font-size:16;
+    z-index: 10;
+}
+#userinfor2
+{
+    position: absolute;
+    display:none;
+    right:5%;
+    top:2%;
+    font-size:16;
+    z-index: 10;
+}
