@@ -23,31 +23,41 @@ body,html
     .titlelogo
     {
         position: absolute;
-        left:10%;
+        left:35%;
         top:10%;
     }
     h1
     {
         position: relative;
-        left:17%;
+        left:44%;
         top:5%;
         font-size:50;
         font-family: 'SimHei';
         color:rgb(4, 71, 4);
         text-shadow: 5px 5px 5px gray;
     }
+    /* #h2
+    {
+        position: relative;
+        left:44%;
+        top:5%;
+        font-size:50;
+        font-family: 'SimHei';
+        color:rgb(4, 71, 4);
+        text-shadow: 5px 5px 5px gray;
+    } */
     /* 默认显示队长 */
     .a,.b
     {
         /* overflow:scroll; */
         border:2px solid rgb(194, 152, 233);
-        width:40%;
+        width:60%;
         height:100%;
         /* display:none; */
         /* background-color: rgb(180, 216, 198); */
         position: relative;
         top:5%;
-        left:10%;
+        left:20%;
         border-radius: 20px;
         box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
     }
@@ -63,7 +73,7 @@ body,html
     .c
     {
         position: relative;
-        left:10%;
+        left:40%;
         font-family: 'SimHei';
         font-size:30;
         
@@ -72,7 +82,7 @@ body,html
     .d
     {
         position: relative;
-        left:10%;
+        left:20%;
         border:3px solid rgb(59, 57, 57);
         /* width:65%; */
         /* background-color: rgb(243, 243, 243); */
