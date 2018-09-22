@@ -59,10 +59,15 @@ var myid=null;
             }
         }).then(response=>
         {
+            if(response.status==401)
+            {
+                showbox("登陆已失效，请重新登录");
+            }
             if(response.ok)
             {
                 return response.json();
             }
+            
         },error=>
         {
                 // showbox("登录失效，请重新登录",function()
@@ -238,6 +243,10 @@ var myid=null;
             });        
         }).then(response=>
         {
+            if(response.status==401)
+            {
+                showbox("登陆已失效，请重新登录");
+            }
             return response.json();
         }).then(res=>
         {
@@ -288,6 +297,10 @@ var myid=null;
                 }
             }).then(response=>
             {
+                if(response.status==401)
+                {
+                    showbox("登陆已失效，请重新登录");
+                }
                 if(response.ok===true)
                 {
                     if(callback&&typeof(callback)==="function")

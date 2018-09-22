@@ -111,6 +111,10 @@ bt.addEventListener("click",function(){
             body:JSON.stringify({"name":getname,"description":getinfor})
         }).then(response=>
         {
+            if(response.status==401)
+            {
+                showbox("登陆已失效，请重新登录");
+            }
             if(response.ok)
             {
                 //返回邀请码

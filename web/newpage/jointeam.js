@@ -23,6 +23,10 @@ if(token!=null&&username!=null)
             'x-access-token':token.toString()},//以管理员权限访问所有队伍信息
     }).then(response=>
     {
+        if(response.status==401)
+        {
+            showbox("登陆已失效，请重新登录");
+        }
         if(response.ok)
         {
             return response.json();
@@ -54,6 +58,10 @@ if(token!=null&&username!=null)
                 'x-access-token':token.toString()},
         }).then(response=>
         {
+            if(response.status==401)
+            {
+                showbox("登陆已失效，请重新登录");
+            }
             if(response.ok)
             {
                 return response.json();
