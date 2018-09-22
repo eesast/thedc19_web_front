@@ -54,6 +54,7 @@ function name_checking(){
         showbox('您已登录成功！')
         setCookie("username",userinfo.name)
         setCookie("token",usertoken)
+        window.location.href='../newpage/firstpage.html'
     })
 }
 function setCookie(cname,cvalue){
