@@ -94,7 +94,7 @@ p{
     height:30px;
     z-index: 4;
     text-align: center;
-    top:118%;
+    top:113.5%;
     /* opacity:0.75; */
 }
 .dclogo
@@ -103,11 +103,11 @@ p{
     margin:0 auto;
     display:block;
     left:7%;
-    width:30px;
-    height:30px;
+    width:100px;
+    height:40px;
     z-index: 4;
     text-align: center;
-    top:118%;
-    border-radius: 50%;
+    top:113%;
+    /* border-radius: 50%; */
     /* opacity:0.75; */
 }
