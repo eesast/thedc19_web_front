@@ -23,6 +23,32 @@ var myid=null;
             init();
             return ;
         }
+        else//不为空
+        {
+            document.getElementById("userinfor1").style.display="none";
+            document.getElementById("userinfor2").style.display="block";
+            document.getElementById("userinfor2").innerHTML="您好，用户:<div id='user'>"+username+'</div>';
+            document.getElementById("user").style.color="red";
+            document.getElementById("user").addEventListener("click",function()
+            {
+
+                //退出登录
+                confirmbox("您确定退出登录么?",function()
+                {
+                    
+                    if(clearp===true)
+                    {
+                        delCookie("username");
+                        delCookie("token");
+                        location.reload(true);
+                    }
+                    else
+                    {
+
+                    }
+                });
+            });
+        }
         fetch("http://58.87.111.176/api/users",
         {
             method:'GET',
@@ -308,7 +334,14 @@ var myid=null;
         }
         return null;
     }
-    
+    function delCookie(name)
+    {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(name);
+    if(cval!=null)
+    document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
 
     function showbox(s,callback)//打印一段话
     {
@@ -351,3 +384,5 @@ var myid=null;
            
         });
     }
+
+
