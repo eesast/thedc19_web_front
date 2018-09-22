@@ -261,6 +261,7 @@ function showteaminfor()
             break;
         }
     }
+    console.log(team);
     console.log(iscaptain);
     console.log(team.member);
     if(iscaptain=='true')//如果是队长
@@ -283,7 +284,7 @@ function showteaminfor()
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
         for(var i=1;i<=25;i++)line+="&nbsp";
-        line+=team.invitecode;
+        line+=team.invitecode+'<br><hr>';
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
         for(var i=1;i<=25;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
@@ -404,7 +405,7 @@ function showteaminfor()
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
         for(var i=1;i<=25;i++)line+="&nbsp";
-        line+=team.invitecode;
+        line+=team.invitecode+'<br><hr>';
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
         for(var i=1;i<=25;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
