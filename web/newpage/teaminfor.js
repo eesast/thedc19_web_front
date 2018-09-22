@@ -142,11 +142,11 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         var turn=document.getElementsByTagName("tr")[i];
         if(i%2==1)
         {
-            turn.style.backgroundColor="#e9e9e9";
+            turn.style.backgroundColor="rgb(219, 238, 245)";
         }
         else
         {
-            turn.style.backgroundColor="rgb(243, 243, 243)";
+            turn.style.backgroundColor="rgb(220, 232, 236)";
         }
     }
   
