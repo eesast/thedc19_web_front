@@ -144,6 +144,7 @@ function senddata(){
         console.log(usertoken)
         setCookie("username",userinfo.name)
         setCookie("token",usertoken)
+        window.location.href='login.html'
     })
 }
 
