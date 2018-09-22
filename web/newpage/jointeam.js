@@ -26,6 +26,8 @@ if(token!=null&&username!=null)
         if(response.status==401)
         {
             showbox("登陆已失效，请重新登录");
+            document.getElementById("userinfor2").style.display="none";
+                document.getElementById("userinfor1").style.display="block";
         }
         if(response.ok)
         {
@@ -61,6 +63,8 @@ if(token!=null&&username!=null)
             if(response.status==401)
             {
                 showbox("登陆已失效，请重新登录");
+                document.getElementById("userinfor2").style.display="none";
+                document.getElementById("userinfor1").style.display="block";
             }
             if(response.ok)
             {
@@ -344,7 +348,10 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         case 401:showbox("登录已失效，请重新登录!",function()
                         {
                             location=location;   
-                        });break;
+                        });
+                        document.getElementById("userinfor2").style.display="none";
+                        document.getElementById("userinfor1").style.display="block";
+                        break;
                         case 404:showbox("队伍不存在",function()
                         {
                             location=location;   
