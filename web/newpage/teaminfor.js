@@ -9,6 +9,34 @@ if(token==null||username==null)
          window.location.href='main.html';       
     })
 }
+if(token!=null&&username!=null)
+{
+    document.getElementById("userinfor1").style.display="none";
+    document.getElementById("userinfor2").style.display="block";
+    document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'>"+username+'</p>';
+    document.getElementById("user").style.color="red";
+    document.getElementById("user").addEventListener("click",function()
+    {
+
+        //退出登录
+        confirmbox("您确定退出登录么?",function()
+        {
+            
+            if(clearp===true)
+            {
+                delCookie("username");
+                delCookie("token");
+                location.reload(true);
+            }
+            else
+            {
+
+            }
+        });
+    });
+}
+
+
 var iscaptain=getCookie("iscaptain");
 var teamid=getCookie("teamid");//获得teamid，然后用mybody[]显示
 var myid=getCookie("myid");
