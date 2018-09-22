@@ -123,7 +123,7 @@ if(token!=null&&username!=null)
             {
                 delCookie("username");
                 delCookie("token");
-                location.reload(true);
+                window.location.href="main.html";
             }
             else
             {
