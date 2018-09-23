@@ -54,6 +54,7 @@ function name_checking(){
         showbox('您已登录成功！')
         setCookie("username",userinfo.name)
         setCookie("token",usertoken)
+
         window.location.href='../newpage/firstpage.html'
     })
 }
@@ -62,4 +63,21 @@ function setCookie(cname,cvalue){
     // d.setTime(d.getTime()+(exdays*24*60*60*1000));
     // var expires = "expires="+d.toGMTString();
     document.cookie = cname+"="+cvalue+";path=/";
+}
+function getCookie(cname){
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+    }
+    return "";
+}
+function changeuserinfo(){
+    if(getCookie("token"===usertoken))
+    {
+        document.getElementById("userinfor2").style.display="none";
+        document.getElementById("userinfor1").innerText+="userinfo.name"
+        document.getElementById("userinfor1").style.display="block";
+    }
 }
