@@ -1,5 +1,6 @@
 var token=getCookie('token');
 var username=getCookie('username');//登陆后传入
+var userid=getCookie("userid");
 if(token==null||username==null)
 {
     showbox("请先登录",function()
