@@ -26,9 +26,12 @@ if(token!=null&&username!=null)
     {
         if(response.status==401)
         {
-            showbox("登陆已失效，请重新登录");
+            showbox("登陆已失效，请重新登录",function()
+            {
+                window.location.href="../log in&sign up/login.html";
+            });
             document.getElementById("userinfor2").style.display="none";
-                document.getElementById("userinfor1").style.display="block";
+            document.getElementById("userinfor1").style.display="block";
         }
         if(response.ok)
         {
@@ -63,7 +66,10 @@ if(token!=null&&username!=null)
         {
             if(response.status==401)
             {
-                showbox("登陆已失效，请重新登录");
+                showbox("登陆已失效，请重新登录",function()
+                {
+                    window.location.href="../log in&sign up/login.html";
+                });
                 document.getElementById("userinfor2").style.display="none";
                 document.getElementById("userinfor1").style.display="block";
             }
@@ -306,6 +312,13 @@ function init()//初始化，从服务器读取已有队伍信息并显示
     
         function check(idnum,i)//与服务器数据中的邀请码进行匹配  idnum是邀请码  i是与第几个队伍比较（为0则放弃比较）
         {
+            if(data[i]['members']==4)
+            {
+                showbox("加入失败，该队伍人数已达上限!",function()
+                {
+                    location=location;   
+                });
+            }
             // if(i==0)
             // {
             //     for(var j=0;j<mybody.length;j++)
@@ -378,12 +391,20 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         });break;
                         case 401:showbox("登录已失效，请重新登录!",function()
                         {
-                            location=location;   
+                            showbox("登陆已失效，请重新登录",function()
+                            {
+                                window.location.href="../log in&sign up/login.html";
+                            }); 
                         });
-
                         document.getElementById("userinfor2").style.display="none";
                         document.getElementById("userinfor1").style.display="block";
                         break;
+                        case 409:showbox("加入失败，该队伍人数已达上限!",function()
+                        {
+                            location=location;   
+                        });
+                        break;
+                       
                         case 404:showbox("队伍不存在",function()
                         {
                             location=location;   

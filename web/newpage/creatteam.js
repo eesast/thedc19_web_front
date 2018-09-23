@@ -117,7 +117,10 @@ bt.addEventListener("click",function(){
         {
             if(response.status==401)
             {
-                showbox("登陆已失效，请重新登录");
+                showbox("登陆已失效，请重新登录",function()
+                {
+                    window.location.href="../log in&sign up/login.html";
+                });
                 document.getElementById("userinfor2").style.display="none";
                 document.getElementById("userinfor1").style.display="block";
             }
@@ -132,9 +135,9 @@ bt.addEventListener("click",function(){
             }
         },error=>
         {
-            showbox("登录失效，请重新登录",function()
+            showbox("登陆已失效，请重新登录",function()
             {
-                location.reload(true);       
+                window.location.href="../log in&sign up/login.html";
             });
         }).then(res=>
         {
