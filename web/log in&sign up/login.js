@@ -1,10 +1,14 @@
 var userpassword=null
 var username=null
 var usertoken=null
+var userid=null
 var userinfo={
     name:username,
     password:userpassword,
 }
+setCookie("username",userinfo.name)
+setCookie("token",usertoken)
+setCookie("userid",userid)
 changeuserinfo()
 //将用户输入信息保存在userinfo中，与服务器中数据对比
 var btn=document.getElementById("submit")
@@ -52,12 +56,16 @@ function name_checking(){
     }).then(res=>
     {
         //获取x-access-token保存至本地
-        usertoken=res['token'];
+        usertoken=res['token']
+        userid=res['id']
         showbox('您已登录成功！')
         setCookie("username",userinfo.name)
         setCookie("token",usertoken)
+        setCookie("userid",userid)
         changeuserinfo()
-        window.location.href='../newpage/firstpage.html'
+        setTimeout(() => {
+            window.location.href='../newpage/firstpage.html'
+        }, 5000);
     })
 }
 function setCookie(cname,cvalue){
@@ -76,7 +84,7 @@ function getCookie(cname){
     return "";
 }
 function changeuserinfo(){
-    if(userinfo.name!=null&&getCookie("token")===usertoken)
+    if(getCookie("token")!=null&&getCookie("token")===usertoken)
     {
         document.getElementById("userinfor2").style.display="none";
         document.getElementById("userinfor1").innerText+="userinfo.name"
