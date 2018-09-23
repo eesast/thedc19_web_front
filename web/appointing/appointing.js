@@ -234,7 +234,7 @@
 		}
 		return "";
 	}
-	var url3 = 'http://58.87.111.176/api/users/'+ Id;
+	var url3 = 'https://thedc20.eesast.com/api/users/'+ Id;
 	fetch(url3,{
 		headers:{
 			'Content-Type':'application/json',
@@ -248,7 +248,7 @@
 	//取消预约,返回1时成功
 	function del(){
 		if(isc)
-		{fetch('http://58.87.111.176/api/sites/0/appointments',{
+		{fetch('https://thedc20.eesast.com/api/sites/0/appointments',{
 			method:'DELETE',
 			headers:{
 				'Content-Type':'application/json',
@@ -270,7 +270,7 @@
 			'startTime':day.value + 'T' +'00:00.000Z',
 			'endTime':day.value + 'T12:00.000Z'
 		}
-		fetch('http://58.87.111.176/api/sites/0/appointments',{
+		fetch('https://thedc20.eesast.com/api/sites/0/appointments',{
 			method:'GET',
 			headers:{
 				'Content-Type':'application/json',
@@ -279,8 +279,7 @@
 			'query':query
 		}).then(response=>{
 			if(response.ok) 
-			{
-			showbox1('获取预约情况成功')
+			{showbox1('获取预约情况成功')
 		var start = response.json();
 		var my = document.getElementsByClassName('add');
 		for(var ti = 0 ; ti<my.length; ti++)//把之前的预约信息除去
@@ -318,7 +317,7 @@
 			'endtime':et
 		}
 		if(isc)
-		{fetch('http://58.87.111.176/api/sites/0/appointments',{
+		{fetch('https://thedc20.eesast.com/api/sites/0/appointments',{
 			method:'POST',
 			headers:{
 				'Content-Type':'application/json',
