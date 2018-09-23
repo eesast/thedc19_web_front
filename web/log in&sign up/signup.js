@@ -8,7 +8,7 @@ var userphone="unknown"
 var thuid="unknown"
 
 //userinfo记录用户注册信息
-
+changeuserinfo()
 var userinfo={
     username:usersname,
     password:userpassword,
@@ -153,4 +153,21 @@ function setCookie(cname,cvalue){
     // d.setTime(d.getTime()+(exdays*24*60*60*1000));
     // var expires = "expires="+d.toGMTString();
     document.cookie = cname+"="+cvalue+";path=/";
+}
+function getCookie(cname){
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+    }
+    return "";
+}
+function changeuserinfo(){
+    if(getCookie("token")!="")
+    {
+        document.getElementById("userinfor1").style.display="none";
+        document.getElementById("userinfor2").innerText="您好!用户："+getCookie("username")
+        document.getElementById("userinfor2").style.display="block";
+    }
 }
