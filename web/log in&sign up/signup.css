@@ -107,12 +107,12 @@ h1{
     position: absolute;
     margin:0 auto;
     display:block;
-    left:6%;
-    width:30px;
-    height:30px;
+    left:5%;
+    width:45px;
+    height:45px;
     z-index: 4;
     text-align: center;
-    top:116.5%;
+    top:115.5%;
     /* opacity:0.75; */
 }
 .dclogo
