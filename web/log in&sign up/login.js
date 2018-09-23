@@ -64,7 +64,7 @@ function name_checking(){
         changeuserinfo()
         setTimeout(() => {
             window.location.href='../index.html'
-        }, 4000);
+        }, 100);
         changeuserinfo()
     })
 }
@@ -133,7 +133,7 @@ function checkisonline(){
         function handle(){
             setTimeout(() => {
                 window.location.href='../index.html'
-            }, 4000);
+            }, 100);
         }
     }
 }
