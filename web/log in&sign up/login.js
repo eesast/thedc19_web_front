@@ -63,8 +63,8 @@ function name_checking(){
         setCookie("userid",userid)
         changeuserinfo()
         setTimeout(() => {
-            window.location.href='../newpage/firstpage.html'
-        }, 6000);
+            window.location.href='../index.html'
+        }, 4000);
         changeuserinfo()
     })
 }
@@ -132,8 +132,8 @@ function checkisonline(){
         confirmbox("您已登录！",handle)
         function handle(){
             setTimeout(() => {
-                window.location.href='../newpage/firstpage.html'
-            }, 6000);
+                window.location.href='../index.html'
+            }, 4000);
         }
     }
 }
