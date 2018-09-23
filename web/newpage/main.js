@@ -49,7 +49,7 @@ var userid=getCookie("userid");
                 });
             });
         }
-        fetch("https://thedc20.eesast.com/api/users"+userid,
+        fetch("https://thedc20.eesast.com/api/users/"+userid,
         {
             method:'GET',
             headers:
