@@ -194,7 +194,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         turn.style.wordBreak="break-all";
         turn.style.whitespace="normal";
         turn.style.overflow="scroll";
-        turn.style.overflowX="hidden";
+        // turn.style.overflowX="hidden";
 
         
     }
