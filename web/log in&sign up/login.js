@@ -7,6 +7,7 @@ var userinfo={
     password:userpassword,
 }
 changeuserinfo()
+checkisonline()
 //将用户输入信息保存在userinfo中，与服务器中数据对比
 var btn=document.getElementById("submit")
 btn.addEventListener("click",name_checking)
@@ -61,9 +62,10 @@ function name_checking(){
         setCookie("token",usertoken)
         setCookie("userid",userid)
         changeuserinfo()
-        /*setTimeout(() => {
+        setTimeout(() => {
             window.location.href='../newpage/firstpage.html'
-        }, 5000);*/
+        }, 6000);
+        changeuserinfo()
     })
 }
 function setCookie(cname,cvalue){
@@ -124,7 +126,17 @@ function changeuserinfo(){
     }
 }
 
-
+function checkisonline(){
+    if(getCookie("token")!="")
+    {
+        confirmbox("您已登录！",handle)
+        function handle(){
+            setTimeout(() => {
+                window.location.href='../newpage/firstpage.html'
+            }, 6000);
+        }
+    }
+}
 
 function confirmbox(s,callback)//打印一段话
 {
