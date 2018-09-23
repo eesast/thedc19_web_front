@@ -95,7 +95,7 @@ var userid=getCookie("userid");
                         else iscaptain=false;
                     }
                     console.log(inteam);
-                    break;
+                    
                 
                 
             
