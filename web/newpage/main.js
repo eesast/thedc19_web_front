@@ -53,7 +53,7 @@ var userid=getCookie("userid");
                 });
             });
         }
-        fetch("https://thedc20.eesast.com/api/users/"+userid,
+        fetch("https://thedc.eesast.com/api/users/"+userid,
         {
             method:'GET',
             headers:
@@ -224,7 +224,7 @@ var userid=getCookie("userid");
 
     function dissolve(callback)
     {
-        fetch("https://thedc20.eesast.com/api/auth",
+        fetch("https://thedc.eesast.com/api/auth",
         {
             method:'POST',
             headers:
@@ -257,7 +257,7 @@ var userid=getCookie("userid");
             var newtoken=res['token'];
             //得到新的token，删除id的队伍 teamid
             console.log(teamid);
-            fetch("https://thedc20.eesast.com/api/teams/"+teamid,
+            fetch("https://thedc.eesast.com/api/teams/"+teamid,
             {
                 method:'DELETE',
                 headers:
@@ -291,7 +291,7 @@ var userid=getCookie("userid");
     {
         
             console.log(teamid);
-            fetch("https://thedc20.eesast.com/api/teams/"+teamid+"/members/"+userid,
+            fetch("https://thedc.eesast.com/api/teams/"+teamid+"/members/"+userid,
             {
                 method:'DELETE',
                 headers:

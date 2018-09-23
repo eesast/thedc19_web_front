@@ -104,7 +104,7 @@ function checkrealname(obj) {
    }
 
 function senddata(){
-    fetch("https://thedc20.eesast.com/api/users",
+    fetch("https://thedc.eesast.com/api/users",
     {
         method:'POST',
         headers:

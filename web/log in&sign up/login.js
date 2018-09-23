@@ -14,7 +14,7 @@ function name_checking(){
     userinfo.name=document.getElementById("username").value
     userinfo.password=document.getElementById("pwd").value
     //console.log(userinfo)
-    fetch("https://thedc20.eesast.com/api/auth",
+    fetch("https://thedc.eesast.com/api/auth",
     {
         method:'POST',
         headers:

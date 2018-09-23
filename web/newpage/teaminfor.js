@@ -46,7 +46,7 @@ var teamid=getCookie("teamid");//获得teamid，然后用mybody[]显示
 var userid=getCookie("userid");
     console.log(token);
     console.log(iscaptain);
-    fetch('https://thedc20.eesast.com/api/teams',
+    fetch('https://thedc.eesast.com/api/teams',
     {
         method:'GET',
         headers:
@@ -78,7 +78,7 @@ var userid=getCookie("userid");
     }).then(res=>
     {
         mybody=res;
-        fetch('https://thedc20.eesast.com/api/users',
+        fetch('https://thedc.eesast.com/api/users',
         {
             method:'GET',
             headers:
@@ -542,7 +542,7 @@ function setdropsb(i)
 
 function dissolve(callback)
 {
-    fetch("https://thedc20.eesast.com/api/auth",
+    fetch("https://thedc.eesast.com/api/auth",
     {
         method:'POST',
         headers:
@@ -615,7 +615,7 @@ function letitgo(callback)
 {
     
         console.log(teamid);
-        fetch("https://thedc20.eesast.com/api/teams/"+teamid+"/members/"+userid,
+        fetch("https://thedc.eesast.com/api/teams/"+teamid+"/members/"+userid,
         {
             method:'DELETE',
             headers:
@@ -658,7 +658,7 @@ function dropsb(dropsbid,callback)
 {
     
         console.log(dropsbid);
-        fetch("https://thedc20.eesast.com/api/teams/"+teamid+"/members/"+dropsbid,
+        fetch("https://thedc.eesast.com/api/teams/"+teamid+"/members/"+dropsbid,
         {
             method:'DELETE',
             headers:
