@@ -174,8 +174,8 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         //for(var j=1;j<=20;j++)line+=("&nbsp");
         //line+="<button>查看信息</button>";
         //line+='<br><hr>';
-        line+='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+input.members+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
-        line+='<td>'
+        line+='<th>'+input.members+'</th>';
+        line+='<th>'
             var membercnt=false;//一个标记
             for(var k=0;k<myusers.length;k++)
             {
@@ -198,7 +198,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                     }
                 }
             }
-            line+='</td>'
+            line+='</th>'
 
         count++;
         line+='</tr>'
