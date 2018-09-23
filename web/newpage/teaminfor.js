@@ -146,7 +146,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         this.invitecode=invitecode;
     }
     
-    line+="<tr><th>队伍名称</th><th>队长</th><th>简介</th><th>队伍人数</th><th>队伍成员</th></tr><tbody>";
+    line+="<tr><th>队伍名称</th><th>队长</th><th colspan='6'>简介</th><th>队伍人数</th><th>队伍成员</th></tr><tbody>";
     for(var i=1;i<=mybody.length;i++)
     {
         /*
@@ -170,7 +170,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             }
             
         }
-        line+='<td colspan="4"><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
+        line+='<td colspan="6"><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
         //for(var j=1;j<=20;j++)line+=("&nbsp");
         //line+="<button>查看信息</button>";
         //line+='<br><hr>';
