@@ -167,7 +167,31 @@ function changeuserinfo(){
     if(getCookie("token")!="")
     {
         document.getElementById("userinfor1").style.display="none";
-        document.getElementById("userinfor2").innerText="您好!用户："+getCookie("username")
         document.getElementById("userinfor2").style.display="block";
+        document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'><span style='cursor:pointer'>"+getCookie("username")+'</span></p>';
+        document.getElementById("user").style.color="gray";
+        document.getElementById("user").addEventListener("click",function()
+        {
+
+            //退出登录
+            confirmbox("您确定退出登录么?",function()
+            {
+                
+                if(clearp===true)
+                {
+                    delCookie("username");
+                    delCookie("token");
+                    delCookie("inteam");
+                    delCookie("userid");
+                    delCookie("iscaptain");
+                    delCookie("teamid");
+                    location.reload(true);
+                }
+                else
+                {
+
+                }
+            });
+        });
     }
 }
