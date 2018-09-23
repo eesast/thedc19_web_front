@@ -14,7 +14,7 @@ var mobody;
 if(token!=null&&username!=null)
 {
     //alert(token);
-    fetch('http://58.87.111.176/api/teams',
+    fetch('https://thedc20.eesast.com/api/teams',
     {
         method:'GET',
         headers:
@@ -51,7 +51,7 @@ if(token!=null&&username!=null)
         console.log(mybody[0]);
         console.log(mybody.length);//获取长度
 
-        fetch('http://58.87.111.176/api/users',
+        fetch('https://thedc20.eesast.com/api/users',
         {
             method:'GET',
             headers:
@@ -315,7 +315,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             // else 
             // {
                 //发送更新消息
-                fetch("http://58.87.111.176/api/teams/"+data[i]['id']+'/members?inviteCode='+idnum,
+                fetch("https://thedc20.eesast.com/api/teams/"+data[i]['id']+'/members?inviteCode='+idnum,
                 {
                     method:'POST',
                     headers:

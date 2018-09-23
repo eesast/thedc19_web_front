@@ -42,7 +42,7 @@ var teamid=getCookie("teamid");//获得teamid，然后用mybody[]显示
 var myid=getCookie("myid");
     console.log(token);
     console.log(iscaptain);
-    fetch('http://58.87.111.176/api/teams',
+    fetch('https://thedc20.eesast.com/api/teams',
     {
         method:'GET',
         headers:
@@ -74,7 +74,7 @@ var myid=getCookie("myid");
     }).then(res=>
     {
         mybody=res;
-        fetch('http://58.87.111.176/api/users',
+        fetch('https://thedc20.eesast.com/api/users',
         {
             method:'GET',
             headers:
@@ -535,7 +535,7 @@ function setdropsb(i)
 
 function dissolve(callback)
 {
-    fetch("http://58.87.111.176/api/auth",
+    fetch("https://thedc20.eesast.com/api/auth",
     {
         method:'POST',
         headers:
@@ -568,7 +568,7 @@ function dissolve(callback)
         var newtoken=res['token'];
         //得到新的token，删除id的队伍 teamid
         console.log(teamid);
-        fetch("http://58.87.111.176/api/teams/"+teamid,
+        fetch("https://thedc20.eesast.com/api/teams/"+teamid,
         {
             method:'DELETE',
             headers:
@@ -608,7 +608,7 @@ function letitgo(callback)
 {
     
         console.log(teamid);
-        fetch("http://58.87.111.176/api/teams/"+teamid+"/members/"+myid,
+        fetch("https://thedc20.eesast.com/api/teams/"+teamid+"/members/"+myid,
         {
             method:'DELETE',
             headers:
@@ -651,7 +651,7 @@ function dropsb(dropsbid,callback)
 {
     
         console.log(dropsbid);
-        fetch("http://58.87.111.176/api/teams/"+teamid+"/members/"+dropsbid,
+        fetch("https://thedc20.eesast.com/api/teams/"+teamid+"/members/"+dropsbid,
         {
             method:'DELETE',
             headers:

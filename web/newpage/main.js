@@ -49,7 +49,7 @@ var myid=null;
                 });
             });
         }
-        fetch("http://58.87.111.176/api/users",
+        fetch("https://thedc20.eesast.com/api/users",
         {
             method:'GET',
             headers:
@@ -225,7 +225,7 @@ var myid=null;
 
     function dissolve(callback)
     {
-        fetch("http://58.87.111.176/api/auth",
+        fetch("https://thedc20.eesast.com/api/auth",
         {
             method:'POST',
             headers:
@@ -258,7 +258,7 @@ var myid=null;
             var newtoken=res['token'];
             //得到新的token，删除id的队伍 teamid
             console.log(teamid);
-            fetch("http://58.87.111.176/api/teams/"+teamid,
+            fetch("https://thedc20.eesast.com/api/teams/"+teamid,
             {
                 method:'DELETE',
                 headers:
@@ -292,7 +292,7 @@ var myid=null;
     {
         
             console.log(teamid);
-            fetch("http://58.87.111.176/api/teams/"+teamid+"/members/"+myid,
+            fetch("https://thedc20.eesast.com/api/teams/"+teamid+"/members/"+myid,
             {
                 method:'DELETE',
                 headers:

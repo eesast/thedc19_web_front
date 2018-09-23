@@ -1,4 +1,4 @@
-var url = 'http://58.87.111.176/api/auth'
+var url = 'https://thedc20.eesast.com/api/auth'
 var mybody = {'username':'admin',
 'password':'eesast-software'
 }
@@ -14,7 +14,7 @@ fetch(url,{
 }),error=>{
     alert('error')
 }
-fetch('https://58.87.111.176/api/appointing/#'
+fetch('https://thedc20.eesast.com/api/appointing/#'
 ).then(response=>{
     
 })

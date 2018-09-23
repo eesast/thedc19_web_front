@@ -100,7 +100,7 @@ bt.addEventListener("click",function(){
         */
         console.log(getname);
         console.log(getinfor);
-        fetch('http://58.87.111.176/api/teams',
+        fetch('https://thedc20.eesast.com/api/teams',
         {
             method:'POST',
             headers:

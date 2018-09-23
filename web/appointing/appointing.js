@@ -204,7 +204,7 @@
 		}
 		return "";
 	}
-	var url3 = 'http://58.87.111.176/api/users/'+ Id;
+	var url3 = 'https://thedc20.eesast.com/api/users/'+ Id;
 	fetch(url3,{
 		headers:{
 			'Content-Type':'application/json',
@@ -218,7 +218,7 @@
 	//取消预约,返回1时成功
 	function del(){
 		if(isc)
-		{fetch('http://58.87.111.176/api/sites/0/appointments',{
+		{fetch('https://thedc20.eesast.com/api/sites/0/appointments',{
 			method:'DELETE',
 			headers:{
 				'Content-Type':'application/json',
@@ -240,7 +240,7 @@
 			'startTime':days + 'T' +'00:00.000Z',
 			'endTime':days + 'T12:00.000Z'
 		}
-		fetch('http://58.87.111.176/api/sites/0/appointments',{
+		fetch('https://thedc20.eesast.com/api/sites/0/appointments',{
 			method:'GET',
 			headers:{
 				'Content-Type':'application/json',
@@ -278,7 +278,7 @@
 			'endtime':et
 		}
 		if(isc)
-		{fetch('http://58.87.111.176/api/sites/0/appointments',{
+		{fetch('https://thedc20.eesast.com/api/sites/0/appointments',{
 			method:'POST',
 			headers:{
 				'Content-Type':'application/json',
