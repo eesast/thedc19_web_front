@@ -318,6 +318,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                 {
                     location=location;   
                 });
+                return ;
             }
             // if(i==0)
             // {
