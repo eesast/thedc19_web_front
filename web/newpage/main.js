@@ -65,7 +65,10 @@ var userid=getCookie("userid");
         {
             if(response.status==401)
             {
-                showbox("登录已失效，请重新登录");
+                showbox("登陆已失效，请重新登录",function()
+                {
+                    window.location.href="../log in&sign up/login.html";
+                });
                 document.getElementById("userinfor2").style.display="none";
                 document.getElementById("userinfor1").style.display="block";
                 // location.reload(true);
@@ -247,7 +250,10 @@ var userid=getCookie("userid");
         {
             if(response.status==401)
             {
-                showbox("登陆已失效，请重新登录");
+                showbox("登陆已失效，请重新登录",function()
+                {
+                    window.location.href="../log in&sign up/login.html";
+                });
                 document.getElementById("userinfor2").style.display="none";
                 document.getElementById("userinfor1").style.display="block";
             }
@@ -303,7 +309,10 @@ var userid=getCookie("userid");
             {
                 if(response.status==401)
                 {
-                    showbox("登陆已失效，请重新登录");
+                    showbox("登陆已失效，请重新登录",function()
+                    {
+                        window.location.href="../log in&sign up/login.html";
+                    });
                     document.getElementById("userinfor2").style.display="none";
                      document.getElementById("userinfor1").style.display="block";
                 }
