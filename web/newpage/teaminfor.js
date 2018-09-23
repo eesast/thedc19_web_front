@@ -175,6 +175,29 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         //line+="<button>查看信息</button>";
         //line+='<br><hr>';
         line+='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+input.members+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+        line+='<td>'
+            var membercnt=false;//一个标记
+            for(var k=0;k<myusers.length;k++)
+            {
+                if(myusers[k]['team']['id']===input.id)//在队伍
+                {
+                    if(myusers[k]['id']!==input.captain)//不是队长
+                    {
+                        if(membercnt===true)
+                        {
+                            line+='<hr>';
+                        }
+                        else
+                        {
+                            membercnt=true;
+                        }
+                        line+=myusers[k]['username'];
+                        
+                    }
+                }
+            }
+            line+='</td>'
+
         count++;
         line+='</tr>'
         
