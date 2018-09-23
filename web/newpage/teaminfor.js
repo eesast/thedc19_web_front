@@ -466,6 +466,8 @@ function showteaminfor()
             {
                 if(myusers[j]['id']==team.member[i])
                 {
+                    console.log('@@'+myusers[j]['id']);
+                    console.log('##'+userid);
                     if(myusers[j]['id']===userid)line+="<p style='color:red;'>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"</p>";
                     else line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"</p>";
                     break;
