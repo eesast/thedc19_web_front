@@ -1,0 +1,173 @@
+body,html
+{
+    position: absolute;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    background: #000000;
+    background: -moz-radial-gradient(center, ellipse cover,  #cfe7fa 0%, #2676c0 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#cfe7fa), color-stop(100%,#2676c0));
+    background: -webkit-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
+    background: radial-gradient(ellipse at center,  #cfe7fa 0%,#579fe4 100%);
+    /* border: 3px solid; */
+    overflow-x: hidden;
+}
+
+
+
+    .mainlogo
+    {
+        position:fixed;
+        margin:0 auto;
+        display:block;
+        left:46.5%;
+        text-align: center;
+        top:100px; 
+        border-radius: 50%;
+        /* curor:pointer; */
+        /* border:3px solid; */
+    }
+    .maintitle
+    {
+        width:40%;
+        color:rgb(78, 78, 78);
+        position:relative;
+        margin:15 auto;
+        text-shadow: 3px 3px 3px rgb(145, 145, 145);
+        text-align: center;
+        top:200px;
+        font-weight: 100;
+        /* border:3px solid; */
+    }
+    .a,.b
+    {
+        /* display:none; */
+        width:40%;
+        height:50%;
+        position: absolute;
+        display:inline;
+        margin:0 auto;
+        top:10%;
+        border-radius: 300px;
+        box-shadow: 0;
+        /* background-color: aqua; */
+        font-size: 14;
+        font-weight: bold;
+        background-color: rgb(136, 199, 250);
+    }
+    .c,.d
+    {
+        width:40%;
+        height:50%;
+        position: absolute;
+        display:none;
+        /* display:inline; */
+        margin:0 auto;
+        top:10%;
+        border-radius: 300px;
+        box-shadow: 0;
+        font-size: 14;
+        font-weight: bold;
+        background-color: rgb(136, 199, 250);
+        /* //background-color: rgb(38, 65, 138); */
+    }
+    .a,.c
+    {
+        left:0%;
+    }
+    .b,.d
+    {
+        right:0%;
+    }
+    .mainbox
+    {
+        
+        /* box-shadow: -1px -1px 1px rgba(0,0,0,.4), */
+        /* 1px 1px 1px rgba(255,255,255,.4); */
+        position: relative;
+        overflow: hidden;
+        z-index: 0;  
+        /* background: #fff; */
+        /* border-radius: 300px; */
+        height:50%;
+        top:10%;
+    }
+   
+    .main
+    {
+        position: absolute;;
+        text-align: center;
+        margin: 0 auto;
+        width:20%;
+        height:30%;
+        left:39%;
+        /* border:3px solid; */
+        padding:10px;
+        margin-top:200px;
+        /* border-radius: 600px; */
+        /* background:#8dc63f;  */
+        /* box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4); */
+ 
+    }
+
+
+    /* 统一尾部 */
+    .ts-footer{
+        position:absolute;
+        left:36%;
+        bottom:8%;
+        width: 400px; 
+        height: 30px;
+    }
+    .ts-left{
+        float:left;
+        width: 229px; 
+    }
+    .ts-right{
+        float:right;
+    }
+    .holdlogo{
+        position: fixed;
+        margin: 0 auto;
+        display: block;
+        left: 80%;
+        width: 200px;
+        height: 50px;
+        z-index: 4;
+        text-align: center;
+        top: 87%;
+    }
+    .eelogo
+    {
+        position:fixed;
+        margin:0 auto;
+        display:block;
+        left:6%;
+        width:30px;
+        height:30px;
+        z-index: 4;
+        text-align: center;
+        top:89%;
+        /* opacity:0.75; */
+    }
+    .dclogo
+    {
+        position:fixed;
+        margin:0 auto;
+        display:block;
+        left:9%;
+        width:100px;
+        height:40px;
+        z-index: 4;
+        text-align: center;
+        top:88.5%;
+        /* border-radius: 50%; */
+        /* opacity:0.75; */
+    }
+
+
+
+ 
