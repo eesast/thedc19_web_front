@@ -26,9 +26,12 @@ if(token!=null&&username!=null)
     {
         if(response.status==401)
         {
-            showbox("登陆已失效，请重新登录");
+            showbox("登陆已失效，请重新登录",function()
+            {
+                window.location.href="../log in&sign up/login.html";
+            });
             document.getElementById("userinfor2").style.display="none";
-                document.getElementById("userinfor1").style.display="block";
+            document.getElementById("userinfor1").style.display="block";
         }
         if(response.ok)
         {
@@ -63,7 +66,10 @@ if(token!=null&&username!=null)
         {
             if(response.status==401)
             {
-                showbox("登陆已失效，请重新登录");
+                showbox("登陆已失效，请重新登录",function()
+                {
+                    window.location.href="../log in&sign up/login.html";
+                });
                 document.getElementById("userinfor2").style.display="none";
                 document.getElementById("userinfor1").style.display="block";
             }
@@ -377,6 +383,13 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                             location=location;   
                         });break;
                         case 401:showbox("登录已失效，请重新登录!",function()
+                        {
+                            showbox("登陆已失效，请重新登录",function()
+                            {
+                                window.location.href="../log in&sign up/login.html";
+                            }); 
+                        });
+                        case 409:showbox("加入失败，该队伍人数已达上限!",function()
                         {
                             location=location;   
                         });
