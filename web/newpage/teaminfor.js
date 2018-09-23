@@ -340,6 +340,7 @@ function showteaminfor()
         change.style.overflowX="hidden";
         change.style.wordBreak="break-all";
         change.style.height="20%";
+        change.style.width="100%";
         
         for(var i=0;i<team.cnt-1;i++)//第一个队伍人员应该是队长
         {
@@ -459,6 +460,7 @@ function showteaminfor()
         change.style.overflowX="hidden";
         change.style.wordBreak="break-all";
         change.style.height="20%";
+        change.style.width="100%";
         
         
         var fbt=document.getElementsByTagName("button")[0];
