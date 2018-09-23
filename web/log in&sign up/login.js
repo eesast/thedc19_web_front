@@ -115,3 +115,70 @@ function changeuserinfo(){
         });
     }
 }
+
+
+
+function confirmbox(s,callback)//打印一段话
+{
+        clearp=false;//单击事件标记复位
+
+        document.getElementsByClassName("dark")[2].style.display="block";//屏幕半黑
+        document.getElementsByClassName("showinfor")[2].style.display="block";//弹框
+        document.getElementsByClassName("context")[2].innerHTML="<br>&nbsp;&nbsp;&nbsp;&nbsp;"+s;//弹出消息
+        //document.getElementsByClassName("ok")[0].style.left="46.5%";
+        //设置调用按钮功能
+        
+        document.getElementsByClassName("ok")[2].focus();
+        // document.addEventListener("keydown",handdle);
+        // function handdle(e) {
+           
+        //     //捕捉回车事件
+        //     var ev =e.keyCode;//event || window.event || arguments.callee.caller.arguments[0];
+        //     //alert(ev.keyCode);
+        //     if(ev == 13) 
+        //     {
+        //         document.removeEventListener("keydown",handdle);
+                
+        //         document.getElementsByClassName("ok")[2].click();
+               
+        //      }
+             
+        // }
+
+        document.getElementsByClassName("ok")[2].addEventListener("click",function()
+        {
+            //按下了确认
+            //优先关闭窗口
+            
+            clearp=true;//单击确认键
+           
+            document.getElementsByClassName("dark")[2].style.display="none";//屏幕半黑
+            document.getElementsByClassName("showinfor")[2].style.display="none";//弹框
+          
+            if(callback && typeof(callback)==="function")
+            {
+                callback();
+                //return true;
+            }
+            //window.location.href='main.html';//刷新界面
+        });
+
+
+        document.getElementsByClassName("no")[1].addEventListener("click",function()
+        {
+            //按下了取消
+            //优先关闭窗口
+           
+            clearp=false;//单击取消键
+            
+            document.getElementsByClassName("dark")[2].style.display="none";//屏幕半黑
+            document.getElementsByClassName("showinfor")[2].style.display="none";//弹框
+          
+            // if(callback && typeof(callback)==="function")
+            // {
+            //     callback();
+            //     //return false;
+            // }
+            //window.location.href='main.html';//刷新界面
+        })
+}
