@@ -29,6 +29,13 @@ h1{
     margin:0px;
     padding:0px;
 }
+.logopicture
+{
+    position:relative;
+    float:left;
+    top:39px;
+    left:20px;
+}
 
 .form-heading{
     text-align:center;
@@ -96,7 +103,7 @@ h1{
 }
 .eelogo
 {
-    position: relative;
+    position: absolute;
     margin:0 auto;
     display:block;
     left:6%;
@@ -109,10 +116,10 @@ h1{
 }
 .dclogo
 {
-    position: relative;
+    position: absolute;
     margin:0 auto;
     display:block;
-    left:7%;
+    left:9%;
     width:100px;
     height:40px;
     z-index: 4;
