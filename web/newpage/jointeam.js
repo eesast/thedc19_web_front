@@ -129,7 +129,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         var change=document.getElementsByClassName("c")[0];
         var line="";
         data=new Array(mybody.length);
-        line+="<tr><th>队伍名称</th><th>队长</th><th>简介</th><th>队伍人数</th><th>立即加入</th></tr><tbody>";
+        line+="<tr><th>队伍名称</th><th>队长</th><th>简介</th><th>队伍人数</th><th>队伍成员</th><th>立即加入</th></tr><tbody>";
         function team(name,description,id,captain,members,invitecode)
         {
             this.name=name;
@@ -149,7 +149,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             *****************
             */
              line+='<tr>';
-            input={name:" "+mybody[i-1]['name'],description:mybody[i-1]['description'],id:mybody[i-1]['id'],captain:mybody[i-1]['captain'],members:mybody[i-1]['members'].length,invitecode:mybody[i-1]['inviteCode']};//****************************
+            input={name:" "+mybody[i-1]['name'],description:mybody[i-1]['description'],id:mybody[i-1]['id'],captain:mybody[i-1]['captain'],members:mybody[i-1]['members'].length,invitecode:mybody[i-1]['inviteCode'],body:mybody[i-1]['members']};//****************************
             
           
             data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
@@ -168,7 +168,30 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             line+='<td><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
         
             line+='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+input.members+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
-        
+
+            line+='<td>'
+            var membercnt=false;//一个标记
+            for(var k=0;k<myusers.length;k++)
+            {
+                if(myusers[k]['team']['id']===input.id)//在队伍
+                {
+                    if(myusers[k]['id']!==input.captain)//不是队长
+                    {
+                        if(membercnt===true)
+                        {
+                            line+='<hr>';
+                        }
+                        else
+                        {
+                            membercnt=true;
+                        }
+                        line+=myusers[k]['username'];
+                        
+                    }
+                }
+            }
+            line+='</td>'
+
             line+="<td>&nbsp;&nbsp;&nbsp<button>加入队伍</button>&nbsp;&nbsp;</td>";
             line+='</tr>';
 
