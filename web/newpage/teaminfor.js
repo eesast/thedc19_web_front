@@ -316,7 +316,7 @@ function showteaminfor()
         for(var i=1;i<=20;i++)line+="&nbsp";
         line+=team.invitecode+'<br><hr>';
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=23;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
         {
             //console.log(team.leader);
@@ -438,7 +438,7 @@ function showteaminfor()
         for(var i=1;i<=20;i++)line+="&nbsp";
         line+=team.invitecode+'<br><hr>';
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=23;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
         {
             //console.log(team.leader);
