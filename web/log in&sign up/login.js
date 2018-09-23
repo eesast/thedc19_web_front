@@ -85,7 +85,7 @@ function changeuserinfo(){
     if(getCookie("token")!=null)
     {
         document.getElementById("userinfor1").style.display="none";
-        document.getElementById("userinfor2").innerText+=getCookie("username")
+        document.getElementById("userinfor2").innerText="您好!用户："+getCookie("username")
         document.getElementById("userinfor2").style.display="block";
     }
 }
