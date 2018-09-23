@@ -1,5 +1,6 @@
 var userpassword=null
 var username=null
+var usertoken=null
 var userinfo={
     name:username,
     password:userpassword,
@@ -51,7 +52,7 @@ function name_checking(){
     }).then(res=>
     {
         //获取x-access-token保存至本地
-        var usertoken=res['token'];
+        usertoken=res['token'];
         showbox('您已登录成功！')
         setCookie("username",userinfo.name)
         setCookie("token",usertoken)
@@ -75,7 +76,7 @@ function getCookie(cname){
     return "";
 }
 function changeuserinfo(){
-    if(userinfo.name!=null&&getCookie("token"===usertoken))
+    if(userinfo.name!=null&&getCookie("token")===usertoken)
     {
         document.getElementById("userinfor2").style.display="none";
         document.getElementById("userinfor1").innerText+="userinfo.name"
