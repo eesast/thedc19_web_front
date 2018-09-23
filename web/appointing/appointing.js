@@ -142,7 +142,7 @@
 	button2.addEventListener//取消预约按钮的功能实现
 	('click',function(){showbox('确定要取消您所有的预约',
 		function(){
-			if(del())
+			if(!(del()==0))
 		{
 		var my = document.getElementsByClassName('add');
 		for(var ti = 0 ; ti<my.length; ti++)
@@ -153,7 +153,7 @@
 		{
 			my[ti].parentNode.removeChild(my[ti])
 		}
-		document.getElementById('showtime').innerText ='您预约的时间和地点：' ;
+		document.getElementById('showtime').innerText ='您还没有预约' ;
 	}
 		})
 	})
@@ -170,21 +170,9 @@
 	var token=getCookie('token');
 	var username=getCookie('username');//登陆后传入
 	//根据用户名获取队伍id
-	var teamId = '';
-	fetch('http://58.87.111.176/api/user',{
-		method:'GET',
-		headers:{
-			'Content-Type':'application/json',
-		},
-	}).then(response=>{
-		var all = response.json();
-		for(var tt = 0;tt<all.length;tt++)
-		{
-			if(all[tt]['username'] == username){
-					teamId = all[tt]['team']['id'];
-			}
-		}
-	})
+	var Id = getCookie('Id');
+	var teamId;
+	var isc;
 	function setCookie(cname,cvalue){
 		// var d = new Date();
 		// d.setTime(d.getTime()+(exdays*24*60*60*1000));
@@ -200,24 +188,21 @@
 		}
 		return "";
 	}
-	//取消预约
+	var url3 = 'http://58.87.111.176/api/users/'+Id;
+	fetch(url3,{
+		headers:{
+			'Content-Type':'application/json',
+			'x-access-token':token,
+		},
+	}).then(response=>{
+		var team = response.json()['team']
+		if(team['id']) {teamId = team['id'];
+	isc=team['isCaptain']}
+	})
+	//取消预约,返回1时成功
 	function del(){
-		fetch('http://58.87.111.176/api/user',{
-			method:'GET',
-			headers:{
-				'Content-Type':'application/json',
-			},
-		}).then(response=>{
-			var all = response.json();
-			for(var tt = 0;tt<all.length;tt++)
-			{
-				if(all[tt]['username'] == username){
-					if(all[tt]['team']['isCaptain']){}
-					else {showbox('您不是队长，无法取消预约');return 0} //判断取消预约者是不是队长
-				}
-			}
-		})
-		fetch('http://58.87.111.176/api/sites/:no1/appointments',{
+		if(isc)
+		{fetch('http://58.87.111.176/api/sites/0/appointments',{
 			method:'DELETE',
 			headers:{
 				'Content-Type':'application/json',
@@ -226,8 +211,12 @@
 			'query':{'startTime':appointtime}
 		}).then(response=>{
 			if(response.ok){ showbox('取消预约成功');return 1}
-			else return 0;
-		})
+			else {showbox('取消预约失败')
+				return 0;}
+		})}
+		else {showbox('您不是队长，没有权限')
+			//return 0;
+			}
 	}
 	function update(day)//获取当前日期的预约情况函数
 	{
@@ -235,7 +224,7 @@
 			'startTime':days + 'T' +'00:00.000Z',
 			'endTime':days + 'T12:00.000Z'
 		}
-		fetch('http://58.87.111.176/api/sites/:no1/appointments',{
+		fetch('http://58.87.111.176/api/sites/0/appointments',{
 			method:'GET',
 			headers:{
 				'Content-Type':'application/json',
@@ -243,49 +232,37 @@
 			},
 			'query':query
 		}).then(response=>{
-			if(response.ok) showbox('获取预约情况成功')
-			var start = response.json();
-			for(var ti=0;ti<start.length;ti++)//将获取的时间数据交给appointing函数渲染
-			{
-					var hour1 =parseInt(start[ti]['startTime'].substring(11,13));
-					var min1 =parseInt(start[ti]['startTime'].substring(14,15));
-					var hour1 =parseInt(start[ti]['endTime'].substring(11,13));
-					var min1 =parseInt(start[ti]['endTime'].substring(14,15));
-					if(start[ti]['teamId'] == teamId) //判断用户是否已经预约
-					{ppointing(
-						hour1,min1,hour2,min2,2
-					)}
-					else {ppointing(
-						hour1,min1,hour2,min2,0
-					)}
-		}})
+			if(response.ok) 
+			{showbox('获取预约情况成功')
+		var start = response.json();
+		for(var ti=0;ti<start.length;ti++)//将获取的时间数据交给appointing函数渲染
+		{
+				var hour1 =parseInt(start[ti]['startTime'].substring(11,13));
+				var min1 =parseInt(start[ti]['startTime'].substring(14,15));
+				var hour1 =parseInt(start[ti]['endTime'].substring(11,13));
+				var min1 =parseInt(start[ti]['endTime'].substring(14,15));
+				if(start[ti]['teamId'] == teamId) //判断用户是否已经预约
+				{ppointing(
+					hour1,min1,hour2,min2,2
+				)}
+				else {ppointing(
+					hour1,min1,hour2,min2,0
+				)}}
+		}
+		else if(response == 401){showbox('登录失效');return 0}
+	})
 	}
-	function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数
+	function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返回1时失败
 	{
 		var st = days + 'T' + hour1 + ':' + min1 +':00.000Z';
-		var et = days + 'T' + hour2 + ':' + min2 +':00.000Z'
-		var teamId = '';
-		fetch('http://58.87.111.176/api/user',{
-			method:'GET',
-			headers:{
-				'Content-Type':'application/json',
-			},
-		}).then(response=>{
-			var all = response.json();
-			for(var tt = 0;tt<all.length;tt++)
-			{
-				if(all[tt]['username'] == username){
-					if(all[tt]['team']['isCaptain']){}
-					else {showbox('您不是队长，无法预约');return 1} //判断预约者是不是队长
-				}
-			}
-		})
+		var et = days + 'T' + hour2 + ':' + min2 +':00.000Z';
 		var body1 = {
 			'teamId':teamId,
 			'startTime':st,
 			'endtime':et
 		}
-		fetch('http://58.87.111.176/api/sites/:no1/appointments',{
+		if(isc)
+		{fetch('http://58.87.111.176/api/sites/0/appointments',{
 			method:'POST',
 			headers:{
 				'Content-Type':'application/json',
@@ -294,8 +271,13 @@
 			body:JSON.stringify(body1)
 		}).then(response=>{
 			if(response.ok) {showbox("预约成功");return 0}//上传成功提示
-			if(response.status=409) {showbox('预约时间冲突');return 1}//时间冲突提示
-		})
+			if(response.status==409) {showbox('预约失败');return 1}//时间冲突提示
+			if(response == 401){showbox('登录失效');return 1}
+		})}
+		else {
+			showbox('您不是队长，没有权限');
+			//retrun 1;
+		}
 	}
 
 	//以下为以前版本

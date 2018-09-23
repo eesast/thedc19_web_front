@@ -6,9 +6,6 @@ var userinfo={
     name:username,
     password:userpassword,
 }
-setCookie("username",userinfo.name)
-setCookie("token",usertoken)
-setCookie("userid",userid)
 changeuserinfo()
 //将用户输入信息保存在userinfo中，与服务器中数据对比
 var btn=document.getElementById("submit")
@@ -87,7 +84,7 @@ function changeuserinfo(){
     if(getCookie("token")!=null&&getCookie("token")===usertoken)
     {
         document.getElementById("userinfor2").style.display="none";
-        document.getElementById("userinfor1").innerText+="userinfo.name"
+        document.getElementById("userinfor1").innerText+=getCookie("username")
         document.getElementById("userinfor1").style.display="block";
     }
 }
