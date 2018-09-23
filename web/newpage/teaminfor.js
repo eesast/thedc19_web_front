@@ -39,7 +39,7 @@ if(token!=null&&username!=null)
 
 var iscaptain=getCookie("iscaptain");
 var teamid=getCookie("teamid");//获得teamid，然后用mybody[]显示
-var myid=getCookie("myid");
+var userid=getCookie("userid");
     console.log(token);
     console.log(iscaptain);
     fetch('https://thedc20.eesast.com/api/teams',
@@ -608,7 +608,7 @@ function letitgo(callback)
 {
     
         console.log(teamid);
-        fetch("https://thedc20.eesast.com/api/teams/"+teamid+"/members/"+myid,
+        fetch("https://thedc20.eesast.com/api/teams/"+teamid+"/members/"+userid,
         {
             method:'DELETE',
             headers:
