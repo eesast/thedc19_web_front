@@ -142,8 +142,8 @@ function senddata(){
         var usertoken=res['token'];
         showbox('您已注册成功！')
         console.log(usertoken)
-        setCookie("username",userinfo.name)
-        setCookie("token",usertoken)
+       // setCookie("username",userinfo.name)
+        //setCookie("token",usertoken)
         window.location.href='login.html'
     })
 }
