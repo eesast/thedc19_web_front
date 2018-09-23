@@ -171,7 +171,7 @@
 	var username=getCookie('username');//登陆后传入
 	//根据用户名获取队伍id
 	var teamId = '';
-	fetch('http://58.87.111.176/api/user',{
+	fetch('http://58.87.111.176/api/users',{
 		method:'GET',
 		headers:{
 			'Content-Type':'application/json',
@@ -213,11 +213,12 @@
 			{
 				if(all[tt]['username'] == username){
 					if(all[tt]['team']['isCaptain']){}
-					else {showbox('您不是队长，无法取消预约');return 0} //判断取消预约者是不是队长
+					else {showbox('您不是队长，无法取消预约');//return 0
+				} //判断取消预约者是不是队长
 				}
 			}
 		})
-		fetch('http://58.87.111.176/api/sites/:no1/appointments',{
+		fetch('http://58.87.111.176/api/sites/0/appointments',{
 			method:'DELETE',
 			headers:{
 				'Content-Type':'application/json',
@@ -235,7 +236,7 @@
 			'startTime':days + 'T' +'00:00.000Z',
 			'endTime':days + 'T12:00.000Z'
 		}
-		fetch('http://58.87.111.176/api/sites/:no1/appointments',{
+		fetch('http://58.87.111.176/api/sites/0/appointments',{
 			method:'GET',
 			headers:{
 				'Content-Type':'application/json',
@@ -265,7 +266,7 @@
 		var st = days + 'T' + hour1 + ':' + min1 +':00.000Z';
 		var et = days + 'T' + hour2 + ':' + min2 +':00.000Z'
 		var teamId = '';
-		fetch('http://58.87.111.176/api/user',{
+		fetch('http://58.87.111.176/api/users',{
 			method:'GET',
 			headers:{
 				'Content-Type':'application/json',
@@ -276,7 +277,8 @@
 			{
 				if(all[tt]['username'] == username){
 					if(all[tt]['team']['isCaptain']){}
-					else {showbox('您不是队长，无法预约');return 1} //判断预约者是不是队长
+					else {showbox('您不是队长，无法预约');//return 1
+				} //判断预约者是不是队长
 				}
 			}
 		})
@@ -285,7 +287,7 @@
 			'startTime':st,
 			'endtime':et
 		}
-		fetch('http://58.87.111.176/api/sites/:no1/appointments',{
+		fetch('http://58.87.111.176/api/sites/0/appointments',{
 			method:'POST',
 			headers:{
 				'Content-Type':'application/json',
@@ -294,7 +296,7 @@
 			body:JSON.stringify(body1)
 		}).then(response=>{
 			if(response.ok) {showbox("预约成功");return 0}//上传成功提示
-			if(response.status=409) {showbox('预约时间冲突');return 1}//时间冲突提示
+			if(response.status=409) {showbox('预约失败');return 1}//时间冲突提示
 		})
 	}
 
