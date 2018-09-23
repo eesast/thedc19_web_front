@@ -173,6 +173,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             var membercnt=false;//一个标记
             for(var k=0;k<myusers.length;k++)
             {
+                if(myusers[k]['team']==null)continue;
                 if(myusers[k]['team']['id']===input.id)//在队伍
                 {
                     if(myusers[k]['id']!==input.captain)//不是队长
