@@ -24,6 +24,10 @@ if(token!=null&&username!=null)
             {
                 delCookie("username");
                 delCookie("token");
+                delCookie("inteam");
+                delCookie("userid");
+                delCookie("iscaptain");
+                delCookie("teamid");
                 window.location.href="main.html";
             }
             else

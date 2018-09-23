@@ -40,6 +40,10 @@ var userid=getCookie("userid");
                     {
                         delCookie("username");
                         delCookie("token");
+                        delCookie("inteam");
+                        delCookie("userid");
+                        delCookie("iscaptain");
+                        delCookie("teamid");
                         location.reload(true);
                     }
                     else
