@@ -4,6 +4,7 @@ var userinfo={
     name:username,
     password:userpassword,
 }
+changeuserinfo()
 //将用户输入信息保存在userinfo中，与服务器中数据对比
 var btn=document.getElementById("submit")
 btn.addEventListener("click",name_checking)
@@ -54,7 +55,7 @@ function name_checking(){
         showbox('您已登录成功！')
         setCookie("username",userinfo.name)
         setCookie("token",usertoken)
-
+        changeuserinfo()
         window.location.href='../newpage/firstpage.html'
     })
 }
