@@ -185,11 +185,40 @@
 
 	//后端交互
 	var token=getCookie('token');
-	var username=getCookie('username');//登陆后传入
+	var username=getCookie('username');
 	//根据用户名获取队伍id
 	var Id = getCookie('userid');
 	var teamId;
 	var isc=true;
+	//统一头部
+	if(token && username)
+	{
+		alert(token,username)
+		document.getElementById("userinfor1").style.display="none";
+		document.getElementById("userinfor2").style.display="block";
+		document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'><span style='cursor:pointer'>"+username+'</span></p>';
+		document.getElementById("user").style.color="gray";
+		document.getElementById("user").addEventListener("click",function()
+		{
+	
+			//退出登录
+			confirmbox("您确定退出登录么?",function()
+			{
+				
+				if(clearp===true)
+				{
+					delCookie("username");
+					delCookie("token");
+					window.location.href="main.html";
+				}
+				else
+				{
+	
+				}
+			});
+		});
+	}
+	
 	function setCookie(cname,cvalue){
 		// var d = new Date();
 		// d.setTime(d.getTime()+(exdays*24*60*60*1000));
@@ -306,6 +335,7 @@
 			//retrun 1;
 		}
 	}
+
 
 	//以下为以前版本
 	//fetch('https://58.87.111.176/api/sites/:id',{
