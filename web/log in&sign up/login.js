@@ -55,14 +55,15 @@ function name_checking(){
         //获取x-access-token保存至本地
         usertoken=res['token']
         userid=res['id']
+        console.log(userid)
         showbox('您已登录成功！')
         setCookie("username",userinfo.name)
         setCookie("token",usertoken)
         setCookie("userid",userid)
         changeuserinfo()
-        setTimeout(() => {
+        /*setTimeout(() => {
             window.location.href='../newpage/firstpage.html'
-        }, 5000);
+        }, 5000);*/
     })
 }
 function setCookie(cname,cvalue){
