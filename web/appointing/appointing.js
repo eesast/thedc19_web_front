@@ -77,7 +77,8 @@
 			div.style.position = 'absolute';
 			div.style.marginLeft= ((((hour1 + min1/60)-st)/12)*wid2 + wid0) + 'px';
 			div.style.marginTop = '3px'
-			div.style.backgroundColor = 'cornflowerblue';
+			if(mark) div.style.backgroundColor = 'cornflowerblue';
+			else div.style.backgroundColor = 'rgb(216, 216, 21)';
 			div.style.opacity = '0.5';//降低透明度
 			//div.innerText = hour1 + ':' + min1 + '~' + hour2 + ':' + min2;
 			if(t) div.style.marginTop = '56px'
@@ -184,11 +185,40 @@
 
 	//后端交互
 	var token=getCookie('token');
-	var username=getCookie('username');//登陆后传入
+	var username=getCookie('username');
 	//根据用户名获取队伍id
 	var Id = getCookie('userid');
 	var teamId;
 	var isc=true;
+	//统一头部
+	if(token && username)
+	{
+		alert(token,username)
+		document.getElementById("userinfor1").style.display="none";
+		document.getElementById("userinfor2").style.display="block";
+		document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'><span style='cursor:pointer'>"+username+'</span></p>';
+		document.getElementById("user").style.color="gray";
+		document.getElementById("user").addEventListener("click",function()
+		{
+	
+			//退出登录
+			confirmbox("您确定退出登录么?",function()
+			{
+				
+				if(clearp===true)
+				{
+					delCookie("username");
+					delCookie("token");
+					window.location.href="main.html";
+				}
+				else
+				{
+	
+				}
+			});
+		});
+	}
+	
 	function setCookie(cname,cvalue){
 		// var d = new Date();
 		// d.setTime(d.getTime()+(exdays*24*60*60*1000));
@@ -212,7 +242,7 @@
 		},
 	}).then(response=>{
 		var team = response.json()
-		if(team['team']['id']) {teamId = team['team']['id'];
+		if(team['team'].length) {teamId = team['team']['id'];
 	isc=team['team']['isCaptain']}
 	})
 	//取消预约,返回1时成功
@@ -237,8 +267,8 @@
 	function update(day)//获取当前日期的预约情况函数
 	{
 		var query = {
-			'startTime':days + 'T' +'00:00.000Z',
-			'endTime':days + 'T12:00.000Z'
+			'startTime':day.value + 'T' +'00:00.000Z',
+			'endTime':day.value + 'T12:00.000Z'
 		}
 		fetch('https://thedc20.eesast.com/api/sites/0/appointments',{
 			method:'GET',
@@ -251,6 +281,15 @@
 			if(response.ok) 
 			{showbox1('获取预约情况成功')
 		var start = response.json();
+		var my = document.getElementsByClassName('add');
+		for(var ti = 0 ; ti<my.length; ti++)//把之前的预约信息除去
+		{
+			my[ti].parentNode.removeChild(my[ti])
+		}
+		for(var ti = 0 ; ti<my.length; ti++)
+		{
+			my[ti].parentNode.removeChild(my[ti])
+		}
 		for(var ti=0;ti<start.length;ti++)//将获取的时间数据交给appointing函数渲染
 		{
 				var hour1 =parseInt(start[ti]['startTime'].substring(11,13));
@@ -270,8 +309,8 @@
 	}
 	function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返回1时失败
 	{
-		var st = days + 'T' + hour1 + ':' + min1 +':00.000Z';
-		var et = days + 'T' + hour2 + ':' + min2 +':00.000Z';
+		var st = day.value + 'T' + hour1 + ':' + min1 +':00.000Z';
+		var et = day.value + 'T' + hour2 + ':' + min2 +':00.000Z';
 		var body1 = {
 			'teamId':teamId,
 			'startTime':st,
@@ -295,6 +334,7 @@
 			//retrun 1;
 		}
 	}
+
 
 	//以下为以前版本
 	//fetch('https://58.87.111.176/api/sites/:id',{
