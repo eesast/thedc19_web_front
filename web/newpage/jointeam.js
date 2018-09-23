@@ -130,7 +130,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         var change=document.getElementsByClassName("c")[0];
         var line="";
         data=new Array(mybody.length);
-        line+="<tr><th>队伍名称</th><th>队长</th><th>简介</th><th>队伍人数</th><th>队伍成员</th><th>立即加入</th></tr><tbody>";
+        line+="<tr><th>队伍名称</th><th>队长</th><th colspan='6'>简介</th><th>队伍人数</th><th>队伍成员</th><th>立即加入</th></tr><tbody>";
         function team(name,description,id,captain,members,invitecode)
         {
             this.name=name;
@@ -156,19 +156,19 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
            // window.alert(data[i].name);
             // line+='队伍ID:'+input.id;
-            line+='<td>'+input.name+'</td>';
+            line+='<th>'+input.name+'</th>';
             for(var j=0;j<myusers.length;j++)
             {
                 if(myusers[j]['id']==input.captain)
                 {
-                    line+='<td>'+myusers[j]['username']+'</td>';
+                    line+='<th>'+myusers[j]['username']+'</th>';
                     break;
                 }
                 
             }
-            line+='<td><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
+            line+='<td colspan="6"><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
         
-            line+='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+input.members+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+            line+='<th>'+input.members+'</th>';
 
             line+='<td>'
             var membercnt=false;//一个标记
@@ -196,7 +196,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             }
             line+='</td>'
 
-            line+="<td>&nbsp;&nbsp;&nbsp<button>加入队伍</button>&nbsp;&nbsp;</td>";
+            line+="<th><button>加入队伍</button></th>";
             line+='</tr>';
 
             count++;
@@ -213,8 +213,8 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         for(var i=0;i<mybody.length;i++)
         {
             var turn=document.getElementsByClassName("more")[i];
-            turn.style.width="300px";
-            turn.style.height="60px";
+            // turn.style.width="300px";
+            // turn.style.height="60px";
             // turn.style.wordBreak="break-all";
             turn.style.overflow="auto";
             // turn.style.overflowX="hidden";

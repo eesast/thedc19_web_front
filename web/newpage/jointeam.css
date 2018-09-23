@@ -76,10 +76,11 @@ body,html
     .c
     {
         position: relative;
-        top:50px;
+        top:100px;
         margin:0 auto;
-        text-align: center;
-        width:50%;
+        /* text-align: center; */
+        width:70%;
+        left:30%;
         /* height:20%; */
         /* font-family: 'SimHei'; */
         font-weight: 700;
