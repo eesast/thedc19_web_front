@@ -170,7 +170,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             }
             
         }
-        line+='<td class="more">'+input.description+'</td>';
+        line+='<td><div class="more"><p>'+input.description+'</p></div></td>';
         //for(var j=1;j<=20;j++)line+=("&nbsp");
         //line+="<button>查看信息</button>";
         //line+='<br><hr>';
@@ -192,6 +192,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         turn.style.width="500px";
         turn.style.height="60px";
         turn.style.wordBreak="break-all";
+        turn.style.whitespace="normal";
         turn.style.overflow="scroll";
         turn.style.overflowX="hidden";
 
