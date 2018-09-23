@@ -396,14 +396,15 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                                 window.location.href="../log in&sign up/login.html";
                             }); 
                         });
+                        document.getElementById("userinfor2").style.display="none";
+                        document.getElementById("userinfor1").style.display="block";
+                        break;
                         case 409:showbox("加入失败，该队伍人数已达上限!",function()
                         {
                             location=location;   
                         });
-
-                        document.getElementById("userinfor2").style.display="none";
-                        document.getElementById("userinfor1").style.display="block";
                         break;
+                       
                         case 404:showbox("队伍不存在",function()
                         {
                             location=location;   
