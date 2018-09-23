@@ -29,7 +29,7 @@ function name_checking(){
         )
     }).then(response=>
     {
-        console.log(response.status)
+        //console.log(response.status)
         if(response.ok)
         {
             return response.json();
@@ -55,7 +55,7 @@ function name_checking(){
         //获取x-access-token保存至本地
         usertoken=res['token']
         userid=res['id']
-        console.log(userid)
+        //console.log(userid)
         showbox('您已登录成功！')
         setCookie("username",userinfo.name)
         setCookie("token",usertoken)
