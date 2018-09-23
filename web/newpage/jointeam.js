@@ -186,9 +186,9 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         {
                             membercnt=true;
                         }
-                        if(myusers[k]['id']===userid)line+='<span style="color:red;">';//是使用者
+                        if(myusers[k]['id']==userid)line+='<span style="color:red;">';//是使用者
                         line+=myusers[k]['username'];
-                        if(myusers[k]['id']===userid)line+='</span>';//是使用者
+                        if(myusers[k]['id']==userid)line+='</span>';//是使用者
                         
                     }
                 }

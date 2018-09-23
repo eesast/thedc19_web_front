@@ -192,9 +192,9 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         {
                             membercnt=true;
                         }
-                        if(myusers[k]['id']===userid)line+='<span style="color:red;">';//是使用者
+                        if(myusers[k]['id']==userid)line+='<span style="color:red;">';//是使用者
                         line+=myusers[k]['username'];
-                        if(myusers[k]['id']===userid)line+='</span>';//是使用者
+                        if(myusers[k]['id']==userid)line+='</span>';//是使用者
                     }
                 }
             }
@@ -466,9 +466,9 @@ function showteaminfor()
             {
                 if(myusers[j]['id']==team.member[i])
                 {
-                    console.log('@@'+myusers[j]['id']);
-                    console.log('##'+userid);
-                    if(myusers[j]['id']===userid)line+="<p style='color:red;'>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"</p>";
+                    // console.log('@@'+myusers[j]['id']);
+                    // console.log('##'+userid);
+                    if(myusers[j]['id']==userid)line+="<p style='color:red;'>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"</p>";
                     else line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"</p>";
                     break;
                 }
