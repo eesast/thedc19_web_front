@@ -274,7 +274,9 @@ function showteaminfor()
         
 
         line+="<h3>&nbsp;&nbsp;&nbsp;&nbsp;队名";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=12;i++)line+="&nbsp";
+        line+='<hr style="width:2px;height:100px; "></hr>';
+        for(var i=1;i<=12;i++)line+="&nbsp";
         line+=team.name+'<br><hr>';
         //以上为第1行
         
@@ -283,10 +285,14 @@ function showteaminfor()
         //document.getElementsByClassName("description")[0].style.overflow="scroll";
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=12;i++)line+="&nbsp";
+        line+='<hr style="width:2px;height:100px; "></hr>';
+        for(var i=1;i<=12;i++)line+="&nbsp";
         line+=team.invitecode+'<br><hr>';
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=12;i++)line+="&nbsp";
+        line+='<hr style="width:2px;height:100px; "></hr>';
+        for(var i=1;i<=12;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
         {
             console.log(team.leader);
@@ -301,7 +307,9 @@ function showteaminfor()
         //以上为第3行
 
         line+="&nbsp;&nbsp;&nbsp;&nbsp;成员数量";
-        for(var i=1;i<=20;i++)line+="&nbsp";
+        for(var i=1;i<=12;i++)line+="&nbsp";
+        line+='<hr style="width:2px;height:100px; "></hr>';
+        for(var i=1;i<=12;i++)line+="&nbsp";
         line+=team.cnt+'<br><hr>';
         //以上为第4行
 
@@ -396,7 +404,9 @@ function showteaminfor()
         
 
         line+="<h3>&nbsp;&nbsp;&nbsp;&nbsp;队名";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=12;i++)line+="&nbsp";
+        line+='<hr style="width:2px;height:100px; "></hr>';
+        for(var i=1;i<=12;i++)line+="&nbsp";
         line+=team.name+'<br><hr>';
         //以上为第1行
         
@@ -404,10 +414,14 @@ function showteaminfor()
         line+='<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;'+team.description+'</div><br><hr>';
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=12;i++)line+="&nbsp";
+        line+='<hr style="width:2px;height:100px; "></hr>';
+        for(var i=1;i<=12;i++)line+="&nbsp";
         line+=team.invitecode+'<br><hr>';
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=12;i++)line+="&nbsp";
+        line+='<hr style="width:2px;height:100px; "></hr>';
+        for(var i=1;i<=12;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
         {
             console.log(team.leader);
@@ -423,7 +437,9 @@ function showteaminfor()
         //以上为第3行
 
         line+="&nbsp;&nbsp;&nbsp;&nbsp;成员数量";
-        for(var i=1;i<=20;i++)line+="&nbsp";
+        for(var i=1;i<=12;i++)line+="&nbsp";
+        line+='<hr style="width:2px;height:100px; "></hr>';
+        for(var i=1;i<=12;i++)line+="&nbsp";
         line+=team.cnt+'<br><hr>';
         //以上为第4行
 
