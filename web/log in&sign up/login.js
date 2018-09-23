@@ -81,10 +81,10 @@ function getCookie(cname){
     return "";
 }
 function changeuserinfo(){
-    if(getCookie("token")!=null&&getCookie("token")===usertoken)
+    if(getCookie("token")!=null)
     {
-        document.getElementById("userinfor2").style.display="none";
-        document.getElementById("userinfor1").innerText+=getCookie("username")
-        document.getElementById("userinfor1").style.display="block";
+        document.getElementById("userinfor1").style.display="none";
+        document.getElementById("userinfor2").innerText+=getCookie("username")
+        document.getElementById("userinfor2").style.display="block";
     }
 }

@@ -170,9 +170,9 @@
 	var token=getCookie('token');
 	var username=getCookie('username');//登陆后传入
 	//根据用户名获取队伍id
-	var Id = getCookie('Id');
+	var Id = getCookie('userid');
 	var teamId;
-	var isc;
+	var isc=true;
 	function setCookie(cname,cvalue){
 		// var d = new Date();
 		// d.setTime(d.getTime()+(exdays*24*60*60*1000));
@@ -195,9 +195,9 @@
 			'x-access-token':token,
 		},
 	}).then(response=>{
-		var team = response.json()['team']
-		if(team['id']) {teamId = team['id'];
-	isc=team['isCaptain']}
+		var team = response.json()
+		if(team['team']['id']) {teamId = team['team']['id'];
+	isc=team['team']['isCaptain']}
 	})
 	//取消预约,返回1时成功
 	function del(){
