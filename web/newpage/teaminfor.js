@@ -192,8 +192,9 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         {
                             membercnt=true;
                         }
+                        if(myusers[k]['id']===userid)line+='<span style="color:red;">';//是使用者
                         line+=myusers[k]['username'];
-                        
+                        if(myusers[k]['id']===userid)line+='</span>';//是使用者
                     }
                 }
             }
@@ -321,7 +322,7 @@ function showteaminfor()
             //console.log(team.leader);
             if(myusers[i]['id']==team.leader)
             {
-                line+=myusers[i]['username']+'<br><hr>';
+                line+='<span style="color:red;">'+myusers[i]['username']+'</span><br><hr>';
                 //console.log(myusers[i]['username']);
                 break;
             }
@@ -343,7 +344,7 @@ function showteaminfor()
             {
                 if(myusers[j]['id']==team.member[i])
                 {
-                    line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"</p>";
+                   line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"</p>";
                     break;
                 }
                
@@ -465,7 +466,8 @@ function showteaminfor()
             {
                 if(myusers[j]['id']==team.member[i])
                 {
-                    line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"<hr></p>";
+                    if(myusers[j]['id']===userid)line+="<p style='color:red;'>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"</p>";
+                    else line+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+myusers[j]['username']+"</p>";
                     break;
                 }
                
