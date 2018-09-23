@@ -146,7 +146,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         this.invitecode=invitecode;
     }
     
-    line+="<tr><th>队伍名称</th><th>队长</th><th>简介</th><th>队伍人数</th><th>队伍成员</th></tr><tbody>";
+    line+="<tr><th>队伍名称</th><th>队长</th><th colspan='6'>简介</th><th>队伍人数</th><th>队伍成员</th></tr><tbody>";
     for(var i=1;i<=mybody.length;i++)
     {
         /*
@@ -160,22 +160,22 @@ function init()//初始化，从服务器读取已有队伍信息并显示
 
         data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
         //line+="&nbsp;&nbsp;&nbsp;&nbsp;";
-        line+="<td>"+input.name+'</td>';
+        line+="<th>"+input.name+'</th>';
         for(var j=0;j<myusers.length;j++)
         {
             if(myusers[j]['id']==input.captain)
             {
-                line+='<td>'+myusers[j]['username']+'</td>';
+                line+='<th>'+myusers[j]['username']+'</th>';
                 break;
             }
             
         }
-        line+='<td><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
+        line+='<td colspan="6"><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
         //for(var j=1;j<=20;j++)line+=("&nbsp");
         //line+="<button>查看信息</button>";
         //line+='<br><hr>';
-        line+='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+input.members+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
-        line+='<td>'
+        line+='<th>'+input.members+'</th>';
+        line+='<th>'
             var membercnt=false;//一个标记
             for(var k=0;k<myusers.length;k++)
             {
@@ -198,7 +198,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                     }
                 }
             }
-            line+='</td>'
+            line+='</th>'
 
         count++;
         line+='</tr>'
@@ -214,8 +214,8 @@ function init()//初始化，从服务器读取已有队伍信息并显示
     for(var i=0;i<mybody.length;i++)
     {
          var turn=document.getElementsByClassName("more")[i];
-        turn.style.width="500px";
-        turn.style.height="60px";
+        // turn.style.width="500px";
+        // turn.style.height="60px";
         // turn.style.wordBreak="break-all";
         // turn.style.whitespace="normal";
         turn.style.overflow="auto";
@@ -313,10 +313,10 @@ function showteaminfor()
         //document.getElementsByClassName("description")[0].style.overflow="scroll";
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=20;i++)line+="&nbsp";
         line+=team.invitecode+'<br><hr>';
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=23;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
         {
             //console.log(team.leader);
@@ -331,7 +331,7 @@ function showteaminfor()
         //以上为第3行
 
         line+="&nbsp;&nbsp;&nbsp;&nbsp;成员数量";
-        for(var i=1;i<=20;i++)line+="&nbsp";
+        for(var i=1;i<=16;i++)line+="&nbsp";
         line+=team.cnt+'<br><hr>';
         //以上为第4行
 
@@ -435,10 +435,10 @@ function showteaminfor()
         line+='<div class="description" style="word-wrap:break-word">&nbsp;&nbsp;&nbsp;&nbsp;'+team.description+'</div><br><hr>';
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=20;i++)line+="&nbsp";
         line+=team.invitecode+'<br><hr>';
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
-        for(var i=1;i<=25;i++)line+="&nbsp";
+        for(var i=1;i<=23;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
         {
             //console.log(team.leader);
@@ -454,7 +454,7 @@ function showteaminfor()
         //以上为第3行
 
         line+="&nbsp;&nbsp;&nbsp;&nbsp;成员数量";
-        for(var i=1;i<=20;i++)line+="&nbsp";
+        for(var i=1;i<=16;i++)line+="&nbsp";
         line+=team.cnt+'<br><hr>';
         //以上为第4行
 
@@ -603,7 +603,7 @@ function dissolve(callback)
         var newtoken=res['token'];
         //得到新的token，删除id的队伍 teamid
         //console.log(teamid);
-        fetch("https://thedc20.eesast.com/api/teams/"+teamid,
+        fetch("https://thedc.eesast.com/api/teams/"+teamid,
         {
             method:'DELETE',
             headers:
