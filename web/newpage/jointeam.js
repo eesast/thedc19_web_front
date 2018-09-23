@@ -356,7 +356,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                 {
                     switch(response.status)
                     {
-                        case 204:showbox("加入队伍成功",function()
+                        case 201:showbox("加入队伍成功",function()
                         {
                             window.location.href='main.html';
                         });break;
@@ -377,6 +377,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         {
                             location=location;   
                         });
+
                         document.getElementById("userinfor2").style.display="none";
                         document.getElementById("userinfor1").style.display="block";
                         break;
@@ -384,6 +385,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                         {
                             location=location;   
                         });
+                        break;
                     }
                 });
             
