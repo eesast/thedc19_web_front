@@ -160,17 +160,17 @@ function init()//初始化，从服务器读取已有队伍信息并显示
 
         data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
         //line+="&nbsp;&nbsp;&nbsp;&nbsp;";
-        line+="<td>"+input.name+'</td>';
+        line+="<th>"+input.name+'</th>';
         for(var j=0;j<myusers.length;j++)
         {
             if(myusers[j]['id']==input.captain)
             {
-                line+='<td>'+myusers[j]['username']+'</td>';
+                line+='<th>'+myusers[j]['username']+'</th>';
                 break;
             }
             
         }
-        line+='<td><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
+        line+='<td colspan="4"><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
         //for(var j=1;j<=20;j++)line+=("&nbsp");
         //line+="<button>查看信息</button>";
         //line+='<br><hr>';
@@ -214,8 +214,8 @@ function init()//初始化，从服务器读取已有队伍信息并显示
     for(var i=0;i<mybody.length;i++)
     {
          var turn=document.getElementsByClassName("more")[i];
-        turn.style.width="500px";
-        turn.style.height="60px";
+        // turn.style.width="500px";
+        // turn.style.height="60px";
         // turn.style.wordBreak="break-all";
         // turn.style.whitespace="normal";
         turn.style.overflow="auto";
