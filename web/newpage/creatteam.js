@@ -42,7 +42,7 @@ if(token!=null&&username!=null)
 
 var mybody;
 var getinfor,getname;
-console.log(token);
+//console.log(token);
 
     //定义队伍信息对象
 function team(name,description,id)
@@ -62,7 +62,7 @@ function team(name,description,id)
 function check()//检查是否合法
 {
     getname=document.getElementsByClassName("d")[0].value;
-    console.log(getname);
+    //console.log(getname);
     if(getname=='')
     {
         //showbox("名称不能为空!");
@@ -78,7 +78,7 @@ function check()//检查是否合法
     // }
     //不需要判重名了
     getinfor=document.getElementsByClassName("b")[2].value;
-    console.log(getinfor);
+    //console.log(getinfor);
     if(getinfor=='')return false;
 
 
@@ -102,8 +102,8 @@ bt.addEventListener("click",function(){
         /*
         此处需要补充内容********************
         */
-        console.log(getname);
-        console.log(getinfor);
+        //console.log(getname);
+        //console.log(getinfor);
         fetch('https://thedc.eesast.com/api/teams',
         {
             method:'POST',
@@ -175,7 +175,7 @@ bt.addEventListener("click",function(){
                     input.select();
                         if (document.execCommand('copy')) {
                         document.execCommand('copy');
-                        console.log('复制成功');
+                        //console.log('复制成功');
                     }
                     document.body.removeChild(input);
 
@@ -199,7 +199,7 @@ bt.addEventListener("click",function(){
 
 
         //post消息
-        console.log(token);
+        //console.log(token);
 
 
 

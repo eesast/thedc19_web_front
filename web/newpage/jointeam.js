@@ -10,7 +10,7 @@ if(token==null||username==null)
 }
 var myusers;//使用者集合
 var mobody;
-    console.log(token);
+    //console.log(token);
 if(token!=null&&username!=null)
 {
     //alert(token);
@@ -34,7 +34,7 @@ if(token!=null&&username!=null)
             return response.json();
         }
         else{
-            console.log(response.status);
+            //console.log(response.status);
         }
     },error=>
     {
@@ -46,10 +46,10 @@ if(token!=null&&username!=null)
         });
     }).then(res=>
     {
-        console.log(res);
+        //console.log(res);
         mybody=res;//获取所有队伍信息，不包括邀请码
-        console.log(mybody[0]);
-        console.log(mybody.length);//获取长度
+        //console.log(mybody[0]);
+        //console.log(mybody.length);//获取长度
 
         fetch('https://thedc.eesast.com/api/users',
         {
@@ -71,7 +71,7 @@ if(token!=null&&username!=null)
                 return response.json();
             }
             else{
-                console.log(response.status);
+                //console.log(response.status);
             }
                     
        
@@ -283,7 +283,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             // {
             //     for(var j=0;j<mybody.length;j++)
             //     {
-            //         console.log(idnum);
+            //         //console.log(idnum);
             //             //发送更新消息
             //             fetch("http://58.87.111.176/api/teams/"+mybody[j]['id']+'/members?inviteCode='+idnum,
             //             {
@@ -400,7 +400,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                 return ;
             }  
             var idnum=document.getElementById("name").value;
-            console.log(idnum);
+            //console.log(idnum);
             // document.getElementById("name").focus();
             /*
             ****和服务器内存有的邀请码进行匹配，查看是否符合条件

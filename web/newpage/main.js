@@ -84,7 +84,7 @@ var userid=getCookie("userid");
         }).then(res=>
         {
             mybody=res;
-            console.log(mybody);
+            //console.log(mybody);
             
                     //myid=mybody['id'];
                     if(mybody['team']==null)
@@ -98,7 +98,7 @@ var userid=getCookie("userid");
                         if(mybody['team']['isCaptain']===true)iscaptain=true;
                         else iscaptain=false;
                     }
-                    console.log(inteam);
+                    //console.log(inteam);
                     
                 
                 
@@ -256,7 +256,7 @@ var userid=getCookie("userid");
         {
             var newtoken=res['token'];
             //得到新的token，删除id的队伍 teamid
-            console.log(teamid);
+            //console.log(teamid);
             fetch("https://thedc.eesast.com/api/teams/"+teamid,
             {
                 method:'DELETE',
@@ -290,7 +290,7 @@ var userid=getCookie("userid");
     function letitgo(callback)
     {
         
-            console.log(teamid);
+            //console.log(teamid);
             fetch("https://thedc.eesast.com/api/teams/"+teamid+"/members/"+userid,
             {
                 method:'DELETE',

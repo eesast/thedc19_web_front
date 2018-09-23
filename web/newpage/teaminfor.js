@@ -44,8 +44,8 @@ if(token!=null&&username!=null)
 var iscaptain=getCookie("iscaptain");
 var teamid=getCookie("teamid");//获得teamid，然后用mybody[]显示
 var userid=getCookie("userid");
-    console.log(token);
-    console.log(iscaptain);
+    //console.log(token);
+    //console.log(iscaptain);
     fetch('https://thedc.eesast.com/api/teams',
     {
         method:'GET',
@@ -67,7 +67,7 @@ var userid=getCookie("userid");
             return response.json();
         }
         else{
-            console.log(response.status);
+            //console.log(response.status);
         }
     },error=>
     {
@@ -98,7 +98,7 @@ var userid=getCookie("userid");
                 return response.json();
             }
             else{
-                console.log(response.status);
+                //console.log(response.status);
             }
                     
        
@@ -255,8 +255,8 @@ var team;
 
 function showteaminfor()
 {
-    console.log(teamid);
-    console.log(myusers);
+    //console.log(teamid);
+    //console.log(myusers);
     
     for(var i=0;i<mybody.length;i++)
     {
@@ -266,9 +266,9 @@ function showteaminfor()
             break;
         }
     }
-    console.log(team);
-    console.log(iscaptain);
-    console.log(team.member);
+    //console.log(team);
+    //console.log(iscaptain);
+    //console.log(team.member);
     if(iscaptain=='true')//如果是队长
     {
         bas=team.cnt;//偏移量
@@ -294,11 +294,11 @@ function showteaminfor()
         for(var i=1;i<=25;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
         {
-            console.log(team.leader);
+            //console.log(team.leader);
             if(myusers[i]['id']==team.leader)
             {
                 line+=myusers[i]['username']+'<br><hr>';
-                console.log(myusers[i]['username']);
+                //console.log(myusers[i]['username']);
                 break;
             }
             
@@ -314,7 +314,7 @@ function showteaminfor()
         for(var i=0;i<team.cnt;i++)
         {
             if(team.member[i]==team.leader)continue;
-            console.log(team.member[i]);
+            //console.log(team.member[i]);
             for(var j=0;j<myusers.length;j++)
             {
                 if(myusers[j]['id']==team.member[i])
@@ -416,11 +416,11 @@ function showteaminfor()
         for(var i=1;i<=25;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
         {
-            console.log(team.leader);
+            //console.log(team.leader);
             if(myusers[i]['id']==team.leader)
             {
                 line+=myusers[i]['username']+'<br><hr>';
-                console.log(myusers[i]['username']);
+                //console.log(myusers[i]['username']);
                 break;
             }
             
@@ -516,7 +516,7 @@ function setdropsb(i)
                         ***********************
                         删除，从数据库的队伍信息中删除该队员
                         */
-                       console.log(team.member[i+1]);
+                       //console.log(team.member[i+1]);
                         dropsb(team.member[i+1],function()
                         {
                             showbox("该队员已被踢出队伍!",function()
@@ -574,7 +574,7 @@ function dissolve(callback)
     {
         var newtoken=res['token'];
         //得到新的token，删除id的队伍 teamid
-        console.log(teamid);
+        //console.log(teamid);
         fetch("https://thedc20.eesast.com/api/teams/"+teamid,
         {
             method:'DELETE',
@@ -614,7 +614,7 @@ function dissolve(callback)
 function letitgo(callback)
 {
     
-        console.log(teamid);
+        //console.log(teamid);
         fetch("https://thedc.eesast.com/api/teams/"+teamid+"/members/"+userid,
         {
             method:'DELETE',
@@ -657,7 +657,7 @@ function letitgo(callback)
 function dropsb(dropsbid,callback)
 {
     
-        console.log(dropsbid);
+        //console.log(dropsbid);
         fetch("https://thedc.eesast.com/api/teams/"+teamid+"/members/"+dropsbid,
         {
             method:'DELETE',
