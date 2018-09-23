@@ -284,7 +284,7 @@ function showteaminfor()
         //以上为第1行
         
         line+="&nbsp;&nbsp;&nbsp;&nbsp;简介<br><hr>";
-        line+="<div class='description'>&nbsp;&nbsp;&nbsp;&nbsp;"+team.description+'</div><br><hr>';
+        line+="<div class='description'style='word-wrap:break-word'>&nbsp;&nbsp;&nbsp;&nbsp;"+team.description+'</div><br><hr>';
         //document.getElementsByClassName("description")[0].style.overflow="scroll";
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
@@ -407,7 +407,7 @@ function showteaminfor()
         //以上为第1行
         
         line+="&nbsp;&nbsp;&nbsp;&nbsp;简介<br><hr>";
-        line+='<div class="description">&nbsp;&nbsp;&nbsp;&nbsp;'+team.description+'</div><br><hr>';
+        line+='<div class="description" style="word-wrap:break-word">&nbsp;&nbsp;&nbsp;&nbsp;'+team.description+'</div><br><hr>';
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
         for(var i=1;i<=25;i++)line+="&nbsp";

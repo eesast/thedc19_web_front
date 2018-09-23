@@ -165,7 +165,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
                 }
                 
             }
-            line+='<td><div class="more">'+input.description+'</div></td>';
+            line+='<td><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
         
             line+='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+input.members+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
         
@@ -188,9 +188,9 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             var turn=document.getElementsByClassName("more")[i];
             turn.style.width="300px";
             turn.style.height="60px";
-            turn.style.wordBreak="break-all";
-            turn.style.overflow="scroll";
-            turn.style.overflowX="hidden";
+            // turn.style.wordBreak="break-all";
+            turn.style.overflow="auto";
+            // turn.style.overflowX="hidden";
 
             
         }
