@@ -27,6 +27,7 @@ body,html
         text-align: center;
         top:100px; 
         border-radius: 50%;
+        /* curor:pointer; */
         /* border:3px solid; */
     }
     .maintitle
