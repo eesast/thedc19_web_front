@@ -1,5 +1,5 @@
-var userpassword="unknown"
-var username="unknown"
+var userpassword=null
+var username=null
 var userinfo={
     name:username,
     password:userpassword,
@@ -75,7 +75,7 @@ function getCookie(cname){
     return "";
 }
 function changeuserinfo(){
-    if(getCookie("token"===usertoken))
+    if(userinfo.name!=null&&getCookie("token"===usertoken))
     {
         document.getElementById("userinfor2").style.display="none";
         document.getElementById("userinfor1").innerText+="userinfo.name"
