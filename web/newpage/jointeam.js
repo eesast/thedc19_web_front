@@ -20,7 +20,7 @@ if(token!=null&&username!=null)
         headers:
         {
             'Content-Type':'application/json',
-            'x-access-token':token.toString()},//以管理员权限访问所有队伍信息
+            'x-access-token':token.toString()},//不以管理员权限访问所有队伍信息
     }).then(response=>
     {
         if(response.status==401)
@@ -169,7 +169,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         
             line+='<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+input.members+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
         
-            line+="<td>&nbsp;&nbsp;&nbsp<button>加入队伍</button>;&nbsp;&nbsp;</td>";
+            line+="<td>&nbsp;&nbsp;&nbsp<button>加入队伍</button>&nbsp;&nbsp;</td>";
             line+='</tr>';
 
             count++;
