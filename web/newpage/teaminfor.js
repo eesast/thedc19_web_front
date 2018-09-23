@@ -603,7 +603,7 @@ function dissolve(callback)
         var newtoken=res['token'];
         //得到新的token，删除id的队伍 teamid
         //console.log(teamid);
-        fetch("https://thedc20.eesast.com/api/teams/"+teamid,
+        fetch("https://thedc.eesast.com/api/teams/"+teamid,
         {
             method:'DELETE',
             headers:
