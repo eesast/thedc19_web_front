@@ -129,12 +129,45 @@ function changeuserinfo(){
 function checkisonline(){
     if(getCookie("token")!="")
     {
-        confirmbox("您已登录！",handle)
-        function handle(){
+        temptoken=getCookie("token")
+        fetch("https://thedc.eesast.com/api/users/"+userid,
+        {
+            method:'GET',
+            headers:
+            {
+                'Content-Type':'application/json',
+                'x-access-token':temptoken
+            }
+        }).then(response=>
+        {
+            if(response.status==401)
+            {
+                showbox("登录已失效，请重新登录");
+                delCookie("username")
+                delCookie("token")
+                delCookie("userid")
+                location.reload(true);
+            }
+            if(response.ok)
+            {
+                return response.json();
+            }
+            
+        },error=>
+        {
+                // showbox("登录失效，请重新登录",function()
+                // {
+                //     // location.reload(true);       
+                // });
+        }).then(res=>
+        {
+            confirmbox("您已登录！",handle)
+            function handle(){
             setTimeout(() => {
                 window.location.href='../index.html'
             }, 100);
         }
+        })
     }
 }
 
