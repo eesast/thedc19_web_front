@@ -29,6 +29,7 @@ var myid=null;
             document.getElementById("userinfor2").style.display="block";
             document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'>"+username+'</p>';
             document.getElementById("user").style.color="red";
+            document.getElementById("user").style.curor="pointer";
             document.getElementById("user").addEventListener("click",function()
             {
 
