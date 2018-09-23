@@ -22,16 +22,16 @@
 		//判断是否合理
 		if(min1<0 || min1>60 || !min1){
 			if(!min1) min1=0
-			else{showbox('输入错误'); return 0;}
+			else{showbox1('输入错误'); return 0;}
 		}
 		if(min2<0 || min2>60 || !min2){
 			if(!min2) min2=0;
-			else{showbox('输入错误'); return 0;}
+			else{showbox1('输入错误'); return 0;}
 		}
 		//判断时间是否是分段的
 		var h1=hour1 + parseFloat(min1)/60;
 		var h2=hour2 + parseFloat(min2)/60;
-		if(h1>=h2 || hour1<0 || hour2>24 || hour2-hour1>2 || !hour1 || !hour2 ){ showbox('输入错误');return 0}
+		if(h1>=h2 || hour1<0 || hour2>24 || hour2-hour1>2 || !hour1 || !hour2 ){ showbox1('输入错误');return 0}
 		else{ if(h1<12 && h2<=12){
 			sign = 0;
 			var st=0;
@@ -51,7 +51,7 @@
 		if(min2<10) showmin2 = '0' + showmin2;
 		showtime =  hour1 + ':' + showmin1 + '~' + hour2 + ':' + showmin2;
 		//只有用户的预约上传,upload返回1时预约失败
-		if(mark == 1){if(upload(username,days,hour1,hour2,showmin1,showmin2)) {showbox('预约失败');return 0}}
+		if(mark == 1){if(upload(username,days,hour1,hour2,showmin1,showmin2)) {showbox1('预约失败');return 0}}
 		//根据时间是否分段来渲染
 		if(sign == 2){
 			var st=0;
@@ -111,7 +111,7 @@
         document.getElementsByClassName("ok")[0].addEventListener("click",function()
         {
             //按下了确认
-            //优先关闭窗口
+			//优先关闭窗口
             document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
             document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
             if(callback && typeof(callback)==="function")
@@ -126,6 +126,22 @@
         document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
 		document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
 	})
+	}
+	function showbox1(s)//打印一段话
+    {
+        document.getElementsByClassName("dark1")[0].style.display="block";//屏幕半黑
+        document.getElementsByClassName("showinfor1")[0].style.display="block";//弹框
+        document.getElementsByClassName("context1")[0].innerHTML="<br>&nbsp;&nbsp;&nbsp;&nbsp;"+s;//弹出消息
+        document.getElementsByClassName("ok1")[0].style.left="46.5%";
+        //设置调用按钮功能
+        
+        document.getElementsByClassName("ok1")[0].addEventListener("click",function()
+        {
+            //按下了确认
+			//优先关闭窗口
+            document.getElementsByClassName("dark1")[0].style.display="none";//屏幕半黑
+            document.getElementsByClassName("showinfor1")[0].style.display="none";//弹框
+        });
     }
 	document.getElementById('1-place1').style.backgroundColor = 'cornflowerblue';
 	document.getElementById('1-place2').style.backgroundColor = 'cornflowerblue';
@@ -188,7 +204,7 @@
 		}
 		return "";
 	}
-	var url3 = 'http://58.87.111.176/api/users/'+Id;
+	var url3 = 'http://58.87.111.176/api/users/'+ Id;
 	fetch(url3,{
 		headers:{
 			'Content-Type':'application/json',
@@ -210,11 +226,11 @@
 			},
 			'query':{'startTime':appointtime}
 		}).then(response=>{
-			if(response.ok){ showbox('取消预约成功');return 1}
-			else {showbox('取消预约失败')
+			if(response.ok){ showbox1('取消预约成功');return 1}
+			else {showbox1('取消预约失败')
 				return 0;}
 		})}
-		else {showbox('您不是队长，没有权限')
+		else {showbox1('您不是队长，没有权限')
 			//return 0;
 			}
 	}
@@ -233,7 +249,7 @@
 			'query':query
 		}).then(response=>{
 			if(response.ok) 
-			{showbox('获取预约情况成功')
+			{showbox1('获取预约情况成功')
 		var start = response.json();
 		for(var ti=0;ti<start.length;ti++)//将获取的时间数据交给appointing函数渲染
 		{
@@ -249,7 +265,7 @@
 					hour1,min1,hour2,min2,0
 				)}}
 		}
-		else if(response == 401){showbox('登录失效');return 0}
+		else if(response == 401){showbox1('登录失效');return 0}
 	})
 	}
 	function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返回1时失败
@@ -270,12 +286,12 @@
 			},
 			body:JSON.stringify(body1)
 		}).then(response=>{
-			if(response.ok) {showbox("预约成功");return 0}//上传成功提示
-			if(response.status==409) {showbox('预约失败');return 1}//时间冲突提示
-			if(response == 401){showbox('登录失效');return 1}
+			if(response.ok) {showbox1("预约成功");return 0}//上传成功提示
+			if(response.status==409) {showbox1('预约失败');return 1}//时间冲突提示
+			if(response == 401){showbox1('登录失效');return 1}
 		})}
 		else {
-			showbox('您不是队长，没有权限');
+			showbox1('您不是队长，没有权限');
 			//retrun 1;
 		}
 	}

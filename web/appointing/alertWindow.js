@@ -8,6 +8,7 @@
     */ 
     function showbox(s,callback)//打印一段话
     {
+        var flag =0;
         document.getElementsByClassName("dark")[0].style.display="block";//屏幕半黑
         document.getElementsByClassName("showinfor")[0].style.display="block";//弹框
         document.getElementsByClassName("context")[0].innerHTML="<br>&nbsp;&nbsp;&nbsp;&nbsp;"+s;//弹出消息
@@ -24,13 +25,10 @@
             document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
             document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
           
-            if(callback && typeof(callback)==="function")
-            {
-                callback();
-               
-            }
+            flag =1;
            
         });
+        return flag;
 
     }
 

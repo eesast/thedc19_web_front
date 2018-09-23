@@ -56,7 +56,7 @@ input{
 }
 #showtime{
 	position: absolute;
-	transform: translateY(290px);
+	transform: translateY(300px);
 }
 .sure{
 	border-radius: 300px;
