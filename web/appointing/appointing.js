@@ -28,6 +28,16 @@
 			if(!min2) min2=0;
 			else{showbox1('输入错误'); return 0;}
 		}
+		days = day.value;
+		//只有用户的预约上传,才需要upload
+		if(mark == 1) upload(username,days,hour1,hour2,min1,min2)
+		else draw(hour1,hour2,min1,min2,mark)
+		//根据时间是否分段来渲染
+		
+	}
+
+	function draw(hour1,hour2,min1,min2,mark)
+	{
 		//判断时间是否是分段的
 		var h1=hour1 + parseFloat(min1)/60;
 		var h2=hour2 + parseFloat(min2)/60;
@@ -44,19 +54,6 @@
 			sign = 2
 		}
 		}
-		//调整输出时间格式
-		var showmin1 = min1.toString()
-		var showmin2 = min2.toString()
-		var showhour1 = hour1.toString()
-		var showhour2 = hour2.toString()
-		if(min1<10) showmin1 = '0' + showmin1;
-		if(min2<10) showmin2 = '0' + showmin2;
-		if(hour1<10) showhour1 = '0' + showhour1;
-		if(hour2<10) showhour2 = '0' + showhour2;
-		showtime =  hour1 + ':' + showmin1 + '~' + hour2 + ':' + showmin2;
-		//只有用户的预约上传,upload返回1时预约失败
-		if(mark == 1){if(upload(username,days,showhour1,showhour2,showmin1,showmin2)) {showbox1('预约失败');return 0}}
-		//根据时间是否分段来渲染
 		if(sign == 2){
 			var st=0;
 			choose(hour1,12,min1,0,mark,0);
@@ -64,7 +61,6 @@
 			choose(12,hour2,0,min2,mark,1);
 		}
 		else choose(hour1,hour2,min1,min2,mark,sign);
-		days = day.value;
 		//渲染函数
 		function choose(hour1,hour2,min1,min2,mark,t)
 		{	//添加子div
@@ -75,17 +71,27 @@
 			var wid0 = parseFloat(document.getElementsByClassName('time')[0].rows[0].cells[0].offsetWidth);
 			var wid2 = 1000-wid0;
 			var wid1 = ((hour2 + min2/60)-(hour1 + min1/60))/12;
+			//调整输出时间格式
+			var showmin1 = min1.toString()
+			var showmin2 = min2.toString()
+			var showhour1 = hour1.toString()
+			var showhour2 = hour2.toString()
+			if(min1<10) showmin1 = '0' + showmin1;
+			if(min2<10) showmin2 = '0' + showmin2;
+			if(hour1<10) showhour1 = '0' + showhour1;
+			if(hour2<10) showhour2 = '0' + showhour2;
+			showtime =  showhour1 + ':' + showmin1 + '~' + showhour2 + ':' + showmin2;
 			//改变div的属性
 			div.style.width = wid1 * wid2+'px';
 			div.style.height = '50px';
 			div.style.position = 'absolute';
 			div.style.marginLeft= ((((hour1 + min1/60)-st)/12)*wid2 + wid0) + 'px';
-			div.style.marginTop = '3px'
+			div.style.marginTop = '2px'
 			if(mark) div.style.backgroundColor = 'cornflowerblue';
 			else div.style.backgroundColor = 'rgb(216, 216, 21)';
 			div.style.opacity = '0.5';//降低透明度
 			//div.innerText = hour1 + ':' + min1 + '~' + hour2 + ':' + min2;
-			if(t) div.style.marginTop = '56px'
+			if(t) div.style.marginTop = '52px'
 			//添加div的显示监听 
 			div.addEventListener('mouseover',function(){
 				div.style.opacity = '1';//回复透明度
@@ -105,6 +111,7 @@
 					}
 		}
 	}
+
 	function showbox(s,callback)//打印一段话
     {
         document.getElementsByClassName("dark")[0].style.display="block";//屏幕半黑
@@ -161,23 +168,7 @@
 		1)
 	})
 	button2.addEventListener//取消预约按钮的功能实现
-	('click',function(){showbox('确定要取消您所有的预约',
-		function(){
-			if(!(del()==0))
-		{
-		var my = document.getElementsByClassName('add');
-		for(var ti = 0 ; ti<my.length; ti++)
-		{
-			my[ti].parentNode.removeChild(my[ti])
-		}
-		for(var ti = 0 ; ti<my.length; ti++)
-		{
-			my[ti].parentNode.removeChild(my[ti])
-		}
-		document.getElementById('showtime').innerText ='您还没有预约' ;
-	}
-		})
-	})
+	('click',function(){showbox('确定要取消您所有的预约',del())})
 	//显示预约情况
 	document.getElementById('showappointment').addEventListener('click',function(){
 		update(days);
@@ -193,11 +184,10 @@
 	//根据用户名获取队伍id
 	var Id = getCookie('userid');
 	var teamId;
-	var isc=true;
+	var isc=false;
 	//统一头部
 	if(token && username)
 	{
-		alert(token,username)
 		document.getElementById("userinfor1").style.display="none";
 		document.getElementById("userinfor2").style.display="block";
 		document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'><span style='cursor:pointer'>"+username+'</span></p>';
@@ -256,7 +246,6 @@
 	})
 	//取消预约,返回1时成功
 	function del(){
-		if(isc)
 		{fetch('https://thedc.eesast.com/api/sites/0/appointments',{
 			method:'DELETE',
 			headers:{
@@ -265,14 +254,22 @@
 			},
 			'query':{'startTime':appointtime}
 		}).then(response=>{
-			if(response.ok){ showbox1('取消预约成功');return 1}
-			else if(response.status == 401){showbox1('登录失效');return 0;}
-			else {showbox1('取消预约失败')
-				return 0;}
-		})}
-		else {showbox1('您不是队长，没有权限')
-			//return 0;
+			if(response.ok){ 
+				showbox1('取消预约成功');
+				var my = document.getElementsByClassName('add');
+				for(var ti = 0 ; ti<my.length; ti++)
+				{
+					my[ti].parentNode.removeChild(my[ti])
+				}
+				for(var ti = 0 ; ti<my.length; ti++)
+				{
+					my[ti].parentNode.removeChild(my[ti])
+				}
+				document.getElementById('showtime').innerText ='您还没有预约' ;
 			}
+			else if(response.status == 401){showbox1('登录失效');}
+			else {showbox1('取消预约失败')}
+		})}
 	}
 	function update(day)//获取当前日期的预约情况函数
 	{
@@ -308,24 +305,33 @@
 		for(var ti=0;ti<start.length;ti++)//将获取的时间数据交给appointing函数渲染
 		{
 			var getday = start[ti]['startTime'].substring(0,10)
-			if(getday == day.value)
+			if(getday == document.getElementById('demo').value)
 				{var hour1 =parseInt(start[ti]['startTime'].substring(11,13));
 				var min1 =parseInt(start[ti]['startTime'].substring(14,15));
-				var hour1 =parseInt(start[ti]['endTime'].substring(11,13));
-				var min1 =parseInt(start[ti]['endTime'].substring(14,15));
+				var hour2 =parseInt(start[ti]['endTime'].substring(11,13));
+				var min2 =parseInt(start[ti]['endTime'].substring(14,15));
 				if(start[ti]['teamId'] == teamId) //判断用户是否已经预约
-				{ppointing(
+				{appointing(
 					hour1,min1,hour2,min2,2
 				)}
-				else {ppointing(
+				else {appointing(
 					hour1,min1,hour2,min2,0
 				)}}}
 	})
 	}
+
 	function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返回1时失败
 	{
-		var st = day.value + 'T' + hour1 + ':' + min1 +':00.000Z';
-		var et = day.value + 'T' + hour2 + ':' + min2 +':00.000Z';
+		var showmin1 = min1.toString()
+		var showmin2 = min2.toString()
+		var showhour1 = hour1.toString()
+		var showhour2 = hour2.toString()
+		if(min1<10) showmin1 = '0' + showmin1;
+		if(min2<10) showmin2 = '0' + showmin2;
+		if(hour1<10) showhour1 = '0' + showhour1;
+		if(hour2<10) showhour2 = '0' + showhour2;
+		var st = day.value + 'T' + showhour1 + ':' + showmin1 +':00.000Z';
+		var et = day.value + 'T' + showhour2 + ':' + showmin2 +':00.000Z';
 		var body1 = {
 			'startTime':st,
 			'endTime':et
@@ -339,15 +345,14 @@
 			},
 			body:JSON.stringify(body1)
 		}).then(response=>{
-			if(response.ok) {showbox1("预约成功");return 0}//上传成功提示
-			else if(response.statue == 401) {showbox1('登录失效');return 1}
-			else if(response.status == 400) {showbox1('预约时间冲突或者您还没有加入队伍');return 1}
-			else if(response.status == 403) {showbox1('一天内预约次数超过 3 次');return 1}
-			else {showbox1('预约失败');return 1}//时间冲突提示
+			if(response.ok) {showbox1("预约成功");draw(hour1,hour2,min1,min2,1)}//上传成功提示
+			else if(response.statue == 401) {showbox1('登录失效')}
+			else if(response.status == 400) {showbox1('预约时间冲突或者您还没有加入队伍')}
+			else if(response.status == 403) {showbox1('一天内预约次数超过 3 次')}
+			else {showbox1('预约失败')}//时间冲突提示
 		})}
 		else {
 			showbox1('您不是队长，没有权限');
-			//retrun 1;
 		}
 	}
 
