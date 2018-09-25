@@ -247,6 +247,14 @@ var userid=getCookie("userid");
                         callback();
                     }
                 }
+                if(response.status==504)
+                {
+                    
+                    showbox("请求超时!",function()
+                    {
+                        location=location;  
+                    });
+                }
             },error=>
             {
                 showbox("您没有权限!",function()
