@@ -598,6 +598,14 @@ function dissolve(callback)
                 document.getElementById("userinfor2").style.display="none";
                 document.getElementById("userinfor1").style.display="block";
             }
+            if(response.status==504)
+            {
+                
+                showbox("请求超时!",function()
+                {
+                    location=location;  
+                });
+            }
             if(response.ok===true)
             {
                 if(callback&&typeof(callback)==="function")
@@ -609,7 +617,7 @@ function dissolve(callback)
         {
             showbox("您没有权限!",function()
             {
-                window.location.href='main.html';       
+                location=location;  
             });
         })
     
