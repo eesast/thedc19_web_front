@@ -47,11 +47,15 @@
 		//调整输出时间格式
 		var showmin1 = min1.toString()
 		var showmin2 = min2.toString()
+		var showhour1 = hour1.toString()
+		var showhour2 = hour2.toString()
 		if(min1<10) showmin1 = '0' + showmin1;
 		if(min2<10) showmin2 = '0' + showmin2;
+		if(hour1<10) showhour1 = '0' + showhour1;
+		if(hour2<10) showhour2 = '0' + showhour2;
 		showtime =  hour1 + ':' + showmin1 + '~' + hour2 + ':' + showmin2;
 		//只有用户的预约上传,upload返回1时预约失败
-		if(mark == 1){if(upload(username,days,hour1,hour2,showmin1,showmin2)) {showbox1('预约失败');return 0}}
+		if(mark == 1){if(upload(username,days,showhour1,showhour2,showmin1,showmin2)) {showbox1('预约失败');return 0}}
 		//根据时间是否分段来渲染
 		if(sign == 2){
 			var st=0;
@@ -234,21 +238,26 @@
 		}
 		return "";
 	}
-	var url3 = 'https://thedc20.eesast.com/api/users/'+ Id;
+	var url3 = 'https://thedc.eesast.com/api/users/'+ Id;
 	fetch(url3,{
 		headers:{
 			'Content-Type':'application/json',
 			'x-access-token':token,
 		},
 	}).then(response=>{
-		var team = response.json()
-		if(team['team'].length) {teamId = team['team']['id'];
-	isc=team['team']['isCaptain']}
+		return response.json()
+	}).then(res=>{
+		team = res;
+		if(team['team'] != null)
+		{
+			teamId = team['team']['id'];
+			isc=team['team']['isCaptain'];
+		}
 	})
 	//取消预约,返回1时成功
 	function del(){
 		if(isc)
-		{fetch('https://thedc20.eesast.com/api/sites/0/appointments',{
+		{fetch('https://thedc.eesast.com/api/sites/0/appointments',{
 			method:'DELETE',
 			headers:{
 				'Content-Type':'application/json',
@@ -257,6 +266,7 @@
 			'query':{'startTime':appointtime}
 		}).then(response=>{
 			if(response.ok){ showbox1('取消预约成功');return 1}
+			else if(response.status == 401){showbox1('登录失效');return 0;}
 			else {showbox1('取消预约失败')
 				return 0;}
 		})}
@@ -267,10 +277,10 @@
 	function update(day)//获取当前日期的预约情况函数
 	{
 		var query = {
-			'startTime':day.value + 'T' +'00:00.000Z',
-			'endTime':day.value + 'T12:00.000Z'
+			'startTime':day.value + 'T' +'00:00:00.000Z',
+			'endTime':day.value + 'T12:00:00.000Z'
 		}
-		fetch('https://thedc20.eesast.com/api/sites/0/appointments',{
+		fetch('https://thedc.eesast.com/api/sites/0/appointments',{
 			method:'GET',
 			headers:{
 				'Content-Type':'application/json',
@@ -279,9 +289,14 @@
 			'query':query
 		}).then(response=>{
 			if(response.ok) 
-			{showbox1('获取预约情况成功')
-		var start = response.json();
+			{showbox1('获取预约情况成功');
+			return response.json();
+			}
+			if(response == 401){showbox1('登录失效');return 0;}
+		}).then(res=>{
+		var start = res;
 		var my = document.getElementsByClassName('add');
+		if(res == 0) return 0;
 		for(var ti = 0 ; ti<my.length; ti++)//把之前的预约信息除去
 		{
 			my[ti].parentNode.removeChild(my[ti])
@@ -292,7 +307,9 @@
 		}
 		for(var ti=0;ti<start.length;ti++)//将获取的时间数据交给appointing函数渲染
 		{
-				var hour1 =parseInt(start[ti]['startTime'].substring(11,13));
+			var getday = start[ti]['startTime'].substring(0,10)
+			if(getday == day.value)
+				{var hour1 =parseInt(start[ti]['startTime'].substring(11,13));
 				var min1 =parseInt(start[ti]['startTime'].substring(14,15));
 				var hour1 =parseInt(start[ti]['endTime'].substring(11,13));
 				var min1 =parseInt(start[ti]['endTime'].substring(14,15));
@@ -302,9 +319,7 @@
 				)}
 				else {ppointing(
 					hour1,min1,hour2,min2,0
-				)}}
-		}
-		else if(response == 401){showbox1('登录失效');return 0}
+				)}}}
 	})
 	}
 	function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返回1时失败
@@ -312,12 +327,11 @@
 		var st = day.value + 'T' + hour1 + ':' + min1 +':00.000Z';
 		var et = day.value + 'T' + hour2 + ':' + min2 +':00.000Z';
 		var body1 = {
-			'teamId':teamId,
 			'startTime':st,
-			'endtime':et
+			'endTime':et
 		}
 		if(isc)
-		{fetch('https://thedc20.eesast.com/api/sites/0/appointments',{
+		{fetch('https://thedc.eesast.com/api/sites/0/appointments',{
 			method:'POST',
 			headers:{
 				'Content-Type':'application/json',
@@ -326,8 +340,10 @@
 			body:JSON.stringify(body1)
 		}).then(response=>{
 			if(response.ok) {showbox1("预约成功");return 0}//上传成功提示
-			if(response.status==409) {showbox1('预约失败');return 1}//时间冲突提示
-			if(response == 401){showbox1('登录失效');return 1}
+			else if(response.statue == 401) {showbox1('登录失效');return 1}
+			else if(response.status == 400) {showbox1('预约时间冲突或者您还没有加入队伍');return 1}
+			else if(response.status == 403) {showbox1('一天内预约次数超过 3 次');return 1}
+			else {showbox1('预约失败');return 1}//时间冲突提示
 		})}
 		else {
 			showbox1('您不是队长，没有权限');
