@@ -210,7 +210,7 @@ button2.addEventListener//取消预约按钮的功能实现
 ('click',function(){showbox('确定要取消您所有的预约')})
 //显示预约情况
 document.getElementById('showappointment').addEventListener('click',function(){
-	update(days);
+	update();
 })
 //后端交互
 var token=getCookie('token');
@@ -295,16 +295,7 @@ function del(deltime,deldiv){
 	}).then(response=>{
 		if(response.ok){ 
 			showbox1('取消预约成功');
-			var my = document.getElementsByClassName('add');
-			for(var ti = 0 ; ti<my.length; ti++)
-			{
-				my[ti].parentNode.removeChild(my[ti])
-			}
-			for(var ti = 0 ; ti<my.length; ti++)
-			{
-				my[ti].parentNode.removeChild(my[ti])
-			}
-			document.getElementById('showtime').innerText ='您还没有预约' ;
+			update();
 		}
 		else if(response.status == 401){showbox1('登录失效');}
 		else {showbox1('取消预约失败')}
@@ -312,7 +303,7 @@ function del(deltime,deldiv){
 }
 
 
-function update(day)//获取当前日期的预约情况函数
+function update()//获取当前日期的预约情况函数
 {
 	var query = {
 		'startTime':day.value + 'T' +'00:00:00.000Z',
@@ -338,20 +329,21 @@ function update(day)//获取当前日期的预约情况函数
 	if(res == 0) return 0;
 	for(var ti = 0 ; ti<my1.length; ti++)//把之前的预约信息除去
 	{
-		my[ti].parentNode.removeChild(my[ti])
+		my1[ti].parentNode.removeChild(my1[ti])
 	}
 	for(var ti = 0 ; ti<my1.length; ti++)
 	{
-		my[ti].parentNode.removeChild(my[ti])
+		my1[ti].parentNode.removeChild(my1[ti])
 	}
 	for(var ti = 0 ; ti<my2.length; ti++)//把之前的预约信息除去
 	{
-		my[ti].parentNode.removeChild(my[ti])
+		my2[ti].parentNode.removeChild(my2[ti])
 	}
 	for(var ti = 0 ; ti<my2.length; ti++)
 	{
-		my[ti].parentNode.removeChild(my[ti])
+		my2[ti].parentNode.removeChild(my2[ti])
 	}
+	document.getElementById('showtime').innerHTML='您还没有预约';
 	for(var ti=0;ti<start.length;ti++)//将获取的时间数据交给appointing函数渲染
 	{
 		var getday = start[ti]['startTime'].substring(0,10)
