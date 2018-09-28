@@ -18,7 +18,7 @@ body,html
 }
 input{
 	width:30px;
-	height:16px;
+	height:20px;
 	border-collapse: 0px;
 	border-radius: 4px;
 	transform: translateY(-5px);
@@ -74,6 +74,16 @@ input{
 #c3{
 		position:absolute;
 	}
+#d3{
+		font-size:22;
+}
+#showappointment{
+	position: absolute;
+	right: 0px;
+	height: 40px;
+	width:100px;
+	right:17%;
+}
 .demo1{
 	height:50px;
 	width:1000px;
@@ -81,7 +91,7 @@ input{
 #demo{
 	width:100px;
 	position: absolute;
-	left:73%;
+	right:27%;
 	transform: translateY(10px)
 }
 button{
@@ -123,6 +133,32 @@ a{
 		width:100%;
 		height:auto;
 	}
+
+/*预约显示时间框*/
+#case{
+		color: #000000; 
+		border: solid 2px rgb(253, 252, 252); 
+		width: 1000px; 
+		height: 150px; 
+		overflow-y: scroll; 
+		scrollbar-face-color: #889B9F;
+		scrollbar-shadow-color: #3D5054;
+		scrollbar-highlight-color: #C3D6DA;
+		scrollbar-3dlight-color: #3D5054;
+		scrollbar-darkshadow-color: #85989C;
+		scrollbar-track-color: #95A6AA;
+		scrollbar-arrow-color: #FFD6DA;
+		position: absolute;
+		bottom: 200px;
+		line-height: 200%;
+	}
+#showtitle{
+		position: absolute;
+		bottom: 360px;
+		font-size: 22;
+	}
+
+
  /* 统一尾部 */
  .ts-footer{
 	position:absolute;
