@@ -11,7 +11,6 @@ var days = '';
 var day = document.getElementById('demo')
 var flag = document.getElementById('c1');
 var space = document.getElementById('1-space1')
-document.getElementById('showtime').innerHTML='您还没有预约'
 function appointing(hour1,min1,hour2,min2,mark)//显示约定的时间,mark用来表示是否为用户添加的时间
 {
 	var sign = 1;
@@ -109,17 +108,15 @@ function draw(hour1,hour2,min1,min2,mark)
 			div.addEventListener('click',function(){showbox2('您确定要取消预约？',this)})
 			div.className = 'add';
 			appointtime = days + 'T' + hour1 + ':' + showmin1 +'.000Z';
-			console.log(day.value)
-			console.log(day.value)
-			console.log(day.value)
-			if(document.getElementById('showtime').innerHTML == '您还没有预约')
+			if(mark == 1)
+			{if(document.getElementById('case').innerHTML == '')
 			{
-			document.getElementById('showtime').innerHTML ='您预约的时间和地点：<br>' + day.value + '号' + showtime + flag.rows[0].cells[0].innerText;
+			document.getElementById('case').innerHTML = day.value + '号' + showtime + flag.rows[0].cells[0].innerText;
 			}
 			else{
-				document.getElementById('showtime').innerHTML = document.getElementById('showtime').innerHTML +'<br>'+
+				document.getElementById('case').innerHTML = document.getElementById('case').innerHTML +'<br>'+
 				day.value + '号' + showtime + flag.rows[0].cells[0].innerText;
-			}
+			}}
 			}
 		else {div.className = 'all'}
 	}
@@ -139,7 +136,6 @@ document.getElementsByClassName("ok")[0].addEventListener("click",function()
 		//优先关闭窗口
 		document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
 		document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
-		delall();
 	});
 document.getElementsByClassName('no')[0].addEventListener('click',function()
 	{
@@ -205,12 +201,6 @@ button1.addEventListener//预约按钮的功能实现
 	parseInt(document.getElementById('input3').value),
 	parseInt(document.getElementById('input4').value),
 	1)
-})
-button2.addEventListener//取消预约按钮的功能实现
-('click',function(){showbox('确定要取消您所有的预约')})
-//显示预约情况
-document.getElementById('showappointment').addEventListener('click',function(){
-	update();
 })
 //后端交互
 var token=getCookie('token');
@@ -279,10 +269,6 @@ fetch(url3,{
 	}
 })
 
-//取消全部预约
-function delall(){
-	showbox1('还未实现该功能')
-}
 //单个取消预约,返回1时成功
 function del(deltime,deldiv){
 	var urldel = 'https://thedc.eesast.com/api/sites/0/appointments?startTime='+deltime
@@ -343,12 +329,25 @@ function update()//获取当前日期的预约情况函数
 	{
 		my2[ti].parentNode.removeChild(my2[ti])
 	}
-	document.getElementById('showtime').innerHTML='您还没有预约';
+	document.getElementById('showtime').innerHTML='';
 	for(var ti=0;ti<start.length;ti++)//将获取的时间数据交给appointing函数渲染
 	{
 		var getday = start[ti]['startTime'].substring(0,10)
+		if(start[ti]['teamId'] == teamId)
+		{
+			var showtime =start[ti]['startTime'].substring(11,16)+'~'+start[ti]['endTime'].substring(11,16);
+			if(document.getElementById('case').innerHTML == '')
+			{
+			document.getElementById('case').innerHTML = day.value + '号' + showtime + flag.rows[0].cells[0].innerText;
+			}
+			else{
+				document.getElementById('case').innerHTML = document.getElementById('case').innerHTML +'<br>'+
+				day.value + '号' + showtime + flag.rows[0].cells[0].innerText;
+			}
+		}
 		if(getday == document.getElementById('demo').value)
-			{var hour1 =parseInt(start[ti]['startTime'].substring(11,13));
+			{
+			var hour1 =parseInt(start[ti]['startTime'].substring(11,13));
 			var min1 =parseInt(start[ti]['startTime'].substring(14,16));
 			var hour2 =parseInt(start[ti]['endTime'].substring(11,13));
 			var min2 =parseInt(start[ti]['endTime'].substring(14,16));
@@ -395,6 +394,7 @@ function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返
 	})}
 	else {
 		showbox1('您不是队长，没有权限');
+		draw(hour1,hour2,min1,min2,1)
 	}
 }
 
