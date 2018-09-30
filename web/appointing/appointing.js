@@ -202,6 +202,10 @@ button1.addEventListener//预约按钮的功能实现
 	parseInt(document.getElementById('input4').value),
 	1)
 })
+document.getElementById('showappointment').addEventListener('click',function(){
+	update();
+})
+
 //后端交互
 var token=getCookie('token');
 var username=getCookie('username');
