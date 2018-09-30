@@ -139,7 +139,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
 
     var input;
     var change=document.getElementsByClassName("d")[0];
-    var line="<br>";
+    var line="";
     var data=new Array(mybody.length);
     
     function team(name,description,id,captain,members,invitecode)
@@ -210,7 +210,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         line+='</tr>'
         
     }
-    line+="<br></tbody>"
+    line+="</tbody>"
     
 
 // document.getElementsByClassName("ts-footer")[0].style.top=(400+count*70)+'px';
@@ -320,7 +320,7 @@ function showteaminfor()
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
         for(var i=1;i<=20;i++)line+="&nbsp";
-        line+=team.invitecode+'<br><hr>';
+        line+=team.invitecode+'<button id="copyx">复制</button><br><hr>';
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
         for(var i=1;i<=23;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
@@ -377,16 +377,16 @@ function showteaminfor()
         for(var i=0;i<team.cnt-1;i++)//第一个队伍人员应该是队长
         {
             //if(team.member[i]==team.leader)continue;
-            var fbt=document.getElementsByTagName("button")[i];
+            var fbt=document.getElementsByTagName("button")[i+1];
             var fp=document.getElementsByTagName("p")[i];
             //fbt.style.position="absolute";
             fp.style.display="inline";
             fbt.style.display="inline";
             fbt.style.float='right';
-            setdropsb(i);
+            setdropsb(i+1);
             
         }
-    var st= document.getElementsByTagName("button")[team.cnt-1];
+    var st= document.getElementsByTagName("button")[team.cnt];
     st.addEventListener("click",function()
     {
         //解散队伍
@@ -442,7 +442,7 @@ function showteaminfor()
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
         for(var i=1;i<=20;i++)line+="&nbsp";
-        line+=team.invitecode+'<br><hr>';
+        line+=team.invitecode+'<button id="copyx">复制</button><br><hr>';
         line+="&nbsp;&nbsp;&nbsp;&nbsp;队长";
         for(var i=1;i<=23;i++)line+="&nbsp";
         for(var i=0;i<myusers.length;i++)
@@ -498,7 +498,7 @@ function showteaminfor()
         change.style.width="100%";
         
         
-        var fbt=document.getElementsByTagName("button")[0];
+        var fbt=document.getElementsByTagName("button")[1];
         fbt.addEventListener("click",function()
         {
             inputbox("您确认要退出队伍?确认请输入:Exit",function()
@@ -531,6 +531,24 @@ function showteaminfor()
             
         })
     }
+
+    var change=document.getElementById("copyx");
+    change.addEventListener("click",function()
+    {
+        //复制到剪切板
+        //alert(3);
+        const input = document.createElement('input');
+        document.body.appendChild(input);
+        input.setAttribute('value',team.invitecode);
+        input.select();
+            if (document.execCommand('copy')) {
+            document.execCommand('copy');
+            //console.log('复制成功');
+        }
+        document.body.removeChild(input);
+
+        showbox("成功复制到剪切板!");
+    })
 }
 function setdropsb(i)
 {

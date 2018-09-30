@@ -52,7 +52,7 @@ body,html
         margin:0 auto;
         top:10%;
         border-radius: 300px;
-        box-shadow: 0;
+        box-shadow: none;
         /* background-color: aqua; */
         font-size: 14;
         font-weight: bold;
@@ -68,7 +68,7 @@ body,html
         margin:0 auto;
         top:10%;
         border-radius: 300px;
-        box-shadow: 0;
+        box-shadow: none;
         font-size: 14;
         font-weight: bold;
         background-color: rgb(136, 199, 250);
