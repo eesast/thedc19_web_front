@@ -55,6 +55,7 @@ body,html
         top:180px;
         left:20%;
         border-radius: 20px;
+        z-index:10;
         box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
     }
     .a
