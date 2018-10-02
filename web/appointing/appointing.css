@@ -16,6 +16,11 @@ body,html
     background: radial-gradient(ellipse at center,  #cfe7fa 0%,#579fe4 100%);
     /* border: 3px solid; */
 }
+#info{
+	position: absolute;
+	top:10%;
+	right:8%;
+}
 input{
 	width:30px;
 	height:20px;
