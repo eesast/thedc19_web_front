@@ -20,7 +20,7 @@ body,html
 
     .mainlogo
     {
-        position:fixed;
+        position: absolute;
         margin:0 auto;
         display:block;
         left:46.5%;
@@ -113,61 +113,3 @@ body,html
  
     }
 
-
-    /* 统一尾部 */
-    .ts-footer{
-        position:absolute;
-        left:36%;
-        bottom:8%;
-        width: 400px; 
-        height: 30px;
-    }
-    .ts-left{
-        float:left;
-        width: 229px; 
-    }
-    .ts-right{
-        float:right;
-    }
-    .holdlogo{
-        position: fixed;
-        margin: 0 auto;
-        display: block;
-        left: 80%;
-        width: 200px;
-        height: 50px;
-        z-index: 4;
-        text-align: center;
-        top: 87%;
-    }
-    .eelogo
-    {
-        position:fixed;
-        margin:0 auto;
-        display:block;
-        left:5%;
-        width:45px;
-        height:45px;
-        z-index: 4;
-        text-align: center;
-        top:88%;
-        /* opacity:0.75; */
-    }
-    .dclogo
-    {
-        position:fixed;
-        margin:0 auto;
-        display:block;
-        left:9%;
-        width:100px;
-        height:40px;
-        z-index: 4;
-        text-align: center;
-        top:88.5%;
-        /* border-radius: 50%; */
-        /* opacity:0.75; */
-    }
-
-
-
- 

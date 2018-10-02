@@ -1,0 +1,80 @@
+/* 统一尾部 */
+.fixed-footer{
+    position: fixed;
+    bottom: 0;
+    width:100%;
+}
+.wrapper {
+    margin: 0 auto;
+    /* position: relative; */
+    /* top:-5%; */
+    width:100%;
+    /* border:solid; */
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -4em;
+    }
+.myfooter
+{
+   width:100%;
+   /* border:3px solid;  */
+   position: relative;
+   height:20%;
+   /* border:1px solid; */
+    /* display:inline; */
+}
+.copyright
+{
+    width:100%;
+    /* border:3px solid; */
+    position: absolute;
+    bottom:0;
+    height:40%;
+}
+.ts{
+   position: absolute;
+   left:35%;
+   width: 30%; 
+   bottom:0%;
+   /* border:3px solid; */
+  
+}
+
+.holdlogo{
+   
+   width: 200px;
+   height: 50px;
+   position:absolute;
+   left:80%;
+}
+.eelogo
+{
+   position:absolute;
+   /* top:6%; */
+   left:5%;
+   bottom:10%;
+   /* position:fixed;
+   margin:0 auto;
+   display:block;
+   left:6%;*/
+   width:45px;
+   height:45px;
+   }
+.dclogo
+{
+   position:absolute;
+   /* top:6%; */
+   left:10%;
+   bottom:10%;
+  
+   width:100px;
+   /* border-radius: 50%; */
+   height:40px;
+   
+}
+.push
+{
+    position: absolute;
+    bottom:0;
+}

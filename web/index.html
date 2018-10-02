@@ -6,8 +6,11 @@
             <link rel="icon" href="./static/img/logo.ico" type="img/x-ico" />
             <title>欢迎来到第20届电子设计大赛</title>
             <link rel="stylesheet" type="text/css" href="newpage/side-bar.css">
-    </head>
+            <link rel="stylesheet" href="static/css/footer.css" type="text/css">
+            
+        </head>
     <body>
+            <div class="wrapper">
             <!-- <div class="roundlogo" style="width:120px; height:120px; border-radius:50%; overflow:hidden;"> -->
             <img class="logo" src="newpage/thelogo.jpg" alt="logo" ></img>
             <!-- </div> -->
@@ -80,26 +83,22 @@
                 </nav>
 
 
-                <section>
-                    <div class="ts-footer">
-                        <div class="col-md-12">
-                            <p class="ts-left">
+                <div class="push" style="height:4em;"></div>
+                </div>
+                <!-- <br><br><br><br><br><br><br> -->
+                <footer class="myfooter">
+                        <div class="copyright">
+                                <p class="ts">
                                 <small>© 2018
                                 <a href="https://www.eesast.com">EESAST</a> All Rights Reserved.</small>
-                            </p>
-                            <p class="ts-right">
-                                <small class="ts-right">第二十届电子设计大赛</small>
-                            </p>
+                                <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二十届电子设计大赛</small>
+                                </p>  
+                            <a href="https://www.eesast.com/"><img class="eelogo" src="static/img/2.png" alt="logo" ></img></a>
+                            <a href="https://daasta.cn/"><img class="dclogo" src="static/img/dclogo2.png" alt="logo" ></img></a>
+                            <a href="http://www.leadgentech.ai/"><img class="holdlogo" src="static/img/holdlogo.png" alt="logo" ></a>
                         </div>
-                    </div>
-                    <a href="https://future.eesast.com/"><img class="eelogo" src="newpage/2.png" alt="logo" ></img></a>
-                    <a href="https://daasta.cn/"><img class="dclogo" src="newpage/dclogo2.png" alt="logo" ></img></a>
-                    <a href="http://www.leadgentech.ai/"><img class="holdlogo" src="newpage/holdlogo.png" alt="logo" ></a>
-                </section>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                        
+                </footer>
                
     </body>
 </html>
@@ -158,7 +157,7 @@
         z-index: 5;
         text-align: center;
         top:33%; 
-        position:fixed;
+        position: absolute;
         margin:0 auto;
         display:block;
         border-radius: 50%;
@@ -205,60 +204,9 @@
         color: rgb(235, 227, 227);
         font-family: 'Microsoft JhengHei';
     }
-    .holdlogo
+    
+    small
     {
-        position:fixed;
-        margin:0 auto;
-        display:block;
-        left:80%;
-        width:200px;
-        height:50px;
-        z-index: 4;
-        text-align: center;
-        bottom:6%; 
-        /* opacity:0.75; */
-    }
-    .eelogo
-    {
-        position:fixed;
-        margin:0 auto;
-        display:block;
-        left:5%;
-        width:45px;
-        height:45px;
-        z-index: 4;
-        text-align: center;
-        bottom:6%; 
-        /* opacity:0.75; */
-    }
-    .dclogo
-    {
-        position:fixed;
-        margin:0 auto;
-        display:block;
-        left:9%;
-        width:100px;
-        height:40px;
-        z-index: 4;
-        text-align: center;
-        bottom:6%; 
-        border-radius: 50%;
-        /* opacity:0.75; */
-    }
-    .ts-footer
-    {
-        position:absolute;
-        left:36%;
-        bottom:8%;
-        width: 400px; 
-        height: 30px;
-        color:azure;
-    }
-    .ts-left{
-        float:left;
-        width: 229px; 
-    }
-    .ts-right{
-        float:right;
+        color:white;
     }
 </style>
