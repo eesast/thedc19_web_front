@@ -89,7 +89,6 @@
         /* 设置此div在主要部分之上 透明度0.5 模拟变暗 */
     }
 
-
     /* 此段用于模拟提示框内容 */
     .showinfor1
     {
@@ -126,8 +125,7 @@
         /* z-index:999; */
         background-color:rgb(209, 209, 209);
     }
-    /* 设置图像用 */
-    ontext1
+    .context1
     {
         text-align: left;
         position: fixed;  
@@ -139,9 +137,10 @@
         background-color:rgb(230, 230, 230);
     
     }
-    .ok1
+    .ok1,.no1
     {
         display:inline;
+        background-color: rgb(131, 131, 131);
         width:100px;
         height:40px;
         position: fixed;
@@ -151,7 +150,13 @@
     .ok1
     {
         background-color: rgb(136, 199, 250);
+        transform: translateX(-80px);
+        left:39%;
+    }
+    .no1
+    {
         left:55%;
+        transform: translateX(-20px);
     }
     .dark1
     {
@@ -165,6 +170,7 @@
         opacity:0.8;
         /* 设置此div在主要部分之上 透明度0.5 模拟变暗 */
     }
+
 
 
     .showinfor2

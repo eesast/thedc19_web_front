@@ -5,8 +5,11 @@
                 <link rel="icon" href="../static/img/logo.ico" type="img/x-ico" />
                 <title>文件下载</title>
                 <link rel="stylesheet" type="text/css" href="side-bar.css">
-        </head>
+                <link rel="stylesheet" href="../static/css/footer.css" type="text/css">
+            
+            </head>
     <body>
+            <div class="wrapper">
         <img class="logo" src="thelogo.jpg" alt="logo" ></img>
         <h1>文件下载</h1>
         <div id="mainbox">
@@ -93,25 +96,22 @@
             </nav>
 
                
-                    <div class="ts-footer">
-                        <div class="col-md-12">
-                            <p class="ts-left">
-                                <small>© 2018
-                                <a href="https://www.eesast.com">EESAST</a> All Rights Reserved.</small>
-                            </p>
-                            <p class="ts-right">
-                                <small class="ts-right">第二十届电子设计大赛</small>
-                            </p>
-                        </div>
-                    </div>
-                    <a href="http://www.leadgentech.ai/"><img class="holdlogo" src="1.png" alt="logo" ></a>
-                    <a href="https://www.eesast.com/"><img class="eelogo" src="2.png" alt="logo" ></img></a>
-                    <a href="https://daasta.cn/"><img class="dclogo" src="dclogo.png" alt="logo" ></img></a>
-                   
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+        <div class="push" style="height:4em;"></div>
+        </div>
+        <!-- <br><br><br><br><br><br><br> -->
+        <footer class="myfooter">
+                <div class="copyright">
+                        <p class="ts">
+                        <small>© 2018
+                        <a href="https://www.eesast.com">EESAST</a> All Rights Reserved.</small>
+                        <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二十届电子设计大赛</small>
+                        </p>  
+                      <a href="https://www.eesast.com/"><img class="eelogo" src="2.png" alt="logo" ></img></a>
+                      <a href="https://daasta.cn/"><img class="dclogo" src="dclogo.png" alt="logo" ></img></a>
+                      <a href="http://www.leadgentech.ai/"><img class="holdlogo" src="1.png" alt="logo" ></a>
+                </div>
+                
+        </footer>
                 
     </body>
 
@@ -161,62 +161,10 @@
     background: radial-gradient(ellipse at center,  #cfe7fa 0%,#579fe4 100%);
     /* border: 3px solid; */
 }
-     /* 统一尾部 */
-     .ts-footer{
-        position:absolute;
-        left:36%;
-        bottom:8%;
-        width: 400px; 
-        height: 30px;
-    }
-    .ts-left{
-        float:left;
-        width: 229px; 
-    }
-    .ts-right{
-        float:right;
-    }
-    .holdlogo{
-        position: fixed;
-        margin: 0 auto;
-        display: block;
-        left: 80%;
-        width: 200px;
-        height: 50px;
-        z-index: 4;
-        text-align: center;
-        top: 87%;
-    }
-    .eelogo
-    {
-        position:fixed;
-        margin:0 auto;
-        display:block;
-        left:5%;
-        width:45px;
-        height:45px;
-        z-index: 4;
-        text-align: center;
-        bottom:6%; 
-        /* opacity:0.75; */
-    }
-    .dclogo
-    {
-        position:fixed;
-        margin:0 auto;
-        display:block;
-        left:9%;
-        width:100px;
-        height:40px;
-        z-index: 4;
-        text-align: center;
-        bottom:6%; 
-        /* border-radius: 50%; */
-        /* opacity:0.75; */
-    }
+    
     .logo
     {
-        position:fixed;
+        position: absolute;
         margin:0 auto;
         display:block;
         left:46.5%;

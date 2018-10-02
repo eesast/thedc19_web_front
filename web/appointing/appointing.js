@@ -39,9 +39,10 @@ function appointing(hour1,min1,hour2,min2,mark)//显示约定的时间,mark用�
 function draw(hour1,hour2,min1,min2,mark)
 {
 	//判断时间是否是分段的
+	var sign=0;
 	var h1=hour1 + parseFloat(min1)/60;
 	var h2=hour2 + parseFloat(min2)/60;
-	if(h1>=h2 || hour1<0 || hour2>24 || hour2-hour1>2 || !hour1 || !hour2 ){ showbox1('输入错误');return 0}
+	if(h1>=h2 || hour1<0 || hour2>24 || hour2-hour1>2 || hour1 == undefined || hour2 == undefined ){ showbox1('输入错误');return 0}
 	else{ if(h1<12 && h2<=12){
 		sign = 0;
 		var st=0;
@@ -145,19 +146,19 @@ document.getElementsByClassName('no')[0].addEventListener('click',function()
 		document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
 	})
 
-function showbox1(s,callback)//打印一段话
+function showbox1(s)//打印一段话
 {
-	document.getElementsByClassName("dark")[0].style.display="block";//屏幕半黑
-	document.getElementsByClassName("showinfor")[0].style.display="block";//弹框
-	document.getElementsByClassName("context")[0].innerHTML="<br>&nbsp;&nbsp;&nbsp;&nbsp;"+s;//弹出消息
-	document.getElementsByClassName("ok")[0].style.left="46.5%";
+	document.getElementsByClassName("dark1")[0].style.display="block";//屏幕半黑
+	document.getElementsByClassName("showinfor1")[0].style.display="block";//弹框
+	document.getElementsByClassName("context1")[0].innerHTML="<br>&nbsp;&nbsp;&nbsp;&nbsp;"+s;//弹出消息
+	document.getElementsByClassName("ok1")[0].style.left="46.5%";
 	//设置调用按钮功能
-	document.getElementsByClassName("ok")[0].addEventListener("click",function()
+	document.getElementsByClassName("ok1")[0].addEventListener("click",function()
 	{
 		//按下了确认
 		//优先关闭窗口
-		document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
-		document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
+		document.getElementsByClassName("dark1")[0].style.display="none";//屏幕半黑
+		document.getElementsByClassName("showinfor1")[0].style.display="none";//弹框
 	  
 	   
 	});
@@ -193,6 +194,7 @@ function showbox2(s,time)//打印一段话
 document.getElementById('1-place1').style.backgroundColor = 'cornflowerblue';
 document.getElementById('1-place2').style.backgroundColor = 'cornflowerblue';
 document.getElementById('c1').parentNode.style.visibility='visible';
+document.getElementById('info').addEventListener('click',function(){showbox1('规则说明')});
 button1.addEventListener//预约按钮的功能实现
 ('click',function(){
 	appointing(
@@ -333,7 +335,6 @@ function update()//获取当前日期的预约情况函数
 	{
 		my2[ti].parentNode.removeChild(my2[ti])
 	}
-	document.getElementById('showtime').innerHTML='';
 	for(var ti=0;ti<start.length;ti++)//将获取的时间数据交给appointing函数渲染
 	{
 		var getday = start[ti]['startTime'].substring(0,10)
@@ -342,11 +343,11 @@ function update()//获取当前日期的预约情况函数
 			var showtime =start[ti]['startTime'].substring(11,16)+'~'+start[ti]['endTime'].substring(11,16);
 			if(document.getElementById('case').innerHTML == '')
 			{
-			document.getElementById('case').innerHTML = day.value + '号' + showtime + flag.rows[0].cells[0].innerText;
+			document.getElementById('case').innerHTML = start[ti]['startTime'].substring(0,10) + '号' + showtime + flag.rows[0].cells[0].innerText;
 			}
 			else{
 				document.getElementById('case').innerHTML = document.getElementById('case').innerHTML +'<br>'+
-				day.value + '号' + showtime + flag.rows[0].cells[0].innerText;
+				start[ti]['startTime'].substring(0,10) + '号' + showtime + flag.rows[0].cells[0].innerText;
 			}
 		}
 		if(getday == document.getElementById('demo').value)
@@ -398,7 +399,6 @@ function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返
 	})}
 	else {
 		showbox1('您不是队长，没有权限');
-		draw(hour1,hour2,min1,min2,1)
 	}
 }
 
