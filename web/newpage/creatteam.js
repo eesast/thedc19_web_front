@@ -147,7 +147,7 @@ bt.addEventListener("click",function(){
                 var change=document.getElementById("id4");
                 change.innerHTML="您的邀请码是:";
                 change.style.top='6%';
-                change=document.getElementsByTagName("div")[1];
+                change=document.getElementsByClassName("a")[0];
                 
                 var newbtn='<br></br><button id=6>复&nbsp制</button>'; //追加复制按钮
                 change.innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;'+ids+newbtn; 
