@@ -390,7 +390,8 @@ function showteaminfor()
                 change.removeAttribute("readOnly");
                 //提交内容
                 console.log(change.innerHTML.toString());
-                fetch("https://thedc.eesast.com/api/teams/+teamid",
+                console.log(clickcnt);
+                fetch("https://thedc.eesast.com/api/teams/"+teamid,
                 {
                     method:'PUT',
                     headers:
