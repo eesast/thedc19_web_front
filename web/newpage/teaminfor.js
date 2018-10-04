@@ -373,24 +373,26 @@ function showteaminfor()
         change.style.wordBreak="break-all";
         change.style.height="20%";
         change.style.width="100%";
+        change.setAttribute("readOnly",'true');
         var clickcnt=0;
         document.getElementById("changedes").addEventListener("click",function()
         {
             clickcnt++;//点击次数+1
+            console.log(document.getElementsByClassName("description")[0].innerHTML.toString());
+            console.log(clickcnt);
             if(clickcnt%2==1)
             {
                 document.getElementById("changedes").innerHTML="保存";
                 //将change变为可编辑的
-                change.setAttribute("readOnly",'true');
-
+                
+                document.getElementsByClassName("description")[0].removeAttribute("readOnly");
             }
             else if(clickcnt%2==0&&clickcnt>=2)//保存
             {
                 //将change设置为不可编辑并且提交内容
-                change.removeAttribute("readOnly");
+                document.getElementsByClassName("description")[0].setAttribute("readOnly",'true');
                 //提交内容
-                console.log(change.innerHTML.toString());
-                console.log(clickcnt);
+                
                 fetch("https://thedc.eesast.com/api/teams/"+teamid,
                 {
                     method:'PUT',
@@ -401,7 +403,7 @@ function showteaminfor()
                     },    
                     body:JSON.stringify(
                         {
-                            "description":change.innerHTML.toString(),
+                            "description":document.getElementsByClassName("description")[0].innerHTML.toString(),
                         }
                     ) 
                 }).then(response=>
