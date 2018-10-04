@@ -1,5 +1,8 @@
  /* 分页css */
- 
+ #uppage,#downpage,#page
+ {
+    z-index:10;
+ }
  #uppage:link,#uppage:visited{
      text-decoration:none;  /*超链接无下划线*/
      font-size:16;
