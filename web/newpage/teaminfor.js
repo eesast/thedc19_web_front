@@ -405,8 +405,8 @@ function showteaminfor()
         document.getElementById("changedes").addEventListener("click",function()
         {
             clickcnt++;//点击次数+1
-            console.log(document.getElementsByClassName("description")[0].value);
-            console.log(clickcnt);
+            //console.log(document.getElementsByClassName("description")[0].value);
+            //console.log(clickcnt);
             if(clickcnt%2==1)
             {
                 document.getElementById("changedes").innerHTML="保存修改";
