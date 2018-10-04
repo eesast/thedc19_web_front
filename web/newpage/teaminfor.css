@@ -79,8 +79,8 @@ body,html
     .d
     {
         position: relative;
-        /* left:15%;
-        width:70%; */
+        /* left:15%;*/
+        width:80%; 
         border:1px solid rgb(93, 149, 206);
         /* width:65%; */
         /* background-color: rgb(243, 243, 243); */
