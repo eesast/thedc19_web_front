@@ -373,7 +373,7 @@ function showteaminfor()
         change.style.wordBreak="break-all";
         change.style.height="20%";
         change.style.width="100%";
-        change.style.backgroundColor="rgb(0,0,0,0.1)";
+        change.style.backgroundColor="rgb(0,0,0,0)";
         change.setAttribute("readOnly",'true');
         var clickcnt=0;
         document.getElementById("changedes").addEventListener("click",function()
