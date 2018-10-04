@@ -100,37 +100,5 @@ a:hover
     }
 
 
-    /* 分页css */
-    #uppage,#downpage,#page
-    {
-        position: relative;
-        top:100px;
-        margin:0 auto;
-    }
-    #uppage:link,#uppage:visited{
-        text-decoration:none;  /*超链接无下划线*/
-        font-size:16;
-       }
-       #uppage
-       {
-           color:#575656;
-           cursor:pointer;
-       }
-       #uppage:hover
-       {
-           color:#000000;
-
-       }
-       #downpage:link,#downpage:visited{
-        text-decoration:none;  /*超链接无下划线*/
-        font-size:16;
-       }
-       #downpage
-       {
-           color:#575656;
-       }
-       #downpage:hover
-       {
-           color:#000000;
-       }
+   
           
