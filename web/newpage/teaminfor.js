@@ -314,7 +314,7 @@ function showteaminfor()
         line+=team.name+'<br><hr>';
         //以上为第1行
         
-        line+="&nbsp;&nbsp;&nbsp;&nbsp;简介&nbsp;&nbsp;&nbsp;&nbsp;<button id='changedes'>编辑简介</button><br>";
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;简介&nbsp;&nbsp;&nbsp;&nbsp;<button id='changedes'>编辑简介</button><br><br>";
         line+="<textarea class='description'style='word-wrap:break-word'>"+team.description+'</textarea><br>';
         //document.getElementsByClassName("description")[0].style.overflow="scroll";
         //以上为第2行
@@ -387,6 +387,7 @@ function showteaminfor()
                 //将change变为可编辑的
                 
                 document.getElementsByClassName("description")[0].removeAttribute("readOnly");
+                document.getElementsByClassName("description")[0].style.backgroundColor="rgb(150,150,150,0.1)";
             }
             else if(clickcnt%2==0&&clickcnt>=2)//保存
             {
