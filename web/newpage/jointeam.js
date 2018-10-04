@@ -237,7 +237,7 @@ function init(pagebas,curpage)//初始化，从服务器读取已有队伍信息
         
         
         change.innerHTML=line;
-        for(var i=(curpage-1)*pagebas;i<Math.min(mybody.length,curpage*pagebas);i++)
+        for(var i=0;i<count;i++)
         {
             var turn=document.getElementsByClassName("more")[i];
             // turn.style.width="300px";
@@ -248,7 +248,7 @@ function init(pagebas,curpage)//初始化，从服务器读取已有队伍信息
 
             
         }
-        for(var i=(curpage-1)*pagebas;i<=Math.min(mybody.length,curpage*pagebas);i++)
+        for(var i=0;i<=count;i++)
         {
             var turn=document.getElementsByTagName("tr")[i];
             if(i%2==1)

@@ -114,10 +114,12 @@ a:hover
        #uppage
        {
            color:#575656;
+           cursor:pointer;
        }
        #uppage:hover
        {
            color:#000000;
+
        }
        #downpage:link,#downpage:visited{
         text-decoration:none;  /*超链接无下划线*/
