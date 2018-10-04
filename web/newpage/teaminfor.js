@@ -152,7 +152,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         this.invitecode=invitecode;
     }
     
-    line+="<tr><th>队伍名称</th><th>队长</th><th colspan='6'>简介</th><th>队伍人数</th><th>队伍成员</th></tr><tbody>";
+    line+="<tr><th>队伍编号</th><th>队伍名称</th><th>队长</th><th colspan='6'>简介</th><th>队伍人数</th><th>队伍成员</th></tr><tbody>";
     for(var i=1;i<=mybody.length;i++)
     {
         /*
@@ -166,6 +166,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
 
         data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
         //line+="&nbsp;&nbsp;&nbsp;&nbsp;";
+        line+="<th>"+i+'</th>';
         line+="<th>"+input.name+'</th>';
         for(var j=0;j<myusers.length;j++)
         {
