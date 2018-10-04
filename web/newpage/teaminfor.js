@@ -378,7 +378,7 @@ function showteaminfor()
         document.getElementById("changedes").addEventListener("click",function()
         {
             clickcnt++;//点击次数+1
-            console.log(document.getElementsByClassName("description")[0].innerHTML.toString());
+            console.log(document.getElementsByClassName("description")[0].value);
             console.log(clickcnt);
             if(clickcnt%2==1)
             {
@@ -403,7 +403,7 @@ function showteaminfor()
                     },    
                     body:JSON.stringify(
                         {
-                            "description":document.getElementsByClassName("description")[0].innerHTML.toString(),
+                            "description":document.getElementsByClassName("description")[0].value.toString(),
                         }
                     ) 
                 }).then(response=>
