@@ -93,7 +93,12 @@ a:hover
         box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
     }
 
-  
+    #uppage,#downpage,#page
+    {
+        position: relative;
+        top:100px;
+        margin:0 auto;
+    }
     footer
     {
         top:180px;
