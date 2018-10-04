@@ -136,7 +136,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         var change=document.getElementsByClassName("c")[0];
         var line="";
         data=new Array(mybody.length);
-        line+="<tr><th>队伍名称</th><th>队长</th><th colspan='6'>简介</th><th>队伍人数</th><th>队伍成员</th><th>立即加入</th></tr><tbody>";
+        line+="<tr><th>队伍编号</th><th>队伍名称</th><th>队长</th><th colspan='6'>简介</th><th>队伍人数</th><th>队伍成员</th><th>立即加入</th></tr><tbody>";
         function team(name,description,id,captain,members,invitecode)
         {
             this.name=name;
@@ -162,6 +162,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             data[i]=new team(input.name,input.description,input.id,input.captain,input.members,input.invitecode);
            // window.alert(data[i].name);
             // line+='队伍ID:'+input.id;
+            line+='<th>'+i+'</th>';
             line+='<th>'+input.name+'</th>';
             for(var j=0;j<myusers.length;j++)
             {
