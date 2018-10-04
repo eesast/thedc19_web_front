@@ -118,7 +118,32 @@ var userid=getCookie("userid");
         {
             myusers=res;
             showteaminfor();
-            init();
+
+
+
+            // init();
+            var curpage=1;//当前page
+            var pagebas=20;//20个队伍一页
+            var maxpage=Math.ceil(mybody.length/20);//最大页
+            init(pagebas,curpage);//打印队伍信息
+            //为上一页和下一页打一个监听
+            
+            document.getElementById("uppage").addEventListener("click",function()
+            {
+                if(curpage>1)
+                {
+                    curpage--;
+                    init(pagebas,curpage);//打印队伍信息
+                }
+            });
+            document.getElementById("downpage").addEventListener("click",function()
+            {
+                if(curpage<maxpage)
+                {
+                    curpage++;
+                    init(pagebas,curpage);//打印队伍信息
+                }
+            });
         })
     }) 
 
@@ -133,7 +158,7 @@ var userid=getCookie("userid");
 var bas=0;//bas为button偏移量
 var count=0;//记录队伍总数
 //****************************************该函数同jointeam.html，修改其中一个后基本可以直接使用
-function init()//初始化，从服务器读取已有队伍信息并显示
+function init(pagebas,curpage)//初始化，从服务器读取已有队伍信息并显示
 {
     
 
@@ -153,7 +178,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
     }
     
     line+="<tr><th>队伍编号</th><th>队伍名称</th><th>队长</th><th colspan='4'>简介</th><th>队伍人数</th><th>队伍成员</th></tr><tbody>";
-    for(var i=1;i<=mybody.length;i++)
+    for(var i=(curpage-1)*pagebas+1;i<=Math.min(mybody.length,curpage*pagebas);i++)//编号替换
     {
         /*
         *****************
@@ -218,7 +243,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
     
     
     change.innerHTML=line;
-    for(var i=0;i<mybody.length;i++)
+    for(var i=0;i<count;i++)
     {
          var turn=document.getElementsByClassName("more")[i];
         // turn.style.width="500px";
@@ -230,7 +255,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
 
         
     }
-    for(var i=0;i<=mybody.length;i++)
+    for(var i=0;i<=count;i++)
     {
         var turn=document.getElementsByTagName("tr")[i];
         if(i%2==1)
