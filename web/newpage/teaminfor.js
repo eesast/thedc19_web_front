@@ -161,7 +161,7 @@ var count=0;//记录队伍总数
 function init(pagebas,curpage)//初始化，从服务器读取已有队伍信息并显示
 {
     
-
+    count=0;
     var input;
     var change=document.getElementsByClassName("d")[0];
     var line="";
