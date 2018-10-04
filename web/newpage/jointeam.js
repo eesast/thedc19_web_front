@@ -262,7 +262,7 @@ function init(pagebas,curpage)//初始化，从服务器读取已有队伍信息
         }
         //设置查看各项队伍信息
         
-        for(var i=1;i<=count;i++)
+        for(var i=(curpage-1)*pagebas+1;i<=Math.min(mybody.length,curpage*pagebas);i++)//编号替换
         {
             
             //setclickinfor(i);
