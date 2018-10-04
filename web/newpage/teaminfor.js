@@ -315,7 +315,7 @@ function showteaminfor()
         //以上为第1行
         
         line+="&nbsp;&nbsp;&nbsp;&nbsp;简介&nbsp;&nbsp;&nbsp;&nbsp;<button id='changedes'>编辑简介</button><br><hr>";
-        line+="<textarea class='description'style='word-wrap:break-word'>&nbsp;&nbsp;&nbsp;&nbsp;"+team.description+'</textarea><br><hr>';
+        line+="<textarea class='description'style='word-wrap:break-word'>"+team.description+'</textarea><br><hr>';
         //document.getElementsByClassName("description")[0].style.overflow="scroll";
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
@@ -373,6 +373,7 @@ function showteaminfor()
         change.style.wordBreak="break-all";
         change.style.height="20%";
         change.style.width="100%";
+        change.style.backgroundColor="rgb(0,0,0,0.1)";
         change.setAttribute("readOnly",'true');
         var clickcnt=0;
         document.getElementById("changedes").addEventListener("click",function()
@@ -382,7 +383,7 @@ function showteaminfor()
             console.log(clickcnt);
             if(clickcnt%2==1)
             {
-                document.getElementById("changedes").innerHTML="保存";
+                document.getElementById("changedes").innerHTML="保存修改";
                 //将change变为可编辑的
                 
                 document.getElementsByClassName("description")[0].removeAttribute("readOnly");
@@ -418,7 +419,7 @@ function showteaminfor()
                     }
                 })
                 
-                document.getElementById("changedes").innerHTML="编辑";
+                document.getElementById("changedes").innerHTML="编辑简介";
                 
             }
         });//加入编辑该文本框
