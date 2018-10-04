@@ -394,7 +394,7 @@ function showteaminfor()
                 //将change设置为不可编辑并且提交内容
                 document.getElementsByClassName("description")[0].setAttribute("readOnly",'true');
                 //提交内容
-                
+                document.getElementsByClassName("description")[0].style.backgroundColor="rgb(150,150,150,0)";
                 fetch("https://thedc.eesast.com/api/teams/"+teamid,
                 {
                     method:'PUT',
