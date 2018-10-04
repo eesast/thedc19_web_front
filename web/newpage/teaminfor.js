@@ -314,8 +314,8 @@ function showteaminfor()
         line+=team.name+'<br><hr>';
         //以上为第1行
         
-        line+="&nbsp;&nbsp;&nbsp;&nbsp;简介<br><hr>";
-        line+="<div class='description'style='word-wrap:break-word'>&nbsp;&nbsp;&nbsp;&nbsp;"+team.description+'</div><br><hr>';
+        line+="&nbsp;&nbsp;&nbsp;&nbsp;简介&nbsp;&nbsp;&nbsp;&nbsp;<button id='changedes'>编辑简介</button><br><hr>";
+        line+="<textarea class='description'style='word-wrap:break-word'>&nbsp;&nbsp;&nbsp;&nbsp;"+team.description+'</textarea><br><hr>';
         //document.getElementsByClassName("description")[0].style.overflow="scroll";
         //以上为第2行
         line+="&nbsp;&nbsp;&nbsp;&nbsp;邀请码";
@@ -373,11 +373,57 @@ function showteaminfor()
         change.style.wordBreak="break-all";
         change.style.height="20%";
         change.style.width="100%";
+        var clickcnt=0;
+        document.getElementById("changedes").addEventListener("click",function()
+        {
+            clickcnt++;//点击次数+1
+            if(clickcnt%2==1)
+            {
+                document.getElementById("changedes").innerHTML="保存";
+                //将change变为可编辑的
+                change.setAttribute("readOnly",'true');
+
+            }
+            else if(clickcnt%2==0&&clickcnt>=2)//保存
+            {
+                //将change设置为不可编辑并且提交内容
+                change.removeAttribute("readOnly");
+                //提交内容
+                console.log(change.innerHTML.toString());
+                fetch("https://thedc.eesast.com/api/teams/+teamid",
+                {
+                    method:'PUT',
+                    headers:
+                    {
+                        'Content-Type':'application/json',
+                        'x-access-token':token.toString()
+                    },    
+                    body:JSON.stringify(
+                        {
+                            "description":change.innerHTML.toString(),
+                        }
+                    ) 
+                }).then(response=>
+                {
+                    if(response.status==204)
+                    {
+                        showbox("修改成功!");
+                    }
+                    else
+                    {
+                        showbox("修改失败!");
+                    }
+                })
+                
+                document.getElementById("changedes").innerHTML="编辑";
+                
+            }
+        });//加入编辑该文本框
         
         for(var i=0;i<team.cnt-1;i++)//第一个队伍人员应该是队长
         {
             //if(team.member[i]==team.leader)continue;
-            var fbt=document.getElementsByTagName("button")[i+1];
+            var fbt=document.getElementsByTagName("button")[i+2];
             var fp=document.getElementsByTagName("p")[i];
             //fbt.style.position="absolute";
             fp.style.display="inline";
@@ -386,7 +432,7 @@ function showteaminfor()
             setdropsb(i+1);
             
         }
-    var st= document.getElementsByTagName("button")[team.cnt];
+    var st= document.getElementsByTagName("button")[team.cnt+1];
     st.addEventListener("click",function()
     {
         //解散队伍
