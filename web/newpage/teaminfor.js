@@ -152,7 +152,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         this.invitecode=invitecode;
     }
     
-    line+="<tr><th>队伍编号</th><th>队伍名称</th><th>队长</th><th colspan='6'>简介</th><th>队伍人数</th><th>队伍成员</th></tr><tbody>";
+    line+="<tr><th>队伍编号</th><th>队伍名称</th><th>队长</th><th colspan='4'>简介</th><th>队伍人数</th><th>队伍成员</th></tr><tbody>";
     for(var i=1;i<=mybody.length;i++)
     {
         /*
