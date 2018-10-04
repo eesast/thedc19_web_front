@@ -91,8 +91,28 @@ if(token!=null&&username!=null)
         }).then(res=>
         {
             myusers=res;
-            init();//打印队伍信息
-            //setjoin();//设置一键加入
+            var curpage=1;//当前page
+            var pagebas=20;//20个队伍一页
+            var maxpage=Math.ceil(mybody.length/20);//最大页
+            init(pagebas,curpage);//打印队伍信息
+            //为上一页和下一页打一个监听
+            
+            document.getElementById("uppage").addEventListener("click",function()
+            {
+                if(curpage>1)
+                {
+                    curpage--;
+                    init(pagebas,curpage);//打印队伍信息
+                }
+            });
+            document.getElementById("downpage").addEventListener("click",function()
+            {
+                if(curpage<maxpage)
+                {
+                    curpage++;
+                    init(pagebas,curpage);//打印队伍信息
+                }
+            });
         })
         
     })
@@ -130,7 +150,7 @@ if(token!=null&&username!=null)
 }
 
 var data;
-function init()//初始化，从服务器读取已有队伍信息并显示
+function init(pagebas,curpage)//初始化，从服务器读取已有队伍信息并显示
     {
         var input;
         var change=document.getElementsByClassName("c")[0];
@@ -148,7 +168,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         }
         var count=0;//记录队伍总数
         
-        for(var i=1;i<=mybody.length;i++)
+        for(var i=(curpage-1)*pagebas+1;i<=Math.min(mybody.length,curpage*pagebas);i++)//编号替换
         {
             /*
             *****************
@@ -217,7 +237,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
         
         
         change.innerHTML=line;
-        for(var i=0;i<mybody.length;i++)
+        for(var i=(curpage-1)*pagebas;i<Math.min(mybody.length,curpage*pagebas);i++)
         {
             var turn=document.getElementsByClassName("more")[i];
             // turn.style.width="300px";
@@ -228,7 +248,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
 
             
         }
-        for(var i=0;i<=mybody.length;i++)
+        for(var i=(curpage-1)*pagebas;i<=Math.min(mybody.length,curpage*pagebas);i++)
         {
             var turn=document.getElementsByTagName("tr")[i];
             if(i%2==1)
