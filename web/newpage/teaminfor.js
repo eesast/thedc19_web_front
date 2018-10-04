@@ -177,7 +177,7 @@ function init()//初始化，从服务器读取已有队伍信息并显示
             }
             
         }
-        line+='<td colspan="6"><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
+        line+='<td colspan="4"><div class="more" style="word-wrap:break-word">'+input.description+'</div></td>';
         //for(var j=1;j<=20;j++)line+=("&nbsp");
         //line+="<button>查看信息</button>";
         //line+='<br><hr>';
