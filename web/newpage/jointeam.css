@@ -15,6 +15,10 @@ body,html
     /* border: 3px solid; */
     overflow-x: hidden;
 }
+a:hover
+{
+    color:#000000;
+}
 
 
     .titlelogo
@@ -88,9 +92,43 @@ body,html
         border:3px solid rgb(109, 109, 160);
         box-shadow: 1px 1px 100px rgba(255,255,255,1), inset  1px 1px 60px rgba(255,255,255,.4);
     }
+
   
     footer
     {
         top:180px;
     }
 
+
+    /* 分页css */
+    #uppage,#downpage,#page
+    {
+        position: relative;
+        top:100px;
+        margin:0 auto;
+    }
+    #uppage:link,#uppage:visited{
+        text-decoration:none;  /*超链接无下划线*/
+        font-size:16;
+       }
+       #uppage
+       {
+           color:#575656;
+       }
+       #uppage:hover
+       {
+           color:#000000;
+       }
+       #downpage:link,#downpage:visited{
+        text-decoration:none;  /*超链接无下划线*/
+        font-size:16;
+       }
+       #downpage
+       {
+           color:#575656;
+       }
+       #downpage:hover
+       {
+           color:#000000;
+       }
+          
