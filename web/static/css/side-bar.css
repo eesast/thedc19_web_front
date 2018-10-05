@@ -1,4 +1,5 @@
 .main-menu {
+  margin:0 auto;
   background:rgb(85, 85, 85,0.4);
   border-right:1px solid #c8d4d4;
   position:fixed;
@@ -6,8 +7,12 @@
   top:0;
   left:0;
   width:100%;
-  height:5%;
+  color:#d7d6d8;
+  /* height:3.5%; */
   z-index: 100;
+  padding: 0.5% 0;
+  height:3%;
+  vertical-align:middle;
   }
   .main-menu a {
     position:relative;
@@ -17,16 +22,18 @@
     color:#d7d6d8;
     font-size: 18px;
     text-decoration:none;
+    vertical-align:middle;
     /* border-top:1px solid rgb(134, 132, 132); */
     /* box-shadow:inset 0 1px 1px rgb(219, 202, 202); */
-    text-shadow: 1px 1px 1px  rgb(184, 170, 170); 
-    top:10%;
+    /* text-shadow: 1px 1px 1px  rgb(184, 170, 170);  */
+    /* top:10%; */
     }
   
   .main-menu .nav-text  {
   position:relative;
   vertical-align:middle;
-  height:40px;
+  /* height:100%; */
+  /* border:solid; */
   width:70px;
   }
   nav{
