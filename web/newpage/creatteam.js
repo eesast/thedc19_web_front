@@ -12,7 +12,15 @@ if(token!=null&&username!=null)
     document.getElementById("userinfor1").style.display="none";
     document.getElementById("userinfor2").style.display="block";
     document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'><span style='cursor:pointer'>"+username+'</span></p>';
-    document.getElementById("user").style.color="gray";
+    document.getElementById("user").style.color="#ffffff";
+    document.getElementById("user").addEventListener("mouseenter",function()
+    {
+        document.getElementById("user").style.color="#00000091";
+    });
+    document.getElementById("user").addEventListener("mouseleave",function()
+    {
+        document.getElementById("user").style.color="#ffffff";
+    });
     document.getElementById("user").addEventListener("click",function()
     {
 
