@@ -11,7 +11,7 @@ var mybody='';
 var inteam=false;//是否在队伍中
 var iscaptain=null;//是否为队长
 var teamid=null;//队伍的id是多少
-var myid=null;
+var userid=getCookie("userid");
     function check()//检查此用户是否已经拥有队伍(创建队伍||加入队伍)
     {
         if(token==null||username==null)
@@ -28,7 +28,15 @@ var myid=null;
             document.getElementById("userinfor1").style.display="none";
             document.getElementById("userinfor2").style.display="block";
             document.getElementById("userinfor2").innerHTML="您好，用户:<p id='user'><span style='cursor:pointer'>"+username+'</span></p>';
-            document.getElementById("user").style.color="gray";
+            document.getElementById("user").style.color="#ffffff";
+            document.getElementById("user").addEventListener("mouseenter",function()
+            {
+                document.getElementById("user").style.color="#00000091";
+            });
+            document.getElementById("user").addEventListener("mouseleave",function()
+            {
+                document.getElementById("user").style.color="#ffffff";
+            });
             document.getElementById("user").addEventListener("click",function()
             {
 
@@ -40,6 +48,10 @@ var myid=null;
                     {
                         delCookie("username");
                         delCookie("token");
+                        delCookie("inteam");
+                        delCookie("userid");
+                        delCookie("iscaptain");
+                        delCookie("teamid");
                         location.reload(true);
                     }
                     else
@@ -49,7 +61,7 @@ var myid=null;
                 });
             });
         }
-        fetch("https://thedc20.eesast.com/api/users",
+        fetch("https://thedc.eesast.com/api/users/"+userid,
         {
             method:'GET',
             headers:
@@ -61,7 +73,10 @@ var myid=null;
         {
             if(response.status==401)
             {
-                showbox("登陆已失效，请重新登录");
+                showbox("登陆已失效，请重新登录",function()
+                {
+                    window.location.href="../log in&sign up/login.html";
+                });
                 document.getElementById("userinfor2").style.display="none";
                 document.getElementById("userinfor1").style.display="block";
                 // location.reload(true);
@@ -80,35 +95,30 @@ var myid=null;
         }).then(res=>
         {
             mybody=res;
-            console.log(mybody);
-            for(var i=0;i<mybody.length;i++)
-            {
-                if(mybody[i]['username']==username)
-                {
-                    myid=mybody[i]['id'];
-                    console.log(mybody[i]['username']);
-                    if(mybody[i]['team']==null)
+            //console.log(mybody);
+            
+                    //myid=mybody['id'];
+                    if(mybody['team']==null)
                     {
                         inteam=false;
                     }
                     else 
                     {
-                        teamid=mybody[i]['team']['id'];
+                        teamid=mybody['team']['id'];
                         inteam=true;
-                        if(mybody[i]['team']['isCaptain']===true)iscaptain=true;
+                        if(mybody['team']['isCaptain']===true)iscaptain=true;
                         else iscaptain=false;
                     }
-                    console.log(inteam);
-                    break;
-                }
+                    //console.log(inteam);
+                    
                 
-            }
+                
+            
 
             //传入一系列东西
             setCookie("inteam",inteam);//是否在队伍中
             setCookie("iscaptain",iscaptain);//是否为队长
             setCookie("teamid",teamid);//队伍的id是多少
-            setCookie("myid",myid);
             init();
         })
        
@@ -225,46 +235,16 @@ var myid=null;
 
     function dissolve(callback)
     {
-        fetch("https://thedc20.eesast.com/api/auth",
-        {
-            method:'POST',
-            headers:
-            {
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify(
-                {
-                    'username':'admin',
-                    'password':'eesast-software'
-                }
-            )
-        },error=>
-        {
-            showbox("登录失效，请重新登录",function()
-            {
-                // location.reload(true);       
-            });        
-        }).then(response=>
-        {
-            if(response.status==401)
-            {
-                showbox("登陆已失效，请重新登录");
-                document.getElementById("userinfor2").style.display="none";
-                document.getElementById("userinfor1").style.display="block";
-            }
-            return response.json();
-        }).then(res=>
-        {
-            var newtoken=res['token'];
+        
             //得到新的token，删除id的队伍 teamid
-            console.log(teamid);
-            fetch("https://thedc20.eesast.com/api/teams/"+teamid,
+            //console.log(teamid);
+            fetch("https://thedc.eesast.com/api/teams/"+teamid,
             {
                 method:'DELETE',
                 headers:
                 {
                     'Content-Type':'application/json',
-                    'x-access-token':newtoken.toString()
+                    'x-access-token':token.toString()
                 }
             }).then(response=>
             {
@@ -275,14 +255,22 @@ var myid=null;
                         callback();
                     }
                 }
+                if(response.status==504)
+                {
+                    
+                    showbox("请求超时!",function()
+                    {
+                        location=location;  
+                    });
+                }
             },error=>
             {
-                showbox("登录失效，请重新登录",function()
+                showbox("您没有权限!",function()
                 {
                     // location.reload(true);       
                 });
             })
-        })
+        
 
         
     }
@@ -291,8 +279,8 @@ var myid=null;
     function letitgo(callback)
     {
         
-            console.log(teamid);
-            fetch("https://thedc20.eesast.com/api/teams/"+teamid+"/members/"+myid,
+            //console.log(teamid);
+            fetch("https://thedc.eesast.com/api/teams/"+teamid+"/members/"+userid,
             {
                 method:'DELETE',
                 headers:
@@ -304,7 +292,10 @@ var myid=null;
             {
                 if(response.status==401)
                 {
-                    showbox("登陆已失效，请重新登录");
+                    showbox("登陆已失效，请重新登录",function()
+                    {
+                        window.location.href="../log in&sign up/login.html";
+                    });
                     document.getElementById("userinfor2").style.display="none";
                      document.getElementById("userinfor1").style.display="block";
                 }
