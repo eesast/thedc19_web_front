@@ -1,29 +1,36 @@
-.userinfor
+
+/* .userinfor
 {
     position: absolute;
     top:55px;
-    /* border: 1px solid; */
+  
     width:100%;
     z-index: 10;
-}
+} */
 #signin:link,#signin:visited{
     text-decoration:none;  /*超链接无下划线*/
-    font-size:24;
+    /* font-size:20; */
    }
    #signin
    {
-       color:#575656;
+       color:#ffffff;
+       font-size:18;
+       font-weight: 500;
    }
    #signin:hover
    {
-       color:#000000;
+       color:#00000091;
    }
-   
+#userinfor1,#userinfor2
+{
+    color:rgb(49, 22, 22);
+    font-weight: 600;
+}   
 #userinfor1
 {
     position: absolute;
     right:5%;
-    top:2%;
+    top:20%;
     font-size:16;
     z-index: 10;
 }
@@ -32,7 +39,7 @@
     position: absolute;
     display:none;
     right:5%;
-    top:2%;
+    top:20%;
     font-size:16;
     z-index: 10;
 }
@@ -40,3 +47,12 @@
 {
     display:inline;
 }
+#user:hover
+{
+    color:#00000091;
+}
+/* #users
+{
+    height:100%;
+    vertical-align:middle;
+} */
