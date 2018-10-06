@@ -101,16 +101,22 @@
     display:inline;
 }
 
-    
+.ts
+    {
+        left:13%;
+    }
+    .holdlogo{
+        left:16.5%;
+    }
+    .eelogo{}
+    .dclogo{left:2%;}
 @media screen and (min-width: 320px) and (max-width: 480px){
     .ts
     {
-        left:18%;
+        left:13%;
     }
     .holdlogo{
-        left:15%;
-        position: absolute;
-        right:2%;
+        left:16.5%;
     }
     .eelogo{}
     .dclogo{left:2%;}
