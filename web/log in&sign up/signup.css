@@ -75,6 +75,7 @@ h1{
     font-weight: bold;
     background-color: rgb(136, 199, 250);
     margin-top:35px;
+    cursor: pointer;
 }
   
 .block{
