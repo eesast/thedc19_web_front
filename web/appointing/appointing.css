@@ -37,10 +37,22 @@ input{
 	height: 200px;
 	text-align:center;
 }
-.mainlogo{
-	position: absolute;
-	left:50%;
-	top:10%;
+#logodiv
+{
+	display: block;
+	text-align:center;
+	margin:0 auto;
+	/* border: solid; */
+	width:100%;
+	position:relative;
+	top:100px;
+	/* top:39px; */
+	height:100px;
+}
+.mainlogo
+{
+	border-radius: 50%;
+
 }
 #img2{
 	height: 100px;
