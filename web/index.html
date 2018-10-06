@@ -12,14 +12,18 @@
     <body>
             <div class="wrapper">
             <!-- <div class="roundlogo" style="width:120px; height:120px; border-radius:50%; overflow:hidden;"> -->
-            <img class="logo" src="newpage/thelogo.jpg" alt="logo" ></img>
-            <!-- </div> -->
+            <div class="form-heading">
+                
+                <img class="logo" src="newpage/thelogo.jpg" alt="logo" ></img>
+                <p class='p'>第二十届电子设计大赛</p>
+                
+             </div>
             <!-- <img class="ee" src="2.png" alt="logo" ></img> -->
             
             <!-- <img class="something" src="si.png" alt="logo" ></img> -->
             <!-- <img class="somethings" src="wi.png" alt="logo" ></img> -->
             <img class="mainlogo" src="newpage/aai.jpg" alt="logo" ></img>
-            <p class='p'>第二十届电子设计大赛</p>
+            
             <nav class="main-menu">     
                     <a href="newpage/firstpage.html">
                         
@@ -128,7 +132,7 @@
         display:block;
         /* left:10%; */
         text-align: center;
-        /* top:3%;  */
+        top:0%; 
         /* width:100%; */
         height:100%;
         z-index: 0;
@@ -147,19 +151,34 @@
         top:40%; 
        
     }*/ 
+  
+    .form-heading{
+        text-align:center;
+        position: relative;
+        top:250px;
+        width:100%;
+        /* border:solid; */
+        height:200px;
+        margin: 0;
+        vertical-align: middle;
+        /* left:43.5% */
+
+    }
     .logo
     {
         width:150px;
         height:150px;
-        left:20%;
-        z-index: 5;
-        text-align: center;
+        display:inline;
+        z-index: 500;
+        /* border: solid; */
+        position: relative;
+        /* text-align: center;
         top:33%; 
         position: absolute;
         margin:0 auto;
-        display:block;
+        display:block; */
         border-radius: 50%;
-        
+        vertical-align: middle;
     }
     
     .something
@@ -192,15 +211,18 @@
     }
     .p
     {
-        position: absolute;
+        position: relative;
+        /* border: solid; */
         margin:0 auto;
+        display:inline;
         /* border:3px solid; */
-        left:34%;
-        top:38%;
         font-weight: 700;
         font-size:60;
         color: rgb(235, 227, 227);
         font-family: 'Microsoft JhengHei';
+        vertical-align: middle;
+        padding-left:50px; 
+        z-index: 10;
     }
     
     small
