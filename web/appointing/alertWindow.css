@@ -36,7 +36,7 @@
         background-color:rgb(209, 209, 209);
     }
     /* 设置图像用 */
-    img
+    .stop img
     {
         position:relative;
         float:left;
