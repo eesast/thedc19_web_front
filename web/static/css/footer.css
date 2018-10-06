@@ -37,51 +37,66 @@
     /* border:3px solid; */
     position: absolute;
     bottom:0;
-    height:40%;
+    height:50px;
+    vertical-align: middle;
+    /* border: solid white; */
+    padding-left:3%; 
 }
 .ts{
-   position: absolute;
-   left:35%;
+   position: relative;
+   left:25%;
    width: 30%; 
-   bottom:0%;
+   vertical-align: middle;
+   /* border:solid white; */
+   /* bottom:0%; */
    /* border:3px solid; */
   
 }
 
 .holdlogo{
-   
+   left:42%;
    width: 200px;
    height: 50px;
-   position:absolute;
-   left:80%;
+   position: relative;
+   /* left:80%; */
+   vertical-align: middle;
+   /* border:solid white; */
 }
 .eelogo
 {
-   position:absolute;
+   position: relative;
    /* top:6%; */
-   left:5%;
-   bottom:10%;
+   /* left:5%; */
    /* position:fixed;
    margin:0 auto;
    display:block;
    left:6%;*/
    width:45px;
    height:45px;
+   vertical-align: middle;
+   /* border:solid white; */
    }
 .dclogo
 {
-   position:absolute;
+   position: relative;
    /* top:6%; */
-   left:10%;
-   bottom:10%;
+   /* left:10%;
+   bottom:10%; */
   
    width:100px;
-   /* border-radius: 50%; */
+   border-radius: 50%;
+   left:2%;
    height:40px;
+   vertical-align: middle;
+   /* border:solid white; */
    
 }
 .push
 {
     position: absolute;
     bottom:0;
+}
+#ft
+{
+    display:inline;
 }
