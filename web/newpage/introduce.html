@@ -9,14 +9,18 @@
             <!-- <script type="text/javasript" src="../static/js/footer.js"></script>     -->
     </head>
     <body>
+        <div id="logodiv">    
+                <img src="thelogo.jpg" alt="titlelogo" class="titlelogo" width="120px" height="120px" style="border-radius: 50%"></img>
+                <h1>第二十届电子设计大赛</h1>
+        </div>
             <div class="wrapper">
                     
                     
                 
         <div class="maininfor">
-        <h1>第二十届电子设计大赛</h1>
-        <img src="thelogo.jpg" alt="titlelogo" class="titlelogo" width="120px" height="120px" style="border-radius: 50%"></img>
-        <br>
+            
+        <br><br>
+        <br><br>
         <h2>赛事介绍</h2>
         <hr>
         <h2>宗旨</h2>
@@ -271,19 +275,46 @@ a:hover
 {
     width:100%;
 }
+
+
+
+ #logodiv
+    {
+        position: relative;
+        width:100%;
+        text-align: center;
+        /* vertical-align: middle; */
+        margin:0;
+        /* border:solid; */
+        top:60px;
+    }
+    #logodiv img
+    {
+        display:inline;
+        vertical-align: middle;
+    }
+    #logodiv h1
+    {
+        display:inline;
+        vertical-align: middle;
+    }
+
+
+
 h1
 {
     position: relative;
     font-size:50;
-    left:20%;
-    top:40px;
+    padding-left:50px; 
+    /* left:20%;
+    top:40px; */
     
 }
 .titlelogo
 {
-    position: absolute;
-    left:10%;
-    top:10px;
+    position: relative;
+    /* left:10%;
+    top:10px; */
 }
 hr
 {
