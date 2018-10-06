@@ -44,7 +44,7 @@
 }
 .ts{
    position: relative;
-   left:25%;
+   /* left:25%; */
    width: 30%; 
    vertical-align: middle;
    /* border:solid white; */
@@ -54,7 +54,7 @@
 }
 
 .holdlogo{
-   left:42%;
+   /* left:42%; */
    width: 200px;
    height: 50px;
    position: relative;
@@ -100,3 +100,27 @@
 {
     display:inline;
 }
+
+    
+@media screen and (min-width: 320px) and (max-width: 480px){
+    .ts
+    {
+        left:10%;
+    }
+    .holdlogo{
+        left:15%;
+    }
+    .eelogo{}
+    .dclogo{left:2%;}
+}
+@media only screen and (min-width: 1029px){
+    .ts
+    {
+        left:25%;
+    }
+    .holdlogo{
+        left:42%;
+    }
+    .eelogo{}
+    .dclogo{left:2%;}
+}    
