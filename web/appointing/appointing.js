@@ -195,7 +195,7 @@ document.getElementById('1-place1').style.backgroundColor = 'cornflowerblue';
 document.getElementById('1-place2').style.backgroundColor = 'cornflowerblue';
 document.getElementById('c1').parentNode.style.visibility='visible';
 document.getElementById('info').addEventListener('click',function(){showbox1('规则说明')});
-button1.addEventListener//预约按钮的功能实现
+document.getElementById('y1').addEventListener//预约按钮的功能实现
 ('click',function(){
 	appointing(
 	parseInt(document.getElementById('input1').value),
@@ -285,7 +285,7 @@ fetch(url3,{
 
 //单个取消预约,返回1时成功
 function del(deltime,deldiv){
-	var urldel = 'https://thedc.eesast.com/api/sites/0/appointments?startTime='+deltime
+	var urldel = 'https://thedc.eesast.com/api/sites/1/appointments?startTime='+deltime
 	 fetch(urldel,{
 		method:'DELETE',
 		headers:{
@@ -309,7 +309,7 @@ function update()//获取当前日期的预约情况函数
 		'startTime':day.value + 'T' +'00:00:00.000Z',
 		'endTime':day.value + 'T12:00:00.000Z'
 	}
-	fetch('https://thedc.eesast.com/api/sites/0/appointments',{
+	fetch('https://thedc.eesast.com/api/sites/1/appointments',{
 		method:'GET',
 		headers:{
 			'Content-Type':'application/json',
@@ -391,7 +391,7 @@ function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返
 		'endTime':et
 	}
 	if(isc)
-	{fetch('https://thedc.eesast.com/api/sites/0/appointments',{
+	{fetch('https://thedc.eesast.com/api/sites/1/appointments',{
 		method:'POST',
 		headers:{
 			'Content-Type':'application/json',
@@ -401,8 +401,9 @@ function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返
 	}).then(response=>{
 		if(response.ok) {showbox1("预约成功");draw(hour1,hour2,min1,min2,1)}//上传成功提示
 		else if(response.statue == 401) {showbox1('登录失效')}
-		else if(response.status == 400) {showbox1('预约时间冲突或者您还没有加入队伍')}
+		else if(response.status == 400) {showbox1('预约时间不合法或者您还没有加入队伍')}
 		else if(response.status == 403) {showbox1('一天内预约次数超过 3 次')}
+		else if(response.status == 409) {showbox1('预约时间冲突或已达到场地最大容纳量')}
 		else {showbox1('预约失败')}//时间冲突提示
 	})}
 	else {
