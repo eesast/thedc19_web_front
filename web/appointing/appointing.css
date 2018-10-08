@@ -14,7 +14,8 @@ body,html
     background: -o-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
     background: -ms-radial-gradient(center, ellipse cover,  #cfe7fa 0%,#2676c0 100%);
     background: radial-gradient(ellipse at center,  #cfe7fa 0%,#579fe4 100%);
-    /* border: 3px solid; */
+	/* border: 3px solid; */
+	/* z-index: 10; */
 }
 #info{
 	position: absolute;
@@ -174,5 +175,12 @@ a{
 		bottom: 360px;
 		font-size: 22;
 	}
+#foot
+{
+	z-index: 10;
+}
 
-
+footer
+{
+	z-index: 1;
+}
