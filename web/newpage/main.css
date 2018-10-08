@@ -16,7 +16,16 @@ body,html
     overflow-x: hidden;
 }
 
-
+#care
+{
+    /* border: solid; */
+    text-align: center;
+    position: relative;
+    text-shadow:3px 2px 2px #cfe7fa;
+    color:rgb(88, 88, 88);
+    font-size: 24;
+    top:-80px;
+}
 .account-heading-image
 {
     display: block;
