@@ -1,5 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
+html
+{
+	display:block;
+}
 body,html
 {
     position: absolute;
