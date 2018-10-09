@@ -1,4 +1,5 @@
 
+   
     /* 此段用于模拟提示框内容 */
     .showinfor
     {
@@ -40,7 +41,7 @@
     {
         position:relative;
         float:left;
-        top:14px;
+        top:19px;
         left:20px;
     }
     .context
@@ -55,6 +56,16 @@
         background-color:rgb(230, 230, 230);
     
     }
+    .setinput
+    {
+        text-align: left;
+        position: fixed;  
+        width: 20%;
+        height:30px;
+        top:320px;
+        left:36.5%;
+        background-color:rgb(167, 158, 172);
+    }
     .ok,.no
     {
         display:inline;
@@ -68,13 +79,12 @@
     .ok
     {
         background-color: rgb(136, 199, 250);
-        transform: translateX(-80px);
+        
         left:39%;
     }
     .no
     {
         left:55%;
-        transform: translateX(-20px);
     }
     .dark
     {
@@ -86,9 +96,12 @@
         z-index:500;
         background-color: black;
         opacity:0.8;
-        /* 设置此div在主要部分之上 透明度0.5 模拟变暗 */
+        /* 设置此div在主要部分之上 透明度0.8 模拟变暗 */
     }
 
+
+    /* 此段用于模拟提示框内容 */
+    
     /* 此段用于模拟提示框内容 */
     .showinfor1
     {
@@ -112,7 +125,7 @@
         text-align: left;
         position: fixed;  
         width: 30%;
-        height:60px;
+        height:70px;
         margin:0 auto;
         border: 3px solid; 
         border-top-left-radius:15px;
@@ -125,17 +138,34 @@
         /* z-index:999; */
         background-color:rgb(209, 209, 209);
     }
+    /* 设置图像用 */
+    .stop1 img
+    {
+        position:relative;
+        float:left;
+        top:19px;
+    }
     .context1
     {
         text-align: left;
         position: fixed;  
         width: 30%;
         height:100px;
-        top:260px;
+        top:270px;
         /* margin:0 auto; */
         /* border: 1px solid;  */
         background-color:rgb(230, 230, 230);
     
+    }
+    .setinput1
+    {
+        text-align: left;
+        position: fixed;  
+        width: 20%;
+        height:30px;
+        top:320px;
+        left:36.5%;
+        background-color:rgb(167, 158, 172);
     }
     .ok1,.no1
     {
@@ -144,19 +174,18 @@
         width:100px;
         height:40px;
         position: fixed;
-        top:370px;
+        top:380px;
         
     }
     .ok1
     {
         background-color: rgb(136, 199, 250);
-        transform: translateX(-80px);
+        
         left:39%;
     }
     .no1
     {
         left:55%;
-        transform: translateX(-20px);
     }
     .dark1
     {
@@ -168,8 +197,10 @@
         z-index:500;
         background-color: black;
         opacity:0.8;
-        /* 设置此div在主要部分之上 透明度0.5 模拟变暗 */
+        /* 设置此div在主要部分之上 透明度0.8 模拟变暗 */
     }
+
+
 
 
 
