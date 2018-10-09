@@ -30,7 +30,10 @@ function appointing(hour1,min1,hour2,min2,mark)//显示约定的时间,mark用�
 	}
 	days = day.value;
 	//只有用户的预约上传,才需要upload
-	if(mark == 1) upload(username,days,hour1,hour2,min1,min2)
+	if(mark == 1) {
+		upload(username,days,hour1,hour2,min1,min2);
+		update()
+	}
 	else draw(hour1,hour2,min1,min2,mark)
 	//根据时间是否分段来渲染
 	
@@ -109,16 +112,7 @@ function draw(hour1,hour2,min1,min2,mark)
 			div.addEventListener('click',function(){showbox2('您确定要取消预约？',this)})
 			div.className = 'add';
 			appointtime = days + 'T' + hour1 + ':' + showmin1 +'.000Z';
-			if(mark == 1)
-			{if(document.getElementById('case').innerHTML == '')
-			{
-			document.getElementById('case').innerHTML = day.value + '号' + showtime + flag.rows[0].cells[0].innerText;
-			}
-			else{
-				document.getElementById('case').innerHTML = document.getElementById('case').innerHTML +'<br>'+
-				day.value + '号' + showtime + flag.rows[0].cells[0].innerText;
-			}}
-			}
+		}
 		else {div.className = 'all'}
 	}
 }
@@ -194,7 +188,7 @@ function showbox2(s,time)//打印一段话
 document.getElementById('1-place1').style.backgroundColor = 'cornflowerblue';
 document.getElementById('1-place2').style.backgroundColor = 'cornflowerblue';
 document.getElementById('c1').parentNode.style.visibility='visible';
-document.getElementById('info').addEventListener('click',function(){showbox1('规则说明')});
+document.getElementById('info').addEventListener('click',function(){showbox1('规则说明:<br>(1)请按查看预约情况按钮获取所选日期的预约情况<br>(2)点击蓝色区域来取消你所要取消的预约时间段')});
 document.getElementById('y1').addEventListener//预约按钮的功能实现
 ('click',function(){
 	appointing(
@@ -207,6 +201,7 @@ document.getElementById('y1').addEventListener//预约按钮的功能实现
 document.getElementById('showappointment').addEventListener('click',function(){
 	update();
 })
+update();
 
 //后端交互
 var token=getCookie('token');
@@ -285,7 +280,7 @@ fetch(url3,{
 
 //单个取消预约,返回1时成功
 function del(deltime,deldiv){
-	var urldel = 'https://thedc.eesast.com/api/sites/1/appointments?startTime='+deltime
+	var urldel = 'https://thedc.eesast.com/api/sites/1/appointments?startTime='+deltime+'&teamId='+teamId;
 	 fetch(urldel,{
 		method:'DELETE',
 		headers:{
@@ -327,22 +322,15 @@ function update()//获取当前日期的预约情况函数
 	var my1 = document.getElementsByClassName('add');
 	var my2 = document.getElementsByClassName('all');
 	if(res == 0) return 0;
-	for(var ti = 0 ; ti<my1.length; ti++)//把之前的预约信息除去
+	for(var ti = my1.length-1 ; ti>=0; ti--)//把之前的预约信息除去
 	{
 		my1[ti].parentNode.removeChild(my1[ti])
 	}
-	for(var ti = 0 ; ti<my1.length; ti++)
-	{
-		my1[ti].parentNode.removeChild(my1[ti])
-	}
-	for(var ti = 0 ; ti<my2.length; ti++)//把之前的预约信息除去
+	for(var ti = my1.length-1 ; ti>=0; ti--)//把之前的预约信息除去
 	{
 		my2[ti].parentNode.removeChild(my2[ti])
 	}
-	for(var ti = 0 ; ti<my2.length; ti++)
-	{
-		my2[ti].parentNode.removeChild(my2[ti])
-	}
+	document.getElementById('case').innerHTML = ''
 	for(var ti=0;ti<start.length;ti++)//将获取的时间数据交给appointing函数渲染
 	{
 		var getday = start[ti]['startTime'].substring(0,10)
