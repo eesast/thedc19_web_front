@@ -11,7 +11,7 @@ var days = '';
 var day = document.getElementById('demo')
 var flag = document.getElementById('c1');
 var space = document.getElementById('1-space1')
-function appointing(hour1,min1,hour2,min2,mark)//显示约定的时间,mark用来表示是否为用户添加的时间
+function appointing(hour1,min1,hour2,min2)//显示约定的时间,mark用来表示是否为用户添加的时间
 {
 	var sign = 1;
 	//清空输入框
@@ -30,12 +30,7 @@ function appointing(hour1,min1,hour2,min2,mark)//显示约定的时间,mark用�
 	}
 	days = day.value;
 	//只有用户的预约上传,才需要upload
-	if(mark == 1) {
-		upload(username,days,hour1,hour2,min1,min2);
-		update()
-	}
-	else draw(hour1,hour2,min1,min2,mark)
-	//根据时间是否分段来渲染
+	upload(username,days,hour1,hour2,min1,min2);
 	
 }
 
@@ -195,13 +190,12 @@ document.getElementById('y1').addEventListener//预约按钮的功能实现
 	parseInt(document.getElementById('input1').value),
 	parseInt(document.getElementById('input2').value),
 	parseInt(document.getElementById('input3').value),
-	parseInt(document.getElementById('input4').value),
-	1)
+	parseInt(document.getElementById('input4').value)
+	)
 })
 document.getElementById('showappointment').addEventListener('click',function(){
 	update();
 })
-update();
 
 //后端交互
 var token=getCookie('token');
@@ -210,6 +204,7 @@ var username=getCookie('username');
 var Id = getCookie('userid');
 var teamId;
 var isc=false;
+update();
 //统一头部
 if(token && username)
 {
@@ -326,7 +321,7 @@ function update()//获取当前日期的预约情况函数
 	{
 		my1[ti].parentNode.removeChild(my1[ti])
 	}
-	for(var ti = my1.length-1 ; ti>=0; ti--)//把之前的预约信息除去
+	for(var ti = my2.length-1 ; ti>=0; ti--)//把之前的预约信息除去
 	{
 		my2[ti].parentNode.removeChild(my2[ti])
 	}
@@ -353,11 +348,11 @@ function update()//获取当前日期的预约情况函数
 			var hour2 =parseInt(start[ti]['endTime'].substring(11,13));
 			var min2 =parseInt(start[ti]['endTime'].substring(14,16));
 			if(start[ti]['teamId'] == teamId) //判断用户是否已经预约
-			{appointing(
-				hour1,min1,hour2,min2,2
+			{draw(
+				hour1,hour2,min1,min2,1
 			)}
-			else {appointing(
-				hour1,min1,hour2,min2,0
+			else {draw(
+				hour1,hour2,min1,min2,0
 			)}}}
 })
 }
@@ -387,7 +382,7 @@ function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返
 		},
 		body:JSON.stringify(body1)
 	}).then(response=>{
-		if(response.ok) {showbox1("预约成功");draw(hour1,hour2,min1,min2,1)}//上传成功提示
+		if(response.ok) {showbox1("预约成功");update()}//上传成功提示
 		else if(response.statue == 401) {showbox1('登录失效')}
 		else if(response.status == 400) {showbox1('预约时间不合法或者您还没有加入队伍')}
 		else if(response.status == 403) {showbox1('一天内预约次数超过 3 次')}
