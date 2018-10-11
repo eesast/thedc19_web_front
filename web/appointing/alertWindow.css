@@ -6,7 +6,7 @@
         display:none;
         position: fixed;  
         width: 30%;
-        height:30%;
+        height:40%;
         margin:0 auto;
         border: 3px solid; 
         border-Radius: 15px;
@@ -23,7 +23,7 @@
         text-align: left;
         position: fixed;  
         width: 30%;
-        height:60px;
+        height:70px;
         margin:0 auto;
         border: 3px solid; 
         border-top-left-radius:15px;
@@ -49,8 +49,8 @@
         text-align: left;
         position: fixed;  
         width: 30%;
-        height:100px;
-        top:260px;
+        height:180px;
+        top:270px;
         /* margin:0 auto; */
         /* border: 1px solid;  */
         background-color:rgb(230, 230, 230);
@@ -73,7 +73,7 @@
         width:100px;
         height:40px;
         position: fixed;
-        top:370px;
+        top:460px;
         
     }
     .ok
