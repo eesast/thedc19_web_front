@@ -112,29 +112,20 @@ function draw(hour1,hour2,min1,min2,mark)
 	}
 }
 
-function showbox(s)//打印一段话
+function showbox()//打印一段话
 {
 	document.getElementsByClassName("dark")[0].style.display="block";//屏幕半黑
 	document.getElementsByClassName("showinfor")[0].style.display="block";//弹框
-	document.getElementsByClassName("context")[0].innerHTML="<br>&nbsp;&nbsp;&nbsp;&nbsp;"+s;//弹出消息
 	document.getElementsByClassName("ok")[0].style.left="46.5%";
 	//设置调用按钮功能
-	}
-document.getElementsByClassName("ok")[0].addEventListener("click",function()
-	{
-		//按下了确认
-		//优先关闭窗口
-		document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
-		document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
-	});
-document.getElementsByClassName('no')[0].addEventListener('click',function()
-	{
-		//按下了取消
-		//优先关闭窗口
-		document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
-		document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
-	})
-
+	document.getElementsByClassName("ok")[0].addEventListener("click",function()
+		{
+			//按下了确认
+			//优先关闭窗口
+			document.getElementsByClassName("dark")[0].style.display="none";//屏幕半黑
+			document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
+		});
+}
 function showbox1(s)//打印一段话
 {
 	document.getElementsByClassName("dark1")[0].style.display="block";//屏幕半黑
@@ -162,8 +153,6 @@ function showbox2(s,time)//打印一段话
 	//获取time的内容，del(deltime,div)
 	var delhour=time.innerHTML.substring(0,5);
 	var deltime=day.value + 'T' + delhour + ':00.000Z';
-	console.log(time)
-	console.log(deltime);
 	document.getElementsByClassName("ok2")[0].addEventListener("click",function()
 	{
 		//按下了确认
@@ -183,7 +172,7 @@ function showbox2(s,time)//打印一段话
 document.getElementById('1-place1').style.backgroundColor = 'cornflowerblue';
 document.getElementById('1-place2').style.backgroundColor = 'cornflowerblue';
 document.getElementById('c1').parentNode.style.visibility='visible';
-document.getElementById('info').addEventListener('click',function(){showbox1('规则说明:<br>(1)请按查看预约情况按钮获取所选日期的预约情况<br>(2)点击蓝色区域来取消你所要取消的预约时间段')});
+document.getElementById('info').addEventListener('click',function(){showbox()});
 document.getElementById('y1').addEventListener//预约按钮的功能实现
 ('click',function(){
 	appointing(
@@ -194,7 +183,7 @@ document.getElementById('y1').addEventListener//预约按钮的功能实现
 	)
 })
 document.getElementById('showappointment').addEventListener('click',function(){
-	update();
+	update(1);
 })
 
 //后端交互
@@ -204,7 +193,7 @@ var username=getCookie('username');
 var Id = getCookie('userid');
 var teamId;
 var isc=false;
-update();
+update(0);
 //统一头部
 if(token && username)
 {
@@ -285,7 +274,7 @@ function del(deltime,deldiv){
 	}).then(response=>{
 		if(response.ok){ 
 			showbox1('取消预约成功');
-			update();
+			update(0);
 		}
 		else if(response.status == 401){showbox1('登录失效');}
 		else {showbox1('取消预约失败')}
@@ -293,7 +282,7 @@ function del(deltime,deldiv){
 }
 
 
-function update()//获取当前日期的预约情况函数
+function update(mark1)//获取当前日期的预约情况函数
 {
 	var query = {
 		'startTime':day.value + 'T' +'00:00:00.000Z',
@@ -308,7 +297,7 @@ function update()//获取当前日期的预约情况函数
 		'query':query
 	}).then(response=>{
 		if(response.ok) 
-		{showbox1('获取预约情况成功');
+		{if(mark1) {showbox1('获取预约情况成功');}
 		return response.json();
 		}
 		if(response == 401){showbox1('登录失效');return 0;}
@@ -382,7 +371,7 @@ function upload(name,days,hour1,hour2,min1,min2)//上传预约数据函数，返
 		},
 		body:JSON.stringify(body1)
 	}).then(response=>{
-		if(response.ok) {showbox1("预约成功");update()}//上传成功提示
+		if(response.ok) {showbox1("预约成功");update(0)}//上传成功提示
 		else if(response.statue == 401) {showbox1('登录失效')}
 		else if(response.status == 400) {showbox1('预约时间不合法或者您还没有加入队伍')}
 		else if(response.status == 403) {showbox1('一天内预约次数超过 3 次')}
