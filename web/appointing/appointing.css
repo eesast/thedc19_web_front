@@ -20,11 +20,14 @@ body,html
     background: radial-gradient(ellipse at center,  #cfe7fa 0%,#579fe4 100%);
 	/* border: 3px solid; */
 	/* z-index: 10; */
+	overflow-x: hidden;
 }
 #info{
 	position: absolute;
 	top:10%;
 	right:8%;
+	width:150px;
+	height:50px;
 }
 input{
 	width:30px;
@@ -58,6 +61,21 @@ input{
 {
 	border-radius: 50%;
 
+}
+.maintitle
+{
+	width:40%;
+	color:rgb(78, 78, 78);
+	position:relative;
+	margin:0 auto;
+	padding-top:0 ;
+	/* border: solid; */
+	text-shadow: 3px 3px 3px rgb(145, 145, 145);
+	text-align: center;
+	/* top:200px; */
+	/* border: solid; */
+	font-weight: 100;
+	/* border:3px solid; */
 }
 #img2{
 	height: 100px;
