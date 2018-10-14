@@ -7,6 +7,16 @@ var username=getCookie('username');//登陆后传入
 //         // location.reload(true);       
 //     })
 // }
+
+
+//关闭网站**************
+showbox("组队报名已截止，不可创建队伍或加入队伍",function()
+{
+    window.location.href='main.html';
+})
+
+//************* */
+
 if(token!=null&&username!=null)
 {
     document.getElementById("userinfor1").style.display="none";

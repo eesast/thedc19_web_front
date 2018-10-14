@@ -1,14 +1,21 @@
 var token=getCookie('token');
 var username=getCookie('username');//登陆后传入
 var userid=getCookie("userid");
-if(token==null||username==null)
+//关闭网站**************
+showbox("组队报名已截止，不可创建队伍或加入队伍",function()
 {
-    showbox("请先登录",function()
-    {
-        // location.reload(true);     
+    window.location.href='main.html';
+})
 
-    })
-}
+//************* */
+// if(token==null||username==null)
+// {
+//     showbox("请先登录",function()
+//     {
+//         // location.reload(true);     
+
+//     })
+// }
 var myusers;//使用者集合
 var mobody;
     //console.log(token);

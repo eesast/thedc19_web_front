@@ -141,12 +141,14 @@ var userid=getCookie("userid");
             var bt2=document.getElementsByTagName("button")[1];
             
             bt1.addEventListener("click",function(){
-                if(token===null)showbox("请先登录后操作");    
-                else window.location.href='creatteam.html';
+                showbox("组队报名已截止，不可创建队伍或加入队伍");
+                // if(token===null)showbox("请先登录后操作");    
+                // else window.location.href='creatteam.html';
             });
             bt2.addEventListener("click",function(){
-                if(token===null)showbox("请先登录后操作");    
-                else window.location.href='jointeam.html';
+                showbox("组队报名已截止，不可创建队伍或加入队伍");
+                // if(token===null)showbox("请先登录后操作");    
+                // else window.location.href='jointeam.html';
             });
         }
         else//显示查看队伍信息和退出队伍
