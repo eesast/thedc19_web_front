@@ -323,11 +323,11 @@ function update(mark1)//获取当前日期的预约情况函数
 			var showtime =start[ti]['startTime'].substring(11,16)+'~'+start[ti]['endTime'].substring(11,16);
 			if(document.getElementById('case').innerHTML == '')
 			{
-			document.getElementById('case').innerHTML = start[ti]['startTime'].substring(0,10) + '号' + showtime + flag.rows[0].cells[0].innerText;
+			document.getElementById('case').innerHTML = start[ti]['startTime'].substring(0,10) + '号' + showtime;
 			}
 			else{
 				document.getElementById('case').innerHTML = document.getElementById('case').innerHTML +'<br>'+
-				start[ti]['startTime'].substring(0,10) + '号' + showtime + flag.rows[0].cells[0].innerText;
+				start[ti]['startTime'].substring(0,10) + '号' + showtime;
 			}
 		}
 		if(getday == document.getElementById('demo').value)
