@@ -126,6 +126,7 @@ function showbox()//打印一段话
 			document.getElementsByClassName("showinfor")[0].style.display="none";//弹框
 		});
 }
+
 function showbox1(s)//打印一段话
 {
 	document.getElementsByClassName("dark1")[0].style.display="block";//屏幕半黑
@@ -143,6 +144,7 @@ function showbox1(s)//打印一段话
 	   
 	});
 }
+
 function showbox2(s,time)//打印一段话
 {
 	document.getElementsByClassName("dark2")[0].style.display="block";//屏幕半黑
@@ -169,21 +171,47 @@ function showbox2(s,time)//打印一段话
 		document.getElementsByClassName("showinfor2")[0].style.display="none";//弹框
 	})
 }
+
+function showbox3(s)//打印一段话
+{
+	document.getElementsByClassName("dark3")[0].style.display="block";//屏幕半黑
+	document.getElementsByClassName("showinfor3")[0].style.display="block";//弹框
+	document.getElementsByClassName("context3")[0].innerHTML="<br>&nbsp;&nbsp;&nbsp;&nbsp;"+s;//弹出消息
+	document.getElementsByClassName("ok3")[0].style.left="46.5%";
+	//设置调用按钮功能
+	document.getElementsByClassName("ok3")[0].addEventListener("click",function()
+		{
+			//按下了确认
+			//优先关闭窗口
+			window.location.href="../log in&sign up/login.html"
+			document.getElementsByClassName("dark3")[0].style.display="none";//屏幕半黑
+			document.getElementsByClassName("showinfor3")[0].style.display="none";//弹框
+		});
+}
+
 document.getElementById('1-place1').style.backgroundColor = 'cornflowerblue';
 document.getElementById('1-place2').style.backgroundColor = 'cornflowerblue';
 document.getElementById('c1').parentNode.style.visibility='visible';
 document.getElementById('info').addEventListener('click',function(){showbox()});
 document.getElementById('y1').addEventListener//预约按钮的功能实现
 ('click',function(){
-	appointing(
-	parseInt(document.getElementById('input1').value),
-	parseInt(document.getElementById('input2').value),
-	parseInt(document.getElementById('input3').value),
-	parseInt(document.getElementById('input4').value)
-	)
+	if(token)
+	{
+		appointing(
+		parseInt(document.getElementById('input1').value),
+		parseInt(document.getElementById('input2').value),
+		parseInt(document.getElementById('input3').value),
+		parseInt(document.getElementById('input4').value)
+		)
+	}
+	else showbox3('请您先登录');
 })
 document.getElementById('showappointment').addEventListener('click',function(){
-	update(1);
+	if(token)
+	{
+		update(1);
+	}
+	else showbox3('请您先登录');
 })
 
 //后端交互
@@ -323,11 +351,11 @@ function update(mark1)//获取当前日期的预约情况函数
 			var showtime =start[ti]['startTime'].substring(11,16)+'~'+start[ti]['endTime'].substring(11,16);
 			if(document.getElementById('case').innerHTML == '')
 			{
-			document.getElementById('case').innerHTML = start[ti]['startTime'].substring(0,10) + '号' + showtime + flag.rows[0].cells[0].innerText;
+			document.getElementById('case').innerHTML = start[ti]['startTime'].substring(0,10) + '号' + showtime;
 			}
 			else{
 				document.getElementById('case').innerHTML = document.getElementById('case').innerHTML +'<br>'+
-				start[ti]['startTime'].substring(0,10) + '号' + showtime + flag.rows[0].cells[0].innerText;
+				start[ti]['startTime'].substring(0,10) + '号' + showtime;
 			}
 		}
 		if(getday == document.getElementById('demo').value)

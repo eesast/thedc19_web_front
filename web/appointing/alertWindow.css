@@ -103,7 +103,7 @@
     /* 此段用于模拟提示框内容 */
     
     /* 此段用于模拟提示框内容 */
-    .showinfor1
+    .showinfor1,.showinfor3
     {
         display:none;
         position: fixed;  
@@ -120,7 +120,7 @@
         /* background-color: aqua; */
 
     }
-    .stop1
+    .stop1,.stop3
     {
         text-align: left;
         position: fixed;  
@@ -139,13 +139,13 @@
         background-color:rgb(209, 209, 209);
     }
     /* 设置图像用 */
-    .stop1 img
+    .stop1 img,.stop3 img
     {
         position:relative;
         float:left;
         top:19px;
     }
-    .context1
+    .context1,.context3
     {
         text-align: left;
         position: fixed;  
@@ -157,7 +157,7 @@
         background-color:rgb(230, 230, 230);
     
     }
-    .setinput1
+    .setinput1,.setinput3
     {
         text-align: left;
         position: fixed;  
@@ -167,17 +167,16 @@
         left:36.5%;
         background-color:rgb(167, 158, 172);
     }
-    .ok1,.no1
+    .ok1,.no1,.ok3
     {
         display:inline;
-        background-color: rgb(131, 131, 131);
         width:100px;
         height:40px;
         position: fixed;
         top:380px;
         
     }
-    .ok1
+    .ok1.ok3
     {
         background-color: rgb(136, 199, 250);
         
@@ -185,9 +184,10 @@
     }
     .no1
     {
+        background-color: rgb(131, 131, 131);
         left:55%;
     }
-    .dark1
+    .dark1,.dark3
     {
         display:none;
         position:fixed;
