@@ -1,112 +1,298 @@
-<!DOCTYPE>
-<!DOCTYPE html>
 <html>
-	<head>
-        <link rel="icon" href="../static/img/logo.ico" type="img/x-ico" />
-        <meta charset="UTF-8">
-		<title>预约系统</title>
-		<link rel="stylesheet" type="text/css" href="css/main.css">
-		<link rel="stylesheet" type="text/css" href="css/alertWindow.css">
-        <link rel="stylesheet" type="text/css" href="../static/css/side-bar.css" /> 
-        <link rel="stylesheet" type="text/css" href="../static/css/signin.css">
-                <link rel="stylesheet" href="../static/css/footer.css" type="text/css">
-	</head>
-	<body>
-            <div class="wrapper">
-        <div class="form-heading">
-            <div id="logodiv">
-            <img class="mainlogo" src="img/thelogo.jpg" alt="logo" width="100px" height="100px"></img>
-            </div>
-            <h1 class="maintitle">预约系统</h1>
-
-            <h1 class="maintitle">敬请期待</h1>
-        </div>
-       
-
-	</body>
-	<nav class="main-menu">     
-            <a href="../index.html">
-                
-                <span class="nav-text" >
-                    &nbsp;&nbsp;&nbsp;&nbsp;首页&nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-                
-            </a>        
-             
-            <a href="../newpage/introduce.html">
-                
-                <span class="nav-text" >
-                    &nbsp;&nbsp;&nbsp;&nbsp;介绍&nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-                
-            </a>   
-             
-            <a href="../log in&sign up/signup.html">
-              
-                <span class="nav-text">
-                    &nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-                
-            </a>  
-              
-            <a href="../log in&sign up/login.html">
-              
-                <span class="nav-text">
-                    &nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-                
-            </a>
-                         
-            <a href="../newpage/main.html">
-                
-                <span class="nav-text" >
-                    &nbsp;&nbsp;&nbsp;&nbsp;组队&nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-                
-            </a>
-             
-        
-                        
-            <a href="../appointing/appointing.html">
-                <span class="nav-text" id='now'>
-                    &nbsp;&nbsp;&nbsp;&nbsp;预约&nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-                
-            </a>
-             
-                        
-            <a href="../newpage/download.html">
-                <span class="nav-text">
-                    &nbsp;&nbsp;&nbsp;&nbsp;文件&nbsp;&nbsp;&nbsp;&nbsp;
-                </span>
-                
-            </a>
-             
-            <div id="users">
+	<head> 
+	 <meta charset="utf-8" /> 
+	 <link rel="stylesheet" type="text/css" href="appointing.css" /> 
+	 <link rel="stylesheet" type="text/css" href="alertWindow.css" /> 
+	 <link rel="stylesheet" type="text/css" href="../static/css/side-bar.css" /> 
+	 <link rel="stylesheet" type="text/css" href="../static/css/signin.css">
+	 <link rel="stylesheet" href="../static/css/footer.css" type="text/css">
+	 <title>预约</title> 
+	</head> 
+	<body> 
+		<div class="wrapper">
+	 <div class="picture"> 
+			<div id="logodiv">
+	  		<img src="thelogo.jpg" id="img" width="100px" height="100px" style="border-radius:50%" /> 
+			<h1 class="maintitle">预约系统</h1>	
+		</div>
+	  <button class="sure" id="info">使用说明</button>
+	 </div> 
+	 <div class="show"> 
+	  <div id="d2" align="center"> 
+	   <div class="demo1"> 
+		<input class="laydate-icon" id="demo" value="2018-10-01" /><button class="sure" id="showappointment">查看预约情况</button>
+	   </div> 
+	   <div> 
+		<table border="1" cellspacing="0" id="c1" class="time"> 
+		  <tr> 
+		   <td class="tal1" id="1-place1">李兆基大楼B242上午</td> 
+		   <td class="tal">00:00</td> 
+		   <td class="tal">01:00</td> 
+		   <td class="tal">02:00</td> 
+		   <td class="tal">03:00</td> 
+		   <td class="tal">04:00</td> 
+		   <td class="tal">05:00</td> 
+		   <td class="tal">06:00</td> 
+		   <td class="tal">07:00</td> 
+		   <td class="tal">08:00</td> 
+		   <td class="tal">09:00</td> 
+		   <td class="tal">10:00</td> 
+		   <td class="tal">11:00</td> 
+		  </tr> 
+		  <tr> 
+		   <td class="tal1" id="1-place2">李兆基大楼B242下午</td> 
+		   <td class="tal">12:00</td> 
+		   <td class="tal">13:00</td> 
+		   <td class="tal">14:00</td> 
+		   <td class="tal">15:00</td> 
+		   <td class="tal">16:00</td> 
+		   <td class="tal">17:00</td> 
+		   <td class="tal">18:00</td> 
+		   <td class="tal">19:00</td> 
+		   <td class="tal">20:00</td> 
+		   <td class="tal">21:00</td> 
+		   <td class="tal">22:00</td> 
+		   <td class="tal">23:00</td> 
+		  </tr> 
+		</table> 
+	   </div>
+	   <div id='showtitle'>你的预约时间:</div>
+	   <div align='left' id='case'></div>
+   		</div>
+	 </div> 
+	 <div id="foot"> 
+	  <div id="d3" align="center">
+		输入您的预约时间：
+	   <input id="input1" />:
+	   <input id="input2" /> ~
+	   <input id="input3" />:
+	   <input id="input4" /> 
+	   <button class="sure" id="y1">预约</button>
+	  </div>  
+	 </div>  
+	 <nav class="main-menu">     
+			<a href="../index.html">
+				
+				<span class="nav-text" >
+					&nbsp;&nbsp;&nbsp;&nbsp;首页&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+				
+			</a>        
+			 
+			<a href="../newpage/introduce.html">
+				
+				<span class="nav-text" >
+					&nbsp;&nbsp;&nbsp;&nbsp;介绍&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+				
+			</a>   
+			 
+			<a href="../log in&sign up/signup.html">
+			  
+				<span class="nav-text">
+					&nbsp;&nbsp;&nbsp;&nbsp;注册&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+				
+			</a>  
+			 
+			<a href="../log in&sign up/login.html">
+			  
+				<span class="nav-text">
+					&nbsp;&nbsp;&nbsp;&nbsp;登录&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+				
+			</a>
+			 			
+			<a href="../newpage/main.html">
+				
+				<span class="nav-text" >
+					&nbsp;&nbsp;&nbsp;&nbsp;组队&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+				
+			</a>
+			 
+		
+						
+			<a href="../appointing/appointing.html">
+				<span class="nav-text" id='now'>
+					&nbsp;&nbsp;&nbsp;&nbsp;预约&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+				
+			</a>
+			 
+						
+			<a href="../newpage/download.html">
+				<span class="nav-text">
+					&nbsp;&nbsp;&nbsp;&nbsp;文件&nbsp;&nbsp;&nbsp;&nbsp;
+				</span>
+				
+			</a>
+			 
+			<div id="users">
                 <span id="userinfor1">请先<a id="signin" href="../log in&sign up/login.html">登录</a>后操作</span>
                 <span id="userinfor2">您好，用户:</span>
                 
             </div>
-        </nav>
-    
-    <div class="push" style="height:4em;"></div>
-        </div>
-        <!-- <br><br><br><br><br><br><br> -->
-        <footer class="myfooter">
-                <div class="copyright">
-                    <a id="ft" href="https://www.eesast.com/"><img class="eelogo" src="2.png" alt="logo" ></img></a>
-                    <a id="ft" href="https://daasta.cn/"><img class="dclogo" src="dclogo.png" alt="logo" ></img></a>
-                      
-                        <p id="ft" class="ts">
-                        <small>© 2018
-                        <a href="https://www.eesast.com">EESAST</a> All Rights Reserved.</small>
-                        <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二十届电子设计大赛</small>
-                        </p>  
-                      <a id="ft" href="http://www.leadgentech.ai/"><img class="holdlogo" src="1.png" alt="logo" ></a>
-                </div>
-                
-        </footer>
-</html>
-<script src="js/cookie.js"></script>
-<script src="js/main.js"></script>
-<script src="js/alertWindow.js"></script>
+		</nav>
+	
+		<div class="push" style="height:4em;"></div>
+	</div>
+	<!-- <br><br><br><br><br><br><br> -->
+	<footer class="myfooter">
+			<div class="copyright">
+				<a id="ft" href="https://www.eesast.com/"><img class="eelogo" src="2.png" alt="logo" ></img></a>
+				<a id="ft" href="https://daasta.cn/"><img class="dclogo" src="dclogo.png" alt="logo" ></img></a>
+				  
+					<p id="ft" class="ts">
+					<small>© 2018
+					<a href="https://www.eesast.com">EESAST</a> All Rights Reserved.</small>
+					<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二十届电子设计大赛</small>
+					</p>  
+				  <a id="ft" href="http://www.leadgentech.ai/"><img class="holdlogo" src="1.png" alt="logo" ></a>
+			</div>
+			
+	</footer>
+
+	 <div class="dark"></div> 
+	 <!-- (通用警示提示框) --> 
+	 <div class="showinfor"> 
+	  <!-- 分割用线 --> 
+	  <div class="stop">
+	   <img src="logo1.png" alt="logo" width="40" height="40" />
+	   <h2>&nbsp;&nbsp;&nbsp;&nbsp;温馨提示</h2>
+	  </div> 
+	  <!-- 提示内容 --> 
+	  <div class="context">
+			规则说明:<br>
+			(1)注意只有队长才能预约和取消预约<br>
+			(2)按查看预约情况按钮获取所选日期的预约情况<br>
+			(3)蓝色区域为您的预约时间，黄色为其他组(颜色越深预约越多)<br>
+			(4)预约时间在一小时和两小时之间，一天不能预约超过3次<br>
+			(5)点击蓝色区域来取消你所要取消的预约时间段<br>
+			(6)若取消的预约时间跨越12点的请点击12点前区域，否则会失败
+	  </div> 
+	  <!-- 下面是确认建和取消键    --> 
+	  <button class="ok" value="确定" style="color:white">确认</button> 
+	 </div>  
+
+	 <div class="dark1"></div> 
+	 <!-- (通用警示提示框) --> 
+	 <div class="showinfor1"> 
+	  <!-- 分割用线 --> 
+	  <div class="stop1">
+	   <img src="logo1.png" alt="logo" width="40" height="40" style="position:absolute;"/>
+	   <h2 style="transform:translateX(40px)">温馨提示<h2>
+	  </div> 
+	  <!-- 提示内容 --> 
+	  <div class="context1">
+	   <br />&nbsp;&nbsp;&nbsp;&nbsp;这个用于弹出消息
+	  </div> 
+	  <!-- 下面是确认建和取消键    --> 
+	  <button class="ok1" value="确定" style="color:white">确认</button> 
+	 </div>  
+
+	 <div class="dark2"></div> 
+	 <!-- (通用警示提示框) --> 
+	 <div class="showinfor2"> 
+	  <!-- 分割用线 --> 
+	  <div class="stop2">
+	   <img src="logo1.png" alt="logo" width="40" height="40" />
+	   <h2>&nbsp;&nbsp;&nbsp;&nbsp;温馨提示</h2>
+	  </div> 
+	  <!-- 提示内容 --> 
+	  <div class="context2">
+	   <br />&nbsp;&nbsp;&nbsp;&nbsp;这个用于弹出消息
+	  </div> 
+	  <!-- 下面是确认建和取消键    --> 
+	  <button class="ok2" value="确定" style="color:white">确认</button> 
+	  <button class="no2" value="取消" style="color:white">取消</button> 
+	 </div> 
+
+	 <div class="dark3"></div> 
+	 <!-- (通用警示提示框) --> 
+	 <div class="showinfor3"> 
+	  <!-- 分割用线 --> 
+	  <div class="stop3">
+	   <img src="logo1.png" alt="logo" width="40" height="40" style="position:absolute;"/>
+	   <h2 style="transform:translateX(40px)">温馨提示<h2>
+	  </div> 
+	  <!-- 提示内容 --> 
+	  <div class="context3">
+	   <br />&nbsp;&nbsp;&nbsp;&nbsp;这个用于弹出消息
+	  </div> 
+	  <!-- 下面是确认建和取消键    --> 
+	  <button class="ok3" value="确定" style="color:white">确认</button> 
+	 </div> 
+
+	 <div class="dark4"></div> 
+	 <!-- (通用警示提示框) --> 
+	 <div class="showinfor4"> 
+	  <!-- 分割用线 --> 
+	  <div class="stop4">
+	   <img src="logo1.png" alt="logo" width="40" height="40" style="position:absolute;"/>
+	   <h2 style="transform:translateX(40px)">温馨提示<h2>
+	  </div> 
+	  <!-- 提示内容 --> 
+	  <div class="context4">
+	   <br />&nbsp;&nbsp;&nbsp;&nbsp;这个用于弹出消息
+	  </div> 
+	  <!-- 下面是确认建和取消键    --> 
+	  <button class="ok4" value="确定" style="color:white">确认</button> 
+	 </div>
+
+	 <script type="text/javascript" src="alertWindow.js"></script> 
+	 <script type="text/javascript" src="appointing.js"></script> 
+	 <script type="text/javascript" src="js/laydate.js"></script> 
+	 <script type="text/javascript">
+   !function(){
+	   laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
+	   laydate({elem: '#demo'});//绑定元素
+   }();
+   
+   //日期范围限制
+   var start = {
+	   elem: '#start',
+	   format: 'YYYY-MM-DD',
+	   min: laydate.now(), //设定最小日期为当前日期
+	   max: '2099-06-16', //最大日期
+	   istime: true,
+	   istoday: false,
+	   choose: function(datas){
+			end.min = datas; //开始日选好后，重置结束日的最小日期
+			end.start = datas //将结束日的初始值设定为开始日
+	   }
+   };
+   
+   var end = {
+	   elem: '#end',
+	   format: 'YYYY-MM-DD',
+	   min: laydate.now(),
+	   max: '2099-06-16',
+	   istime: true,
+	   istoday: false,
+	   choose: function(datas){
+		   start.max = datas; //结束日选好后，充值开始日的最大日期
+	   }
+   };
+   laydate(start);
+   laydate(end);
+   
+   //自定义日期格式
+   laydate({
+	   elem: '#test1',
+	   format: 'YYYY年MM月DD日',
+	   festival: true, //显示节日
+	   choose: function(datas){ //选择日期完毕的回调
+		   alert('得到：'+datas);
+	   }
+   });
+   
+   //日期范围限定在昨天到明天
+   laydate({
+	   elem: '#hello3',
+	   min: laydate.now(-1), //-1代表昨天，-2代表前天，以此类推
+	   max: laydate.now(+1) //+1代表明天，+2代表后天，以此类推
+   });
+   </script> 
+	</body>
+   </html>
