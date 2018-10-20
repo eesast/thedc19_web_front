@@ -189,6 +189,25 @@ function showbox3(s)//打印一段话
 		});
 }
 
+function showbox4(s)//打印一段话
+{
+	document.getElementsByClassName("dark4")[0].style.display="block";//屏幕半黑
+	document.getElementsByClassName("showinfor4")[0].style.display="block";//弹框
+	document.getElementsByClassName("context4")[0].innerHTML="<br>&nbsp;&nbsp;&nbsp;&nbsp;"+s;//弹出消息
+	document.getElementsByClassName("ok4")[0].style.left="46.5%";
+	//设置调用按钮功能
+	document.getElementsByClassName("ok4")[0].addEventListener("click",function()
+		{
+			//按下了确认
+			//优先关闭窗口
+			delCookie("username");
+            delCookie("token");
+			location.reload(true);
+			document.getElementsByClassName("dark3")[0].style.display="none";//屏幕半黑
+			document.getElementsByClassName("showinfor3")[0].style.display="none";//弹框
+		});
+}
+
 document.getElementById('1-place1').style.backgroundColor = 'cornflowerblue';
 document.getElementById('1-place2').style.backgroundColor = 'cornflowerblue';
 document.getElementById('c1').parentNode.style.visibility='visible';
