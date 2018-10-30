@@ -2,6 +2,7 @@ var token=getCookie('token');
 var teams;
 var users;
 var r;
+var day = document.getElementById('demo');
 function GETINFO(){
 	sh0();
 	sh2();
@@ -37,7 +38,7 @@ function sh3(){
 	}).then(res=>window.users=res)
 }
 function sh0(){
-    var day = document.getElementById('demo');
+    
 	var query = {
 		'startTime':day.value + 'T' +'00:00:00.000Z',
 		'endTime':day.value + 'T12:00:00.000Z'
