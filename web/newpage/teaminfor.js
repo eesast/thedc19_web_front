@@ -468,7 +468,7 @@ function showteaminfor()
             fp.style.display="inline";
             fbt.style.display="inline";
             fbt.style.float='right';
-            setdropsb(i+1);
+            setdropsb(i+2);
             
         }
     var st= document.getElementsByTagName("button")[team.cnt+1];
